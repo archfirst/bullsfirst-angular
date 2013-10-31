@@ -5,9 +5,10 @@ angular.module('bullsfirst')
         $scope.user = {
             firstName: '',
             lastName: '',
-            username: 'wflintstone',
-            password: 'cool'
+            username: '',
+            password: ''
         };
+
         $scope.processKeyPressAction = function ($event, action) {
             // If a key was pressed and it was not enter key, return
             if ($event && $event.keyCode && $event.keyCode !== 13) {
