@@ -1,0 +1,30 @@
+<section class="open-account-section">
+	<h1>Open an Account</h1>
+
+		<form name="openAccountForm" class="js-openaccount-form openaccount-form" novalidate>
+
+            <label for="firstName">First Name</label>
+            <input type="text" ng-model="user.firstName" id="firstName" name="firstName" class="js-firstName"/>
+
+            <label for="lastName">Last Name</label>
+            <input type="text" ng-model="user.lastName" id="lastName" name="lastName" class="js-lastName"/>
+
+		    <label for="username">Username</label>
+		    <input ng-model="user.username" id="username" name="username" required  type="text" class="js-username">
+
+            <label for="password">Password</label>
+		    <input ng-model="user.password" id="password" name="password" match-with="confirm-password" required
+                   type="password" class="js-password">
+
+            <label for="confirm-password">Confirm</label>
+            <input ng-keydown="processKeyPressAction($event, 'openaccount')" id="confirm-password" name="confirm-password" match-with="password"
+                   required type="password" class="js-confirm-password">
+
+		    <a ng-click="openAccount()" ng-class="{'disabled': openAccountForm.$invalid}"
+               class="login-button button large person-icon" href="">
+                <span>Open Account</span>
+            </a>
+            <a href="#/" class="cancel-button button">Cancel</a>
+
+		</form>
+</section>

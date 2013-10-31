@@ -8,21 +8,18 @@ angular.module('bullsfirst')
     .directive('requirederrorbubble', function () {
         return {
             restrict: 'A',
-            compile: function (element, attributes) {
-                var el = element[0];
+            compile: function (scope, $$element, attributes) {
+                var el = $$element[0];
                 var boundingRect = el.getBoundingClientRect();
-                var errorDiv = document.createElement('div');
-                errorDiv.classList.add('input-error-bubble');
-                //errorDiv.classList.add('nodisplay');
-                errorDiv.innerHTML = 'Ha Ha Ha';
-                errorDiv.style.top = boundingRect.top - 50 + 'px';
-                errorDiv.style.left = boundingRect.left + 200 + 'px';
-                if(element.hasClass('ng-invalid')) {
-                    errorDiv.classList.remove('nodisplay');
-                }
 
-                var body = document.getElementsByTagName('body')[0];
-                body.appendChild(errorDiv);
+                var top = boundingRect.top - 50 + 'px';
+                var left = boundingRect.left + 200 + 'px';
+                var style = "top: " + top + ";left: " + left + ";";
+
+                var $$errorDiv = angular.element('<div class="input-error-bubble nodisplay" ng-show="checkRequiredValidity()" style="' + style + '">Ha Ha Ha</div>');
+
+                var $$body = angular.element('body');
+                $$body.append($$errorDiv);
             }
         };
     });

@@ -3189,9 +3189,7 @@ input[type="text"], input[type="password"] {
  * -------------------------------------------------------------------------- */
 .tab {
   background-color: white;
-  margin: 0 10px 0 10px;
-  min-height: 400px;
-  position: relative; }
+  min-height: 400px; }
 
 /* -----------------------------------------------------------------------------
  * Footer
@@ -3287,21 +3285,6 @@ a.button.large span {
   background-position: center 13px;
   padding-top: 43px;
   text-align: center; }
-
-/* -----------------------------------------------------------------------------
- * button-bar
- * -------------------------------------------------------------------------- */
-.button-bar a.button {
-  float: left; }
-
-.button-bar a.button.small {
-  margin-right: 10px; }
-
-.button-bar a.button.medium {
-  margin-right: 10px; }
-
-.button-bar a.button.large {
-  margin-right: 20px; }
 
 /* -----------------------------------------------------------------------------
  * tables
@@ -3504,7 +3487,6 @@ a.button.large span {
  * -------------------------------------------------------------------------- */
 .intro-page {
   background: #f89f1b url(../images/horns.png) no-repeat right bottom;
-  margin: 10px 10px 0 10px;
   position: relative;
   /* Override selection color for gold background */ }
 
@@ -3553,9 +3535,11 @@ a.button.large span {
   top: 30px; }
 
 .accounts-tab .button-bar {
-  left: 400px;
-  position: absolute;
-  top: 21px; }
+  height: 25px;
+  width: 638px; }
+  .accounts-tab .button-bar a.button {
+    display: block;
+    float: right; }
 
 /* -----------------------------------------------------------------------------
  * Account Table Wrapper
@@ -4003,17 +3987,21 @@ a.button.large span {
  * Button Bar
  * -------------------------------------------------------------------------- */
 .user-page-header .button-bar {
-  left: 640px;
-  position: absolute;
-  top: 32px; }
+  height: 75px; }
+  .user-page-header .button-bar a.button {
+    display: block;
+    float: right; }
 
 /* -----------------------------------------------------------------------------
  * User Info
  * -------------------------------------------------------------------------- */
 .user-page-header .user-info {
-  float: right;
+  height: 11px;
   line-height: 11px;
   margin: 10px 11px 0 0; }
+  .user-page-header .user-info span, .user-page-header .user-info img, .user-page-header .user-info a {
+    float: right;
+    display: block; }
 
 .user-page-header .user-info span {
   font-size: 12px;
@@ -4032,9 +4020,10 @@ a.button.large span {
  * Reference: http://stackoverflow.com/questions/2295311/css-list-item-width-height-does-not-work
  * -------------------------------------------------------------------------- */
 .user-page-header .tabbar {
-  left: 80px;
-  position: absolute;
-  top: 107px; }
+  min-height: 600px; }
+
+.tabbar {
+  height: 35px; }
 
 .tabbar ul {
   list-style-type: none;
@@ -4548,9 +4537,32 @@ a.button.popsicle-icon span {
   margin: 9px auto 20px;
   font-size: 14px; }
 
+input.ng-invalid {
+  border: 1px solid red; }
+
 .input-error-bubble {
   height: 30px;
   width: 200px;
   border: 2px solid blue;
   z-index: 9999;
   position: absolute; }
+
+body {
+  width: 942px;
+  margin: 0px auto;
+  border: 10px solid #333333;
+  border-bottom: 0px; }
+  body .container {
+    min-height: 540px; }
+
+a.disabled {
+  -webkit-transform: scale(0.5, 0.5);
+  transform: scale(0.5, 0.5); }
+
+.nav, .pagination, .carousel a {
+  cursor: pointer; }
+
+.accounts-tab .accounts-subsection {
+  float: left; }
+.accounts-tab .accounts-left-section {
+  width: 638px; }

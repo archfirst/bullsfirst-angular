@@ -1,0 +1,37 @@
+<header class="user-page-header">
+    <div class="user-info">
+        <a class="js-signOut" href="#/">Sign Out</a>
+        <img src="images/person-icon-small.png" alt="seperator">
+        <span>{{loggedInUser.firstName}} {{loggedInUser.lastName}}</span>
+    </div>
+
+    <h1 class="ir">Bullsfirst</h1>
+
+    <div class="button-bar">
+        <a class="js-transferButton button large transfer-icon" href="#"><span>Transfer</span></a>
+        <a class="js-tradeButton button large trade-icon" href="#"><span>Trade</span></a>
+    </div>
+</header>
+<nav class="tabbar">
+    <ul>
+        <li><a href="#/accounts" class="selected">ACCOUNTS</a></li>
+        <li><a href="#/positions">POSITIONS</a></li>
+        <li><a href="#/orders">ORDERS</a></li>
+        <li><a href="#/transactions">TRANSACTION HISTORY</a></li>
+    </ul>
+</nav>
+<section class="tab clearfix" ng-switch on="$location.path()">
+    <div ng-switch-when="/accounts">
+        <div ng-include="'views/accounts/accounts-tab.html'"></div>
+    </div>
+    <div ng-switch-when="/positions">
+        <div ng-include="'views/accounts/positions-tab.html'"></div>
+    </div>
+    <div ng-switch-when="/orders">
+        <div ng-include="'views/accounts/orders-tab.html'"></div>
+    </div>
+    <div ng-switch-when="/transactions">
+        <div ng-include="'views/accounts/transactions-tab.html'"></div>
+    </div>
+    <div ng-switch-default></div>
+</section>

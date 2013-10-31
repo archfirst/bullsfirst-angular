@@ -1,0 +1,19 @@
+<section class="login-section">
+	<h1>Log In</h1>
+
+		<form name="loginForm" class="js-loginForm login-form" novalidate>
+
+		    <label for="username">Username</label>
+		    <input ng-model="user.username" id="username" name="username" required  type="text" class="js-username">
+
+            <label for="password">Password</label>
+		    <input ng-model="user.password" ng-keydown="processKeyPressAction($event, 'login')" id="password" name="password" required
+                   type="password" class="js-password">
+
+		    <a ng-click="login()" ng-class="{'disabled': loginForm.$invalid}"
+               class="login-button button large person-icon" href="">
+                <span>Login</span>
+            </a>
+
+		</form>
+</section>

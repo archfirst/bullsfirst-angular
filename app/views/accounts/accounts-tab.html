@@ -1,0 +1,55 @@
+<section class="accounts-tab tab clearfix">
+    <div class="accounts-left-section accounts-subsection">
+        <div class="button-bar">
+            <a class="js-addAccountButton button medium" href="#">
+                <img src="images/plus-icon.png" alt="Add Account">
+                Add Account
+            </a>
+            <a class="js-refreshButton button medium" href="#">
+                <img src="images/refresh-icon.png" alt="Refresh">
+                Refresh
+            </a>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>NAME</th>
+                    <th>MARKET VALUE</th>
+                    <th>CASH</th>
+                    <th>LEGEND</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr ng-repeat="account in brokerageAccounts" ng-mouseenter="showEditorButton = true"
+                    ng-mouseleave="showEditorButton = false">
+                    <td class="left-column">
+                        <i ng-show="showEditorButton" class="icon-edit" ng-click="showEditor = true"></i>
+                    </td>
+                    <td class="name">
+                        <div ng-hide="showEditor" class="view">{{account.name}}</div>
+                        <div ng-show="showEditor" class="edit">
+                            <input class="nameField" type="text" ng-model="account.name">
+                            <i class="icon-save" ng-click="changeAccountName(account.id, account.name); showEditor=false;"></i>
+                        </div>
+                    </td>
+                    <td></td>
+                    <td>{{account.marketValue.amount | currency}}</td>
+                    <td>{{account.cashPosition.amount | currency}}</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>{{totals.marketValue | currency}}</td>
+                    <td>{{totals.cashValue | currency}}</td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+    <div class="accounts-right-section accounts-subsection"></div>
+
+
+</section>
