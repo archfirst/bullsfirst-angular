@@ -15,13 +15,24 @@
  */
 
 /**
- * Constans provider
+ * Capitalize directive
  *
  * @authors
  * Vikas Goyal
  */
 
-
 angular.module('bullsfirst')
-    .constant('OMSUrl', '/bfoms-javaee/rest')
-    .constant('ExchangeUrl', '/bfexch-javaee/rest');
+    .directive('capitalize', function () {
+        'use strict';
+
+        return {
+            restrict: 'A',
+            require: 'ngModel',
+            link: function (scope, $$element, attr, ctrl) {
+                ctrl.$formatters.push(function (input) {
+                    var output = input.toLowerCase();
+                    return output.charAt(0).toUpperCase() + output.substr(1);
+                });
+            }
+        };
+    });

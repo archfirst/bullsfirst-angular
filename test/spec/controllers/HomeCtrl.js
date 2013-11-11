@@ -1,9 +1,32 @@
+/**
+ * Copyright 2013 Archfirst
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/**
+ * Home controller test
+ *
+ * @authors
+ * Vikas Goyal
+ */
+
 'use strict';
 
 describe('Controller: HomeController', function () {
-    var HomeController,
+    var HomeCtrl,
         scope,
-        userService,
+        usersSvc,
         rootScope;
 
     // load the controller's module
@@ -11,14 +34,15 @@ describe('Controller: HomeController', function () {
 
     // Initialize the controller and a mock scope
     beforeEach(inject(function ($controller, $rootScope, $injector, $resource) {
-        userService = $injector.get('User');
+        usersSvc = $injector.get('UsersSvc');
         rootScope = $rootScope;
         scope = $rootScope.$new();
+        scope.newUser = new usersSvc();
 
-        HomeController = $controller('HomeController', {
+        HomeCtrl = $controller('HomeCtrl', {
             $scope: scope,
             $resource: $resource,
-            userService: userService
+            UsersSvc: usersSvc
         });
 
         scope.user = {
@@ -45,21 +69,20 @@ describe('Controller: HomeController', function () {
 
     describe('Controller: HomeController #login', function () {
         it('should call UserService login method', function () {
-            spyOn(userService, 'login');
+            spyOn(usersSvc, 'login');
             scope.login();
-            expect(userService.login).toHaveBeenCalledWith({
+            expect(usersSvc.login).toHaveBeenCalledWith({
                 username: scope.user.username,
                 password: scope.user.password
-            }, jasmine.any(Function), jasmine.any(Function));
+            }, jasmine.any(Function));
         });
     });
 
     describe('Controller: HomeController #openAccount', function () {
         it('should call UserService save method with correct user data', function () {
-            spyOn(userService, 'save');
+            spyOn(scope.newUser, '$save');
             scope.openAccount();
-            expect(userService.save).toHaveBeenCalledWith(scope.user,
-                jasmine.any(Function), jasmine.any(Function));
+            expect(scope.newUser.$save).toHaveBeenCalledWith(jasmine.any(Function));
         });
     });
 

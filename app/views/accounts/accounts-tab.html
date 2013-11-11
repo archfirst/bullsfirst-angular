@@ -1,5 +1,28 @@
+<!--
+* Copyright 2013 Archfirst
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
+
+/**
+* Accounts page - Accounts Tab View
+*
+* @authors
+* Vikas Goyal
+*-->
 <section class="accounts-tab tab clearfix">
     <div class="accounts-left-section accounts-subsection">
+        <h1>Accounts</h1>
         <div class="button-bar">
             <a class="js-addAccountButton button medium" href="#">
                 <img src="images/plus-icon.png" alt="Add Account">
@@ -10,46 +33,49 @@
                 Refresh
             </a>
         </div>
-        <table>
+        <table class="account-table bf-table">
             <thead>
                 <tr>
-                    <th></th>
-                    <th>NAME</th>
-                    <th>MARKET VALUE</th>
-                    <th>CASH</th>
-                    <th>LEGEND</th>
+                    <th class="left-column"></th>
+                    <th class="name">NAME</th>
+                    <th class="market-value">MARKET VALUE</th>
+                    <th class="cash">CASH</th>
+                    <th class="legend-cell">LEGEND</th>
                 </tr>
             </thead>
 
             <tbody>
                 <tr ng-repeat="account in brokerageAccounts" ng-mouseenter="showEditorButton = true"
-                    ng-mouseleave="showEditorButton = false">
+                    ng-mouseleave="showEditorButton = false" ng-class="{'selected': showEditorButton}">
                     <td class="left-column">
                         <i ng-show="showEditorButton" class="icon-edit" ng-click="showEditor = true"></i>
                     </td>
                     <td class="name">
-                        <div ng-hide="showEditor" class="view">{{account.name}}</div>
-                        <div ng-show="showEditor" class="edit">
+                        <div ng-hide="showEditor">{{account.name}}</div>
+                        <div ng-show="showEditor">
                             <input class="nameField" type="text" ng-model="account.name">
                             <i class="icon-save" ng-click="changeAccountName(account.id, account.name); showEditor=false;"></i>
                         </div>
                     </td>
-                    <td></td>
-                    <td>{{account.marketValue.amount | currency}}</td>
-                    <td>{{account.cashPosition.amount | currency}}</td>
+                    <td class="market-value">{{account.marketValue.amount | currency}}</td>
+                    <td class="cash">{{account.cashPosition.amount | currency}}</td>
+                    <td class="legend-cell"></td>
                 </tr>
             </tbody>
             <tfoot>
                 <tr>
-                    <td></td>
-                    <td></td>
-                    <td>{{totals.marketValue | currency}}</td>
-                    <td>{{totals.cashValue | currency}}</td>
+                    <td class="left-column"></td>
+                    <td class="name"></td>
+                    <td class="market-value">{{totals.marketValue | currency}}</td>
+                    <td class="cash">{{totals.cashValue | currency}}</td>
+                    <td class="legend-cell"></td>
                 </tr>
             </tfoot>
         </table>
     </div>
-    <div class="accounts-right-section accounts-subsection"></div>
-
-
+    <div class="accounts-right-section accounts-subsection">
+        <div class="accounts-chart">
+            <highcharts title="All Accounts" type="pie" data="chartData" width="300" height="300"></highcharts>
+        </div>
+    </div>
 </section>

@@ -1,5 +1,24 @@
 /**
- * Created by vgoya2 on 10/28/13.
+ * Copyright 2013 Archfirst
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/**
+ * Utilities
+ *
+ * @authors
+ * Vikas Goyal
  */
 
 /**
@@ -146,4 +165,30 @@ angular.module('bullsfirst')
                 return string;
             }
         };
+    })
+    .factory('utilities', function () {
+
+        return {
+            getWindowSize: function () {
+                var myWidth = 0, myHeight = 0;
+                if (typeof( window.innerWidth ) == 'number') {
+                    //Non-IE
+                    myWidth = window.innerWidth;
+                    myHeight = window.innerHeight;
+                } else if (document.documentElement && ( document.documentElement.clientWidth || document.documentElement.clientHeight )) {
+                    //IE 6+ in 'standards compliant mode'
+                    myWidth = document.documentElement.clientWidth;
+                    myHeight = document.documentElement.clientHeight;
+                } else if (document.body && ( document.body.clientWidth || document.body.clientHeight )) {
+                    //IE 4 compatible
+                    myWidth = document.body.clientWidth;
+                    myHeight = document.body.clientHeight;
+                }
+                return {
+                    width: myWidth,
+                    height: myHeight
+                };
+            }
+        };
+
     });

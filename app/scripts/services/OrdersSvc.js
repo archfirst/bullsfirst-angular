@@ -15,13 +15,13 @@
  */
 
 /**
- * Constans provider
+ * Orders service
  *
  * @authors
  * Vikas Goyal
  */
 
-
 angular.module('bullsfirst')
-    .constant('OMSUrl', '/bfoms-javaee/rest')
-    .constant('ExchangeUrl', '/bfexch-javaee/rest');
+    .factory('OrdersSvc', function ($resource) {
+
+    });

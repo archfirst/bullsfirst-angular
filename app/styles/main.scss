@@ -1,5 +1,5 @@
 /**
- * Copyright 2012 Archfirst
+ * Copyright 2013 Archfirst
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -1662,9 +1662,11 @@ textarea {
 @media only screen and (min-width: 35em) {
   /* Style adjustments for viewports that meet the condition */
 }
+
 @media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-resolution: 144dpi) {
   /* Style adjustments for high resolution devices */
 }
+
 /* ==========================================================================
    Print styles.
    Inlined to avoid required HTTP connection: h5bp.com/r
@@ -1736,6 +1738,7 @@ textarea {
     page-break-after: avoid;
   }
 }
+
 /*
  * jQuery UI CSS Framework 1.8.23
  *
@@ -4015,8 +4018,24 @@ a.button.large span {
   text-align: center;
 }
 
+/* -----------------------------------------------------------------------------
+ * button-bar
+ * -------------------------------------------------------------------------- */
+.button-bar a.button {
+  float: left;
+}
 
+.button-bar a.button.small {
+  margin-right: 10px;
+}
 
+.button-bar a.button.medium {
+  margin-right: 10px;
+}
+
+.button-bar a.button.large {
+  margin-right: 20px;
+}
 
 /* -----------------------------------------------------------------------------
  * tables
@@ -4252,25 +4271,30 @@ a.button.large span {
   position: relative;
   /* Override selection color for gold background */
 }
+
 .intro-page header {
   left: 76px;
   position: absolute;
   top: 15px;
 }
+
 .intro-page header h1 {
   background-image: url(../images/logo.png);
   height: 93px;
   margin: 0;
   width: 194px;
 }
+
 .intro-page header h2 {
   font-style: italic;
   margin: 8px 5px 0 0;
   text-align: right;
 }
+
 .intro-page ::-moz-selection {
   background: #fbbe39;
 }
+
 .intro-page ::selection {
   background: #fbbe39;
 }
@@ -4283,6 +4307,7 @@ a.button.large span {
   margin: 200px 0 40px 70px;
   width: 380px;
 }
+
 #open-account-page .mandatory-text {
   margin: 0 0 10px 0;
   color: #F8E5C9;
@@ -4295,19 +4320,22 @@ a.button.large span {
   font: normal normal 18px/18px Aller;
   left: 60px;
   margin: 0px;
-  position: absolute;
+  position: relative;
   top: 30px;
 }
 
 .accounts-tab .button-bar {
   height: 25px;
-  width: 638px;
+  width: 645px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 
   a.button {
     display: block;
     float: right;
   }
 }
+
 /* -----------------------------------------------------------------------------
  * Account Table Wrapper
  * -------------------------------------------------------------------------- */
@@ -4435,18 +4463,22 @@ a.button.large span {
   width: 291px;
   position: absolute;
   z-index: 499;
-  right: 0px;
-  top: 0px;
+  right: 210px;
+  top: 30px;
 }
+
 .modal-wrapper.right {
   right: 0px;
 }
+
 .modal-wrapper.left {
   left: 0px;
 }
+
 .modal-wrapper.center {
   right: 0;
 }
+
 .modal-wrapper.summary-modal {
   background: #f89f1b;
   border: 10px solid #333333;
@@ -4454,33 +4486,42 @@ a.button.large span {
   -webkit-background-clip: padding;
   background-clip: padding-box;
 }
+
 .modal-wrapper.summary-modal header {
   background: #f89f1b;
   color: black;
 }
+
 .modal-wrapper.summary-modal th {
   text-align: left;
   padding-left: 16px;
 }
+
 .modal-wrapper.summary-modal table {
   width: 99%;
 }
+
 .modal-wrapper.summary-modal tr:nth-child(odd) {
   background: #e08f18;
 }
+
 .modal-wrapper.summary-modal .cost-summary {
   background: #f9ad3d !important;
 }
+
 .modal-wrapper.summary-modal .cost-summary:first-child {
   margin-top: 20px;
 }
+
 .modal-wrapper.summary-modal .cost-total {
   background: #e19c37 !important;
 }
+
 .modal-wrapper header {
   height: auto;
   margin: 10px 10px 30px;
 }
+
 .modal-wrapper section {
   margin: 0 9px 0 10px;
 }
@@ -4502,10 +4543,12 @@ a.button.large span {
   width: 130px;
   margin-bottom: 10px;
 }
+
 .modal-field.full {
   width: 100%;
   clear: left;
 }
+
 .modal-field.full input[type="text"] {
   width: 100%;
   -moz-box-sizing: border-box;
@@ -4513,18 +4556,23 @@ a.button.large span {
   box-sizing: border-box;
   height: 28px;
 }
+
 .modal-field.full .sbOptions {
   width: 99%;
 }
+
 .modal-field.left {
   clear: left;
 }
+
 .modal-field.right {
   margin-left: 11px;
 }
+
 .modal-field.right label {
   width: 57px;
 }
+
 .modal-field.trade-costs p {
   width: auto;
   height: 20px;
@@ -4533,27 +4581,34 @@ a.button.large span {
   font-size: 12px;
   line-height: 14px;
 }
+
 .modal-field a {
   font-size: 12px;
 }
+
 .modal-field a.button.center {
   margin: 10px auto;
   position: relative;
 }
+
 .modal-field a.button.center span {
   padding: 0;
 }
+
 .modal-field a.button.medium i {
   font-size: 18px;
   line-height: 5px;
 }
+
 .modal-field a.button.medium span {
   display: inline;
 }
+
 .modal-field a.button.medium .text {
   font-size: 12px;
   line-height: 0;
 }
+
 .modal-field a.button .preview-icon i {
   font-size: 22px;
   position: absolute;
@@ -4561,13 +4616,16 @@ a.button.large span {
   left: 2px;
   color: #f04100;
 }
+
 .modal-field a.button .preview-icon i.icon-star-empty {
   top: -6px;
   left: 3px;
 }
+
 .modal-field a.button .text {
   line-height: 110px;
 }
+
 .modal-field a.modal-radio {
   position: relative;
   display: inline;
@@ -4578,37 +4636,46 @@ a.button.large span {
   text-align: center;
   line-height: 50px;
 }
+
 .modal-field a.modal-radio:hover {
   background: #f36733;
 }
+
 .modal-field a.modal-radio.selected {
   background: #f47513;
   border: 2px solid white;
   width: 61px;
   height: 46px;
 }
+
 .modal-field input[type="text"],
 .modal-field input[type="password"] {
   padding-left: 7px;
   width: 117px;
 }
+
 .modal-field input[type="radio"],
 .modal-field input[type="checkbox"] {
   display: none;
 }
+
 .modal-field label {
   padding: 0 7px;
 }
+
 .modal-field.lastTradePrice p:first-child {
   margin-top: 24px;
 }
+
 .modal-field.lastTradePrice p {
   margin-top: 0;
   line-height: 14px;
 }
+
 .modal-field p {
   color: white;
 }
+
 .modal-field .modal-checkbox {
   position: relative;
   display: inline;
@@ -4621,18 +4688,22 @@ a.button.large span {
   color: white;
   background: #f47513;
 }
+
 .modal-field .modal-checkbox.empty::before {
   content: '';
 }
+
 .modal-field .preview-icon {
   font-size: 40px;
   position: absolute;
   top: 20px;
   left: 43px;
 }
+
 .modal-field .sbSelector {
   padding-left: 7px;
 }
+
 .modal-field .sbOptions {
   width: 97%;
 }
@@ -4648,9 +4719,11 @@ a.button.large span {
   z-index: 489;
   display: none;
 }
+
 .modal-overlay.show {
   opacity: 0.75;
 }
+
 .modal-overlay.stacked {
   z-index: 499;
 }
@@ -4668,6 +4741,7 @@ a.button.large span {
   -webkit-background-clip: padding;
   background-clip: padding-box;
 }
+
 .form-modal header {
   background: #3F3F3F;
   color: white;
@@ -4774,8 +4848,8 @@ a.button.large span {
  * -------------------------------------------------------------------------- */
 .user-page-header {
   background-color: #f89f1b;
-  height: 137px;
-  margin: 10px 10px 0 10px;
+  height: 110px;
+  margin: 0px 0px 0 0px;
   position: relative;
 }
 
@@ -4796,30 +4870,19 @@ a.button.large span {
  * Button Bar
  * -------------------------------------------------------------------------- */
 .user-page-header .button-bar {
-  height: 75px;
-
-  a.button {
-    display: block;
-    float: right;
-  }
+  left: 640px;
+  position: absolute;
+  top: 32px;
 }
-
 
 /* -----------------------------------------------------------------------------
  * User Info
  * -------------------------------------------------------------------------- */
 .user-page-header .user-info {
-  height: 11px;
+  float: right;
   line-height: 11px;
   margin: 10px 11px 0 0;
-
-  span, img, a {
-    float:right;
-    display: block;
-  }
 }
-
-
 
 .user-page-header .user-info span {
   font-size: 12px;
@@ -4835,7 +4898,6 @@ a.button.large span {
 .user-page-header .user-info a {
   font-size: 12px;
 }
-
 /* -----------------------------------------------------------------------------
  * Tab Bar
  * Reference: http://stackoverflow.com/questions/2295311/css-list-item-width-height-does-not-work
@@ -4843,8 +4905,10 @@ a.button.large span {
 .user-page-header .tabbar {
   min-height: 600px;
 }
+
 .tabbar {
-  height: 35px;
+  height: 31px;
+  background-color: #f89f1b
 }
 .tabbar ul {
   list-style-type: none;
@@ -4878,8 +4942,9 @@ a.button.large span {
   color: black;
   margin-top: 0;
   padding-top: 5px;
+  height: 26px;
+  margin-left: 80px;
 }
-
 /* -----------------------------------------------------------------------------
  * account-table-widget
  * -------------------------------------------------------------------------- */
@@ -4887,6 +4952,7 @@ a.button.large span {
   float: left;
   position: relative;
 }
+
 
 /* -----------------------------------------------------------------------------
  * Account Table
@@ -4904,6 +4970,7 @@ a.button.large span {
 .account-table {
   table-layout: fixed;
   width: 610px;
+  margin-left: 25px;
 }
 
 .account-table tbody tr {
@@ -5349,15 +5416,18 @@ a.button.popsicle-icon span {
   position: relative;
   font: 14px/25px Aller;
 }
+
 #transfer-tabbar ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
 }
+
 #transfer-tabbar ul li {
   display: inline;
   float: left;
 }
+
 #transfer-tabbar ul li a {
   background-color: #F8791B;
   color: #FFFFFF;
@@ -5372,9 +5442,11 @@ a.button.popsicle-icon span {
   border-color: transparent;
   border-style: solid;
 }
+
 #transfer-tabbar ul li a:hover {
   background-color: #F36733;
 }
+
 #transfer-tabbar ul li a.selected {
   background-color: red;
   color: white;
@@ -5389,13 +5461,16 @@ a.button.popsicle-icon span {
   height: 281px;
   width: 271px;
 }
+
 #transfer-form input[type="text"] {
   height: 20px;
   width: 98%;
 }
+
 #transfer-form input[type="text"].lastField {
   margin-bottom: 15px;
 }
+
 #transfer-form label {
   width: 87px;
 }
@@ -5405,17 +5480,21 @@ a.button.popsicle-icon span {
   width: 100%;
   zoom: 1;
 }
+
 #hboxContainer:before, #hboxContainer:after {
   content: "";
   display: table;
 }
+
 #hboxContainer:after {
   clear: both;
 }
+
 #hboxContainer div {
   width: 47%;
   float: left;
 }
+
 #hboxContainer div.symbol {
   margin-right: 14px;
 }
@@ -5433,10 +5512,12 @@ a.button.popsicle-icon span {
   background-size: 18px;
   background-repeat: no-repeat;
 }
+
 #add-external-account-button span {
   position: relative;
   left: 23px;
 }
+
 #add-external-account-button span:hover {
   text-decoration: underline;
 }
@@ -5449,16 +5530,39 @@ a.button.popsicle-icon span {
 input.ng-invalid {
   border: 1px solid red;
 }
-
-.input-error-bubble {
-  height: 30px;
-  width: 200px;
-  border: 2px solid blue;
-  z-index: 9999;
+.input-error-container {
+  min-width: 150px;
   position: absolute;
+  z-index: 9999;
 }
 
+.input-error-bubble {
+  border: 2px solid white;
+  background-color: #EF1503;
+  padding: 5px 0px 5px 10px;
+  border-radius: 6px;
+  color: white;
+  font-size: 11px;
+}
 
+.input-error-bubble-arrow {
+  margin-left: 20px;
+  &:before, &:after {
+    content: "";
+    border-top: 10px solid #EF1503;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    position: relative;
+  }
+  &:before {
+    top: 9px;
+    border-top-color: white;
+  }
+  &:after {
+    top: 6px;
+    margin-left: -20px;
+  }
+}
 body {
   width: 942px;
   margin: 0px auto;
@@ -5469,12 +5573,15 @@ body {
     min-height: 540px;
   }
 }
+
 a.disabled {
-    -webkit-transform: scale(0.5, 0.5);
-    transform: scale(0.5, 0.5);
+  -webkit-transform: scale(0.5, 0.5);
+  transform: scale(0.5, 0.5);
 }
 
-.nav, .pagination, .carousel a { cursor: pointer; }
+.nav, .pagination, .carousel a {
+  cursor: pointer;
+}
 
 .accounts-tab {
   .accounts-subsection {
@@ -5483,4 +5590,25 @@ a.disabled {
   .accounts-left-section {
     width: 638px;
   }
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+.account-table .name {
+  input {
+    height: 17px;
+    margin: 0;
+    width: 140px;
+  }
+  i {
+    background: none;
+    border: none;
+    color: #f47513;
+    font-size: 19px;
+    text-align: center;
+    vertical-align: bottom;
+    width: 30px;
+  }
+
 }

@@ -15,13 +15,15 @@
  */
 
 /**
- * Constans provider
+ * Positions service
  *
  * @authors
  * Vikas Goyal
  */
 
-
 angular.module('bullsfirst')
-    .constant('OMSUrl', '/bfoms-javaee/rest')
-    .constant('ExchangeUrl', '/bfexch-javaee/rest');
+    .factory('PositionsSvc', function ($resource, OMSUrl, BASE64) {
+        'use strict';
+
+        return $resource(OMSUrl + '/secure/brokerage_accounts');
+    });

@@ -15,13 +15,20 @@
  */
 
 /**
- * Constans provider
+ * Users service
  *
  * @authors
  * Vikas Goyal
  */
 
-
 angular.module('bullsfirst')
-    .constant('OMSUrl', '/bfoms-javaee/rest')
-    .constant('ExchangeUrl', '/bfexch-javaee/rest');
+    .factory('UsersSvc', function ($resource, OMSUrl) {
+        'use strict';
+
+        return $resource( OMSUrl + '/users', {}, {
+            login: {
+                method: 'GET',
+                url: OMSUrl + '/users/:username'
+            }
+        });
+    });

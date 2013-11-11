@@ -1,0 +1,47 @@
+<!--
+* Copyright 2013 Archfirst
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
+
+/**
+* Home page - Login Form View
+*
+* @authors
+* Sagar Ganatra
+* Vikas Goyal
+*-->
+
+<div class="ui-dialog ui-widget ui-widget-content ui-corner-all ui-draggable" tabindex="-1" role="dialog"
+     aria-labelledby="ui-dialog-title-alertDialog"
+     style="display: block; z-index: 1002; outline: 0px; height: auto; width: auto; top: 247.5px; left: 552px;">
+    <div class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix"><span class="ui-dialog-title"
+                                                                                            id="ui-dialog-title-alertDialog">{{messageType}}</span><a
+            href="#" class="ui-dialog-titlebar-close ui-corner-all" role="button"><span
+            class="ui-icon ui-icon-closethick">close</span></a></div>
+    <div id="alertDialog" style="width: auto; min-height: 43.19999980926514px; height: auto;"
+         class="ui-dialog-content ui-widget-content" scrolltop="0" scrollleft="0"><p id="alertMessage"
+                                                                                     ng-bind-html="message"><span
+            class="ui-icon ui-icon-alert" style="float:left; margin:5px 10px 20px 0;"></span></p>
+    </div>
+    <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+        <div class="ui-dialog-buttonset">
+            <button type="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"
+                    role="button" aria-disabled="false" ng-click="cancel()"><span class="ui-button-text">Ok</span>
+            </button>
+        </div>
+    </div>
+</div>
+
+<div class="modal-backdrop fade" ng-class="{in: animate}" ng-style="{'z-index': 1040 + index*10}"
+     ng-click="close($event)"></div>

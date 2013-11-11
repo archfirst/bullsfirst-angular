@@ -15,7 +15,7 @@
  */
 
 /**
- * Constans provider
+ * Orders controller
  *
  * @authors
  * Vikas Goyal
@@ -23,5 +23,10 @@
 
 
 angular.module('bullsfirst')
-    .constant('OMSUrl', '/bfoms-javaee/rest')
-    .constant('ExchangeUrl', '/bfexch-javaee/rest');
+    .controller('OrdersCtrl', function ($scope, OrdersService) {
+        $scope.getOrders = function () {
+            return OrdersService.get();
+        };
+
+        $scope.orders = $scope.getOrders();
+    });

@@ -15,13 +15,23 @@
  */
 
 /**
- * Constans provider
+ * Lowercase directive
  *
  * @authors
  * Vikas Goyal
  */
 
-
 angular.module('bullsfirst')
-    .constant('OMSUrl', '/bfoms-javaee/rest')
-    .constant('ExchangeUrl', '/bfexch-javaee/rest');
+    .directive('lowercase-model', function () {
+        'use strict';
+
+        return {
+            restrict: 'A',
+            require: 'ngModel',
+            link: function (scope, $$element, attr, ctrl) {
+                ctrl.$parsers.push(function (input) {
+                    return input.toLowerCase();
+                });
+            }
+        };
+    });

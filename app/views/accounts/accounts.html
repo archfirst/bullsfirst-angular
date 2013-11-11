@@ -1,3 +1,59 @@
-<section>
-    <ng-include src="'views/accounts/accounts-header.html'"></ng-include>
+<!--
+* Copyright 2013 Archfirst
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
+
+/**
+* Accounts page -
+*
+* @authors
+* Vikas Goyal
+*-->
+<header class="user-page-header">
+    <div class="user-info">
+        <span>{{loggedInUser.firstName}} {{loggedInUser.lastName}}</span>
+        <img src="images/person-icon-small.png" alt="seperator">
+        <a class="js-signOut" href="#/" ng-click="signOut()">Sign Out</a>
+    </div>
+
+    <h1 class="ir">Bullsfirst</h1>
+
+    <div class="button-bar">
+        <a class="js-tradeButton button large trade-icon" href="" ng-click="openModal('Trade')"><span>Trade</span></a>
+        <a class="js-transferButton button large transfer-icon" href="#"><span>Transfer</span></a>
+    </div>
+
+</header>
+<nav class="tabbar">
+    <ul>
+        <li ng-repeat="tab in tabs">
+            <a ng-click="selectTab(tab)" ng-class="{'selected': tab.path === $parent.selectedTab.path}" href="#/{{tab.path}}">{{tab.label}}</a>
+        </li>
+    </ul>
+</nav>
+<section class="tab clearfix" ng-switch on="$location.path()">
+    <div ng-switch-when="/accounts">
+        <div ng-include="'views/accounts/accounts-tab.html'"></div>
+    </div>
+    <div ng-switch-when="/positions">
+        <div ng-include="'views/accounts/positions-tab.html'"></div>
+    </div>
+    <div ng-switch-when="/orders">
+        <div ng-include="'views/accounts/orders-tab.html'"></div>
+    </div>
+    <div ng-switch-when="/transactions">
+        <div ng-include="'views/accounts/transactions-tab.html'"></div>
+    </div>
+    <div ng-switch-default></div>
 </section>

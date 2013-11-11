@@ -15,13 +15,20 @@
  */
 
 /**
- * Constans provider
+ * Instruments service
  *
  * @authors
  * Vikas Goyal
  */
 
-
 angular.module('bullsfirst')
-    .constant('OMSUrl', '/bfoms-javaee/rest')
-    .constant('ExchangeUrl', '/bfexch-javaee/rest');
+    .factory('InstrumentsSvc', function ($resource, ExchangeUrl) {
+        'use strict';
+
+        return $resource(ExchangeUrl + '/instruments/:instrumentSymbol', {}, {
+            getMarketPrices: {
+                url : ExchangeUrl + '/market_prices/:instrumentSymbol',
+                method: 'GET'
+            }
+        });
+    });

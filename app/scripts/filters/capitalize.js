@@ -15,13 +15,18 @@
  */
 
 /**
- * Constans provider
+ * Capitalize filter
  *
  * @authors
  * Vikas Goyal
  */
 
-
 angular.module('bullsfirst')
-    .constant('OMSUrl', '/bfoms-javaee/rest')
-    .constant('ExchangeUrl', '/bfexch-javaee/rest');
+    .filter('capitalize', function () {
+        'use strict';
+
+        return function (input) {
+            var output = input.toLowerCase();
+            return output.charAt(0).toUpperCase() + output.substr(1);
+        };
+    });
