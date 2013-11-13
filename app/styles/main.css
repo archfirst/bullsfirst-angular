@@ -4097,6 +4097,14 @@ a.button.large span {
 
 .account-table tbody tr {
   cursor: pointer; }
+  .account-table tbody tr i.icon-edit {
+    display: none; }
+  .account-table tbody tr:hover i.icon-edit {
+    display: block; }
+  .account-table tbody tr:hover td {
+    background-color: #d8d8d8; }
+    .account-table tbody tr:hover td.left-column {
+      background-color: transparent; }
 
 .account-table .left-column {
   background: none;

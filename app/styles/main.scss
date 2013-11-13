@@ -22,6 +22,7 @@
 /* -----------------------------------------------------------------------------
  * aller
  * -------------------------------------------------------------------------- */
+
 @font-face {
   font-family: 'Aller';
   src: url("../font/aller_rg-webfont.eot");
@@ -4975,8 +4976,23 @@ a.button.large span {
 
 .account-table tbody tr {
   cursor: pointer;
-}
+  i.icon-edit {
+      display: none;
+  }
 
+  &:hover {
+    i.icon-edit {
+      display: block;
+    }
+    td {
+      background-color: #d8d8d8;
+      &.left-column {
+        background-color: transparent;
+
+      }
+    }
+  }
+}
 .account-table .left-column {
   background: none;
   border: none;

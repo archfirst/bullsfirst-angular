@@ -45,10 +45,9 @@
             </thead>
 
             <tbody>
-                <tr ng-repeat="account in brokerageAccounts" ng-mouseenter="showEditorButton = true"
-                    ng-mouseleave="showEditorButton = false" ng-class="{'selected': showEditorButton}">
+                <tr ng-repeat="account in brokerageAccounts" >
                     <td class="left-column">
-                        <i ng-show="showEditorButton" class="icon-edit" ng-click="showEditor = true"></i>
+                        <i class="icon-edit" ng-click="showEditor = true"></i>
                     </td>
                     <td class="name">
                         <div ng-hide="showEditor">{{account.name}}</div>
@@ -75,7 +74,9 @@
     </div>
     <div class="accounts-right-section accounts-subsection">
         <div class="accounts-chart">
-            <highcharts title="All Accounts" type="pie" data="chartData" width="300" height="300"></highcharts>
+            <highcharts title="All Accounts" type="pie" data="chartData" width="300" height="300">
+
+            </highcharts>
         </div>
     </div>
 </section>
