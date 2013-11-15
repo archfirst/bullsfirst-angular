@@ -40,10 +40,10 @@ angular.module('bullsfirst')
             },
             'responseError': function (rejection) {
                 var $modal = $injector.get('$modal');
-                $modal.open({
+                var modelInstance = $modal.open({
                     backdrop: true,
                     templateUrl: 'views/Alert.html',
-                    controller: function ($scope, $modalInstance) {
+                    controller: function ($scope) {
                         $scope.messageType = 'Error';
                         var rejectionData = rejection.data;
                         if (rejectionData) {
@@ -61,7 +61,7 @@ angular.module('bullsfirst')
 
                         }
                         $scope.cancel = function () {
-                            $modalInstance.dismiss('cancel');
+                            modelInstance.dismiss('cancel');
                         };
                     }
                 });
