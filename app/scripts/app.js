@@ -24,8 +24,8 @@
 
 'use strict';
 
-angular.module('bullsfirst', ['ngResource', 'ngRoute', 'ui.bootstrap', 'ngSanitize'])
-    .config(['$routeProvider', function ($routeProvider) {
+angular.module('bullsfirst', ['ngRoute', 'ngResource', 'ui.bootstrap', 'ngSanitize'])
+    .config(function ($routeProvider) {
         $routeProvider
             .when('/', {templateUrl: 'views/home/login.html', controller: 'HomeCtrl'})
             .when('/openaccount', {templateUrl: 'views/home/open-account.html', controller: 'HomeCtrl'})
@@ -34,7 +34,7 @@ angular.module('bullsfirst', ['ngResource', 'ngRoute', 'ui.bootstrap', 'ngSaniti
             .when('/orders', {templateUrl: 'views/accounts/accounts.html', controller: 'HomeCtrl'})
             .when('/transations', {templateUrl: 'views/accounts/accounts.html', controller: 'HomeCtrl'})
             .otherwise({redirectTo: '/'});
-    }])
+    })
     .config(function ($httpProvider) {
         $httpProvider.interceptors.push('bullsfirstHttpInterceptor');
     });

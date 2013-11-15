@@ -38,7 +38,7 @@ angular.module('bullsfirst')
 
             // public method for encoding
             encode: function (input) {
-                var output = "";
+                var output = '';
                 var chr1, chr2, chr3, enc1, enc2, enc3, enc4;
                 var i = 0;
 
@@ -72,12 +72,12 @@ angular.module('bullsfirst')
 
             // public method for decoding
             decode: function (input) {
-                var output = "";
+                var output = '';
                 var chr1, chr2, chr3;
                 var enc1, enc2, enc3, enc4;
                 var i = 0;
 
-                input = input.replace(/[^A-Za-z0-9\+\/\=]/g, "");
+                input = input.replace(/[^A-Za-z0-9\+\/\=]/g, '');
 
                 while (i < input.length) {
 
@@ -92,10 +92,10 @@ angular.module('bullsfirst')
 
                     output = output + String.fromCharCode(chr1);
 
-                    if (enc3 != 64) {
+                    if (enc3 !== 64) {
                         output = output + String.fromCharCode(chr2);
                     }
-                    if (enc4 != 64) {
+                    if (enc4 !== 64) {
                         output = output + String.fromCharCode(chr3);
                     }
 
@@ -109,8 +109,8 @@ angular.module('bullsfirst')
 
             // private method for UTF-8 encoding
             _utf8_encode: function (string) {
-                string = string.replace(/\r\n/g, "\n");
-                var utftext = "";
+                string = string.replace(/\r\n/g, '\n');
+                var utftext = '';
 
                 for (var n = 0; n < string.length; n++) {
 
@@ -136,9 +136,9 @@ angular.module('bullsfirst')
 
             // private method for UTF-8 decoding
             _utf8_decode: function (utftext) {
-                var string = "";
+                var string = '';
                 var i = 0;
-                var c = c1 = c2 = 0;
+                var c = 0, c2 = 0, c3 = 0;
 
                 while (i < utftext.length) {
 
@@ -167,11 +167,11 @@ angular.module('bullsfirst')
         };
     })
     .factory('utilities', function () {
-
+        'use strict';
         return {
             getWindowSize: function () {
                 var myWidth = 0, myHeight = 0;
-                if (typeof( window.innerWidth ) == 'number') {
+                if (typeof( window.innerWidth ) === 'number') {
                     //Non-IE
                     myWidth = window.innerWidth;
                     myHeight = window.innerHeight;

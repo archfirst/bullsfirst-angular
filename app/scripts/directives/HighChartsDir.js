@@ -32,13 +32,18 @@ angular.module('bullsfirst')
                 type: '@',
                 data: '=',
                 width: '@',
-                height: '@'
+                height: '@',
+                title: '@',
+                subtitle: '@',
+                setHoveredAccount: '&',
+                unSetHoveredAccount: '&'
             },
             link: function (scope, $$element) {
                 scope.$watch('data', function () {
                     $$element.highcharts({
                         chart: {
-                            plotBackgroundColor: '#ccc',
+                            backgroundColor: '#D8D8D8',
+                            borderRadius: 0,
                             plotBorderWidth: null,
                             plotShadow: false,
                             width: scope.width,
@@ -57,20 +62,60 @@ angular.module('bullsfirst')
                             { radialGradient: {cx: 0, cy: 0, r: 1, gradientUnits: 'objectBoundingBox'}, stops: [[0, '#adbdc0'], [1, '#446a73']] }
                         ],
                         title: {
-                            text: scope.title
+                            text: scope.title,
+                            align: 'left',
+                            style: {
+                                font: '14px Aller',
+                                color: '#000000'
+                            },
+                            floating: true,
+                            x: 0,
+                            y: 10
+                        },
+                        subtitle: {
+                            text: scope.subtitle,
+                            align: 'left',
+                            verticalAlign: 'bottom',
+                            style: {
+                                font: 'italic 11px Aller',
+                                color: '#3F3F3F'
+                            },
+                            floating: true,
+                            x: 0,
+                            y: 4
+                        },
+                        credits: {
+                            enabled: false
+                        },
+                        tooltip: {
+                            enabled: false
                         },
                         plotOptions: {
                             pie: {
-                                allowPointSelect: true,
                                 cursor: 'pointer',
                                 dataLabels: {
-                                    enabled: false
+                                    enabled: false  // disable labels on each pie
                                 },
-                                showInLegend: true
+                                shadow: false,
+                                borderColor: 'none',
+                                size: '95%',
+                                point: {
+                                    events: {
+                                        mouseOver: function() {
+                                            scope.setHoveredAccount(this);
+                                        },
+                                        mouseOut: function() {
+                                            scope.unSetHoveredAccount();
+                                        },
+                                        click: function() {
+                                        }
+                                    }
+                                }
                             }
                         },
                         series: [{
                             type: scope.type,
+                            name: 'All Accounts',
                             data: scope.data
                         }]
                     });

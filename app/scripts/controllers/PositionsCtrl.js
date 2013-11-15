@@ -23,7 +23,8 @@
 
 
 angular.module('bullsfirst')
-    .controller('PositionsCtrl', function ($scope, BrokerageAccountsSvc, AccountsSvc, InstrumentsSvc, $location, $modal) {
+    .controller('PositionsCtrl', function ($scope, BrokerageAccountsSvc, AccountsSvc,
+                                           InstrumentsSvc, $location, $modal) {
         'use strict';
 
         $scope.positions = function () {
@@ -131,8 +132,8 @@ angular.module('bullsfirst')
             return InstrumentsSvc.getMarketPrices({instrumentSymbol: symbol}).price.amount;
         };
 
-        $scope.openModal = function (modelName) {
-            var modalInstance = $modal.open({
+        $scope.openModal = function () {
+            $modal.open({
                 templateUrl: 'views/accounts/trade-form.html',
                 backdrop: false,
                 scope: $scope

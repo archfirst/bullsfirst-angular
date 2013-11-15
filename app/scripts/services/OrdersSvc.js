@@ -22,6 +22,5 @@
  */
 
 angular.module('bullsfirst')
-    .factory('OrdersSvc', function ($resource) {
-
-    });
+    .factory('OrdersSvc', function () {
+});

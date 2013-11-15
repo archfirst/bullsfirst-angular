@@ -4099,11 +4099,11 @@ a.button.large span {
   cursor: pointer; }
   .account-table tbody tr i.icon-edit {
     display: none; }
-  .account-table tbody tr:hover i.icon-edit {
+  .account-table tbody tr .hovered i.icon-edit {
     display: block; }
-  .account-table tbody tr:hover td {
+  .account-table tbody tr .hovered td {
     background-color: #d8d8d8; }
-    .account-table tbody tr:hover td.left-column {
+    .account-table tbody tr .hovered td.left-column {
       background-color: transparent; }
 
 .account-table .left-column {

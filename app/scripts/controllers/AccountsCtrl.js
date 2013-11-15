@@ -23,7 +23,8 @@
 
 
 angular.module('bullsfirst')
-    .controller('AccountsCtrl', function ($scope, BrokerageAccountsSvc, AccountsSvc, InstrumentsSvc, $location, $modal) {
+    .controller('AccountsCtrl', function ($scope, BrokerageAccountsSvc, AccountsSvc,
+                                          InstrumentsSvc, $location, $modal) {
         'use strict';
 
         $scope.$location = $location;
@@ -54,6 +55,15 @@ angular.module('bullsfirst')
             $scope.selectedTab = tab;
         };
 
+        $scope.hoveredAccount = null;
+
+        $scope.setHoveredAccount = function (account) {
+            $scope.hoveredAccount = account;
+        };
+        $scope.unSetHoveredAccount = function () {
+            $scope.hoveredAccount = null;
+        };
+
         //TODO: Do this in positions controller
         $scope.brokerageAccounts = BrokerageAccountsSvc.query(function (data) {
             var totalMarketValue = 0,
@@ -63,6 +73,7 @@ angular.module('bullsfirst')
 
             for (i = 0, len = data.length; i < len; i++) {
                 var item = data[i];
+                item.y = item.marketValue.amount;
                 totalMarketValue += item.marketValue.amount;
                 totalCashValue += item.cashPosition.amount;
                 
@@ -90,15 +101,18 @@ angular.module('bullsfirst')
                 item.positions = newPositions;
                 chartData.push({
                     name: item.name,
-                    y: item.marketValue.amount
+                    y: item.marketValue.amount,
+                    id: item.id
                 });
+
             }
 
             $scope.totals = {
                 marketValue: totalMarketValue,
                 cashValue: totalCashValue
             };
-            $scope.chartData = chartData;
+
+            $scope.chartData = data;
 
         });
 
@@ -127,8 +141,8 @@ angular.module('bullsfirst')
             return InstrumentsSvc.getMarketPrices({instrumentSymbol: symbol});
         };
 
-        $scope.openModal = function (modelName) {
-            var modalInstance = $modal.open({
+        $scope.openModal = function () {
+            $modal.open({
                 templateUrl: 'views/accounts/trade-form.html',
                 backdrop: false,
                 scope: $scope

@@ -24,6 +24,8 @@
 
 angular.module('bullsfirst')
     .controller('OrdersCtrl', function ($scope, OrdersService) {
+        'use strict';
+
         $scope.getOrders = function () {
             return OrdersService.get();
         };

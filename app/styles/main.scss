@@ -4980,7 +4980,7 @@ a.button.large span {
       display: none;
   }
 
-  &:hover {
+  .hovered {
     i.icon-edit {
       display: block;
     }
@@ -4993,6 +4993,8 @@ a.button.large span {
     }
   }
 }
+
+
 .account-table .left-column {
   background: none;
   border: none;

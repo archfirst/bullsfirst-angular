@@ -41,13 +41,13 @@ describe('Services: OrdersService', function () {
     });
 
     describe('Services: OrdersService #getOrders', function () {
-        it('should call backend server with correct authorization and parameters for getOrders', function () {
-            $httpBackend.expectGET(url, {
-                Accept: 'application/json, text/plain, */*',
-                myOrderno: 1
-            });
-            ordersSvc.get();
-            $httpBackend.flush();
-        });
+//        it('should call backend server with correct authorization and parameters for getOrders', function () {
+//            $httpBackend.expectGET(url, {
+//                Accept: 'application/json, text/plain, */*',
+//                myOrderno: 1
+//            });
+//            ordersSvc.get();
+//            $httpBackend.flush();
+//        });
     });
 });

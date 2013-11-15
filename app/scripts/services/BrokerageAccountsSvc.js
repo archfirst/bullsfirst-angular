@@ -22,7 +22,7 @@
  */
 
 angular.module('bullsfirst')
-    .factory('BrokerageAccountsSvc', function ($resource, OMSUrl, BASE64) {
+    .factory('BrokerageAccountsSvc', function ($resource, OMSUrl) {
         'use strict';
 
         return $resource(OMSUrl + '/secure/brokerage_accounts');

@@ -45,7 +45,10 @@
             </thead>
 
             <tbody>
-                <tr ng-repeat="account in brokerageAccounts" >
+                <tr ng-repeat="account in brokerageAccounts"
+                    ng-class="{hovered : hoveredAccount.id === account.id}"
+                    ng-mouseover="setHoveredAccount(account)"
+                    ng-mouseout="unSetHoveredAccount()">
                     <td class="left-column">
                         <i class="icon-edit" ng-click="showEditor = true"></i>
                     </td>
@@ -74,8 +77,10 @@
     </div>
     <div class="accounts-right-section accounts-subsection">
         <div class="accounts-chart">
-            <highcharts title="All Accounts" type="pie" data="chartData" width="240" height="300">
-
+            <highcharts title="All Accounts" type="pie" data="chartData" width="240" height="300"
+                    subtitle="Click on an account to view positions"
+                    setHoveredAccount="setHoveredAccount"
+                    unSetHoveredAccount="unSetHoveredAccount">
             </highcharts>
         </div>
     </div>
