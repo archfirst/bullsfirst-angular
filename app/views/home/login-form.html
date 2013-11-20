@@ -1,0 +1,42 @@
+<!--
+* Copyright 2013 Archfirst
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
+
+/**
+* Home page - Login Form View
+*
+* @authors
+* Sagar Ganatra
+* Vikas Goyal
+*-->
+<section class="login-section">
+    <h1>Log In</h1>
+
+    <form name="loginForm" class="js-loginForm login-form" novalidate>
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" class="js-username"
+               ng-model="user.username" required error-bubble>
+
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" class="js-password"
+               ng-model="user.password" ng-keydown="loginForm.$valid && processKeyPressAction($event, 'login')"
+               required error-bubble>
+
+        <a class="login-button button large person-icon" href=""
+           ng-click="loginForm.$valid && login()">
+            <span>Login</span>
+        </a>
+    </form>
+</section>

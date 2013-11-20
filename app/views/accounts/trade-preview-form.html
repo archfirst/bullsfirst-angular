@@ -1,0 +1,62 @@
+<!--
+* Copyright 2013 Archfirst
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
+
+/**
+* Accounts page - Trade Preview Form View
+*
+* @authors
+* Vikas Goyal
+*-->
+<section>
+    <div class="modal-header">
+        <h3>Trade Summary</h3>
+    </div>
+    <form class="model-body modal-wrapper form-modal" name="trade-form" novalidate ng-controller="TradeCtrl">
+
+        <label for="trade-accounts-list">Account</label>
+        <select id="trade-accounts-list" name="accounts-list" ng-options="a.name for a in brokerageAccounts"  ng-model="brokerageAccounts[0]"></select>
+
+        <label for="trade-symbol">Symbol</label>
+        <input name="trade-symbol" id="trade-symbol" type="text" ng-model="newOrder.symbol" required
+               typeahead="(i.symbol + ' (' + i.name + ')') for i in instruments"
+               ng-change="selectedSymbolMarketPrice = getMarketPrice(newOrder.symbol)" />
+
+        <span>Last Trade Price</span>
+        <span>{{selectedSymbolMarketPrice | currency}}</span>
+
+        <a href="">Buy</a>
+        <a href="">Sell</a>
+
+        <label for="trade-quantity">Quantity</label>
+        <input type="text" ng-model="newOrder.quantity" name="trade-quantity" id="trade-quantity" required/>
+
+        <label for="trade-ordertypes-list">Order Type</label>
+        <select name="trade-ordertypes-list" id="trade-ordertypes-list" ng-model="newOrder.type"
+                ng-options="ot for ot in orderTypes" ></select>
+
+        <label for="trade-terms-list">Term</label>
+        <select name="trade-terms-list" id="trade-terms-list" ng-model="newOrder.term" ng-options="t for t in terms" ></select>
+
+        <span>All-or-none</span>
+        <input type="checkbox" ng-model="newOrder.allOrNone"/>
+
+        <span>Trade Cost</span> {{prices.tradeCost | currency}}
+        <span>Fees</span> {{prices.fees | currency}}
+        <span>Total Cost</span> {{prices.totalCost | currency}}
+
+        <a href="" class="trade-preview-button btn btn-large">Preview Order</a>
+    </form>
+</section>
