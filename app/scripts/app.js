@@ -32,7 +32,7 @@ angular.module('bullsfirst', ['ngRoute', 'ngResource', 'ui.bootstrap', 'ngSaniti
             .when('/accounts', {templateUrl: 'views/accounts/accounts.html', controller: 'AccountsCtrl'})
             .when('/positions', {templateUrl: 'views/accounts/accounts.html', controller: 'AccountsCtrl'})
             .when('/orders', {templateUrl: 'views/accounts/accounts.html', controller: 'HomeCtrl'})
-            .when('/transations', {templateUrl: 'views/accounts/accounts.html', controller: 'HomeCtrl'})
+            .when('/transactions', {templateUrl: 'views/accounts/accounts.html', controller: 'TransactionsCtrl'})
             .otherwise({redirectTo: '/'});
     })
     .config(function ($httpProvider) {

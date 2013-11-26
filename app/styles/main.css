@@ -4738,3 +4738,38 @@ a.disabled {
 .btn-info.active,
 .btn-inverse.active {
   color: rgba(255, 255, 255, 0.75); }
+
+/* -------------------
+ * transactions-tab
+ * ---------------- */
+.transactions-tab h1 {
+  font: normal normal 18px/18px Aller;
+  left: 60px;
+  margin: 0px;
+  position: relative;
+  top: 30px; }
+
+.transactions-tab .button-bar {
+  height: 25px;
+  width: 645px;
+  margin-top: 10px;
+  margin-bottom: 10px; }
+  .transactions-tab .button-bar a.button {
+    display: block;
+    float: right; }
+
+/* -----------------------------------------------------------------------------
+ * Transactions Table Wrapper
+ * -------------------------------------------------------------------------- */
+.transactions-table-clipped-wrapper {
+  float: left;
+  overflow: hidden;
+  width: 640px;
+  /* 30px margin-left + 610px table width */ }
+
+.transactions-table-unclipped-wrapper {
+  float: left;
+  margin: 56px 0 0 30px;
+  position: relative;
+  width: 1250px;
+  /* 610 + 30 (margin) + 610 */ }
