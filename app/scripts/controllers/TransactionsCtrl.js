@@ -23,8 +23,7 @@
 
 
 angular.module('bullsfirst')
-    .controller('TransactionsCtrl', function ($scope, BrokerageAccountsSvc, AccountsSvc,
-                                          InstrumentsSvc, $location, $modal) {
+    .controller('TransactionsCtrl', function ($scope, BrokerageAccountsSvc, $location, $modal) {
         'use strict';
 
         $scope.$location = $location;
@@ -49,97 +48,15 @@ angular.module('bullsfirst')
 
         ];
 
-        $scope.selectedTab = $scope.tabs[0];
+        $scope.selectedTab = $scope.tabs[3];
 
         $scope.selectTab = function (tab) {
             $scope.selectedTab = tab;
         };
 
-        $scope.hoveredAccount = null;
-
-        $scope.setHoveredAccount = function (account) {
-            $scope.hoveredAccount = account;
-        };
-        $scope.unSetHoveredAccount = function () {
-            $scope.hoveredAccount = null;
-        };
-
-        //TODO: Do this in positions controller
-        $scope.brokerageAccounts = BrokerageAccountsSvc.query(function (data) {
-            var totalMarketValue = 0,
-                totalCashValue = 0,
-                chartData = [],
-                i, j, k, len, posLen, childrenLen;
-
-            for (i = 0, len = data.length; i < len; i++) {
-                var item = data[i];
-                item.y = item.marketValue.amount;
-                totalMarketValue += item.marketValue.amount;
-                totalCashValue += item.cashPosition.amount;
-                
-                var positions = item.positions;
-                var newPositions = [];
-                for (j = 0, posLen = positions.length; j < posLen; j++) {
-                    var position = positions[j];
-                    if (position.children && Object.prototype.toString.call(position.children) === '[object Array]') {
-                        position.isParent = true;
-                        position.id = position.accountId + '_' + j;
-                        newPositions.push(position);
-
-                        for (k = 0, childrenLen = position.children.length; k < childrenLen; k++) {
-                            var childPosition = position.children[k];
-                            childPosition.parentId = position.id;
-                            newPositions.push(childPosition);
-                        }
-                        delete position.children;
-
-                    } else {
-                        position.isExpanded = true;
-                        newPositions.push(position);
-                    }
-                }
-                item.positions = newPositions;
-                chartData.push({
-                    name: item.name,
-                    y: item.marketValue.amount,
-                    id: item.id
-                });
-
-            }
-
-            $scope.totals = {
-                marketValue: totalMarketValue,
-                cashValue: totalCashValue
-            };
-
-            $scope.chartData = data;
-
-        });
-
-
-        $scope.togglePositionExpand = function (selectedAccount, positionId) {
-            angular.forEach(selectedAccount.positions, function (position) {
-                if (!position.isParent && position.parentId === positionId) {
-                    if (position.isExpanded) {
-                        position.isExpanded = false;
-                    } else {
-                        position.isExpanded = true;
-                    }
-                }
-
-            });
-
-        };
-
-        $scope.changeAccountName = function (accountId, newName) {
-            AccountsSvc.changeName({accountId: accountId}, {newName: newName});
-        };
-
-        $scope.instruments = InstrumentsSvc.query();
-
-        $scope.getMarketPrice = function (symbol) {
-            return InstrumentsSvc.getMarketPrices({instrumentSymbol: symbol});
-        };
+        $scope.brokerageAccounts = BrokerageAccountsSvc.query();
+        $scope.fromDate = new Date();
+        $scope.toDate = new Date();
 
         $scope.openModal = function () {
             $modal.open({
@@ -152,5 +69,4 @@ angular.module('bullsfirst')
         $scope.signOut = function () {
             delete $scope.loggedInUser;
         };
-
     });
