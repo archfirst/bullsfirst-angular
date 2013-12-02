@@ -24,7 +24,7 @@
 
 'use strict';
 
-angular.module('bullsfirst', ['ngRoute', 'ngResource', 'ui.bootstrap', 'ui.select2', 'ngSanitize'])
+angular.module('bullsfirst', ['ngRoute', 'ngResource', 'ui.bootstrap', 'ngSanitize'])
     .config(function ($routeProvider) {
         $routeProvider
             .when('/', {templateUrl: 'views/home/login.html', controller: 'HomeCtrl'})

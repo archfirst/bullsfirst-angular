@@ -19,8 +19,7 @@
  */
 @import url("transactions-tab.css");
 @import url("../bower_components/select2/select2.css");
-@import url("//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap.min.css");
-
+//@import url("//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap.min.css");
 /**
  * index.scss
  * Master style sheet for the Bullsfirst application - imports all partials.
@@ -3197,7 +3196,8 @@ input[type="text"], input[type="password"] {
  * -------------------------------------------------------------------------- */
 .tab {
   background-color: white;
-  min-height: 400px; }
+  min-height: 400px;
+  position: relative; }
 
 /* -----------------------------------------------------------------------------
  * Footer
@@ -3622,50 +3622,6 @@ a.button.large span {
   font: normal normal 18px/18px Aller;
   margin: 30px 0 10px 60px; }
 
-/* -----------------------------------------------------------------------------
- * transactions-tab
- * -------------------------------------------------------------------------- */
-.transactions-table {
-  margin: 0 40px 28px 80px;
-  width: 820px; }
-
-.transactions-table .center {
-  text-align: center; }
-
-.transactions-table .number {
-  text-align: right; }
-
-.transactions-table .creation-date-head {
-  width: 185px; }
-
-.transactions-table .account-head {
-  width: 135px;
-  text-align: left; }
-
-.transactions-table .type-head {
-  width: 80px; }
-
-.transactions-table .description-head {
-  width: 305px;
-  text-align: left; }
-
-.transactions-table .amount-head {
-  width: 95px;
-  padding-right: 20px;
-  text-align: right; }
-
-.transactions-table tr td:last-child {
-  padding-right: 20px; }
-
-.transactions-table:after {
-  content: "";
-  width: 820px;
-  height: 1px;
-  background: #f89f1b;
-  display: block;
-  position: absolute;
-  bottom: 14px;
-  left: 80px; }
 
 /* -----------------------------------------------------------------------------
  * modals
@@ -4049,7 +4005,7 @@ a.button.large span {
 
 .tabbar ul {
   list-style-type: none;
-  margin: 0;
+  margin: 0 0 0 80px;
   padding: 0; }
 
 .tabbar ul li {
@@ -4075,8 +4031,7 @@ a.button.large span {
   color: black;
   margin-top: 0;
   padding-top: 5px;
-  height: 26px;
-  margin-left: 80px; }
+  height: 26px; }
 
 /* -----------------------------------------------------------------------------
  * account-table-widget

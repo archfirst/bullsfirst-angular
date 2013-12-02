@@ -20,10 +20,8 @@
  * @authors
  * Solh Zendeh
  */
-
-
 angular.module('bullsfirst')
-    .controller('TransactionsCtrl', function ($scope, BrokerageAccountsSvc, $location, $modal) {
+    .controller('TransactionsCtrl', function ($scope, TransactionsSvc, $location, $modal) {
         'use strict';
 
         $scope.$location = $location;
@@ -45,18 +43,11 @@ angular.module('bullsfirst')
                 label: 'TRANSACTION HISTORY',
                 path: 'transactions'
             }
-
         ];
-
-        $scope.selectedTab = $scope.tabs[3];
 
         $scope.selectTab = function (tab) {
             $scope.selectedTab = tab;
         };
-
-        $scope.brokerageAccounts = BrokerageAccountsSvc.query();
-        $scope.fromDate = new Date();
-        $scope.toDate = new Date();
 
         $scope.openModal = function () {
             $modal.open({
@@ -69,4 +60,35 @@ angular.module('bullsfirst')
         $scope.signOut = function () {
             delete $scope.loggedInUser;
         };
+
+        // feels like everything above here should be in the "parent" controller... or something.
+
+        // EVENT HANDLERS
+        $scope.$on('FilterCtrl:resetFilters', function(event, data) {
+            $scope.resetFilters();
+        });
+        $scope.$on('FilterCtrl:applyFilters', function(event, data) {
+            var filters = {
+                fromDate: event.targetScope.filters.fromDate.getFullYear() +'-'+ (event.targetScope.filters.fromDate.getMonth()+1) +'-'+ event.targetScope.filters.fromDate.getDate(),
+                toDate: event.targetScope.filters.toDate.getFullYear() +'-'+ (event.targetScope.filters.toDate.getMonth()+1) +'-'+ event.targetScope.filters.toDate.getDate()
+            };
+
+            if (event.targetScope.filters.accountChoice) {
+                filters.accountId = event.targetScope.filters.accountChoice.id;
+            }
+
+            $scope.applyFilters(filters);
+        });
+
+        // HANDLER FUNCTIONS
+        $scope.resetFilters = function() {
+            $scope.transactions = [];
+        };
+        $scope.applyFilters = function(filters) {
+            $scope.transactions = TransactionsSvc.query(filters);
+        };
+
+        // THE REST
+        $scope.selectedTab = $scope.tabs[3];
+        $scope.resetFilters();
     });

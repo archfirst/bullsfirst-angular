@@ -22,46 +22,75 @@
  */
 
 
-describe('Controller: TransactionsController', function () {
+describe('Controller: TransactionsCtrl', function () {
     'use strict';
 
-    var TransactionsCtrl,
-        scope,
-        brokerageAccountService,
-        instrumentsSvc,
-        accountsService;
+    var scope,
+        TransactionsCtrl,
+        TransactionsSvc;
 
     beforeEach(module('bullsfirst'));
 
-    beforeEach(inject(function ($controller, $rootScope, BrokerageAccountsSvc, AccountsSvc, InstrumentsSvc) {
+    beforeEach(inject(function ($controller, $rootScope, _TransactionsSvc_) {
         scope = $rootScope.$new();
-        brokerageAccountService = BrokerageAccountsSvc;
-        accountsService = AccountsSvc;
-        instrumentsSvc = InstrumentsSvc;
+        TransactionsSvc = _TransactionsSvc_;
 
         TransactionsCtrl = $controller('TransactionsCtrl', {
             $scope: scope,
-            brokerageAccountService: BrokerageAccountsSvc
+            TransactionsSvc: TransactionsSvc
         });
-
     }));
 
-
-    describe('Controller: TransactionsController #changeAccountName', function () {
-        it('should call AccountService`s changeName method', function () {
-            spyOn(accountsService, 'changeName');
-            scope.changeAccountName(1234, 'test');
-            expect(accountsService.changeName).toHaveBeenCalledWith({accountId: 1234}, {newName: 'test'});
+    describe('Controller: TransactionsCtrl #resetFilters', function () {
+        it("should empty transactions array when triggered", function() {
+            scope.transactions = ['test'];
+            scope.$broadcast('FilterCtrl:resetFilters');
+            expect(scope.transactions).toEqual([]);
         });
     });
 
-    describe('Controller: TransactionsController #getMarketPrice', function () {
-        it('should call InstrumentsService`s getMarketPrices method', function () {
-            spyOn(instrumentsSvc, 'getMarketPrices');
-            scope.getMarketPrice('AAPL');
-            expect(instrumentsSvc.getMarketPrices).toHaveBeenCalledWith({instrumentSymbol: 'AAPL'});
+    describe('Controller: TransactionsCtrl #applyFilters', function () {
+        it("should call applyFilters function with filters object when triggered", function() {
+            scope.filters = {
+                accountChoice: '',
+                fromDate: new Date(),
+                toDate: new Date()
+            };
+            spyOn(scope, "applyFilters");
+            scope.$broadcast('FilterCtrl:applyFilters');
+            expect(scope.applyFilters).toHaveBeenCalledWith({
+                fromDate: scope.filters.fromDate.getFullYear() +'-'+ (scope.filters.fromDate.getMonth()+1) +'-'+ scope.filters.fromDate.getDate(),
+                toDate: scope.filters.toDate.getFullYear() +'-'+ (scope.filters.toDate.getMonth()+1) +'-'+ scope.filters.toDate.getDate()
+            });
+        });
+        it("should fill transactions array with data when triggered", function() {
+            scope.transactions = [];
+            scope.filters = {
+                accountChoice: '',
+                fromDate: '2013-12-01',
+                toDate: '2013-12-01'
+            };
+
+            var httpBackend, authorizationHeader, $rootScope;
+
+            inject(function($httpBackend, BASE64, _$rootScope_) {
+                authorizationHeader = BASE64.encode('wflintstone:cool');
+                $rootScope = _$rootScope_;
+
+                $rootScope.user = {
+                    firstName: 'User1',
+                    lastName: 'User1',
+                    AuthorizationHeader: authorizationHeader
+                };
+                httpBackend = $httpBackend;
+            })
+            httpBackend.expectGET("/bfoms-javaee/rest/secure/transactions?accountChoice=&fromDate=2013-12-01&toDate=2013-12-01").respond([{test:'testing'}]);
+            scope.applyFilters(scope.filters);
+            //httpBackend.expectGET(".*/transactions.*");
+            httpBackend.flush();
+            //expect(scope.transactions).toEqual([]);
+            httpBackend.verifyNoOutstandingExpectation();
+            httpBackend.verifyNoOutstandingRequest();
         });
     });
-
-
 });
