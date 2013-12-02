@@ -1,79 +1,95 @@
 .transactions-table {
   margin: 0 40px 28px 80px;
-  width: 820px; }
+  width: 820px; 
 
-  .transactions-table .center {
-    text-align: center; }
+  .center {
+    text-align: center;
+  }
 
-  .transactions-table .number {
-    text-align: right; }
+  .number {
+    text-align: right;
+  }
 
-  .transactions-table .creation-date {
-    width: 185px; }
+  .creation-date {
+    width: 185px;
+  }
 
-  .transactions-table .account {
+  .account {
     width: 135px;
-    text-align: left; }
+    text-align: left;
+  }
 
-  .transactions-table .type {
-    width: 80px; }
+  .type {
+    width: 80px;
+  }
 
-  .transactions-table .description {
+  .description {
     width: 305px;
-    text-align: left; }
+    text-align: left;
+  }
 
-  .transactions-table .amount {
+  .amount {
     width: 95px;
     padding-right: 20px;
-    text-align: right; }
+    text-align: right;
+  }
 
-  .transactions-table tr td:last-child {
-    padding-right: 20px; }
+  tr td:last-child {
+    padding-right: 20px;
+  }
+}
 
-  .transactions-table:after {
-    content: "";
-    width: 820px;
-    height: 1px;
-    background: #f89f1b;
-    display: block;
-    position: absolute;
-    bottom: 14px;
-    left: 80px; }
+.transactions-table:after {
+  content: "";
+  width: 820px;
+  height: 1px;
+  background: #f89f1b;
+  display: block;
+  position: absolute;
+  bottom: 14px;
+  left: 80px;
+}
 
-.transactions-tab h1 {
-  font: normal normal 18px/18px Aller;
-  left: 60px;
-  margin: 0px;
-  position: relative;
-  top: 30px; }
+.transactions-tab {
+   h1 {
+    font: normal normal 18px/18px Aller;
+    left: 60px;
+    margin: 0px;
+    position: relative;
+    top: 30px;
+  }
 
-.transactions-tab .button-bar {
-  height: 25px;
-  width: 645px;
-  margin-top: 10px;
-  margin-bottom: 10px; }
-  .transactions-tab .button-bar a.button {
-    display: block;
-    float: right; }
+  .button-bar {
+    height: 25px;
+    width: 645px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    
+    a.button {
+      display: block;
+      float: right;
+    }
+  }
+}
 
 .transactions-table-clipped-wrapper {
   float: left;
   overflow: hidden;
   width: 640px;
-  /* 30px margin-left + 610px table width */ }
+}
 
 .transactions-table-unclipped-wrapper {
   float: left;
   margin: 56px 0 0 30px;
   position: relative;
   width: 1250px;
-  /* 610 + 30 (margin) + 610 */ }
+}
+
 
 /* bootstrap.css dropdown styles
- * the full css was interfering with
+ * I hate, hate this. The full css was interfering with
  * other parts of the page
  */
-
 
 .dropup,
 .dropdown {
