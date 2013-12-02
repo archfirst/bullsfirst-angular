@@ -24,23 +24,25 @@
 angular.module('bullsfirst')
     .controller('FilterCtrl', function($scope, BrokerageAccountsSvc) {
         'use strict';
-        
-        $scope.brokerageAccounts = BrokerageAccountsSvc.query();
-        $scope.filters = {
-            accountChoice: '',
-            fromDate: new Date(),
-            toDate: new Date()
-        };
 
+        // HANDLER FUNCTIONS
         $scope.resetFilters = function() {
             $scope.filters = {
-                accountChoice: '',
-                fromDate: new Date(),
-                toDate: new Date()
+                accountChoice:  '',
+                fromDate:       new Date(),
+                toDate:         new Date()
             };
             $scope.$emit('FilterCtrl:resetFilters');
         };
         $scope.applyFilters = function() {
             $scope.$emit('FilterCtrl:applyFilters');
+        };
+
+        // INIT
+        $scope.brokerageAccounts = BrokerageAccountsSvc.query();
+        $scope.filters = {
+            accountChoice:  '',
+            fromDate:       new Date(),
+            toDate:         new Date()
         };
     });

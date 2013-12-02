@@ -32,24 +32,22 @@ angular.module('bullsfirst')
         $scope.tabs = [
             {
                 label: 'ACCOUNTS',
-                path: 'accounts'
+                path: '/accounts'
             },
             {
                 label: 'POSITIONS',
-                path: 'positions'
+                path: '/positions'
             },
             {
                 label: 'ORDERS',
-                path: 'orders'
+                path: '/orders'
             },
             {
                 label: 'TRANSACTION HISTORY',
-                path: 'transactions'
+                path: '/transactions'
             }
 
         ];
-
-        $scope.selectedTab = $scope.tabs[0];
 
         $scope.selectTab = function (tab) {
             $scope.selectedTab = tab;

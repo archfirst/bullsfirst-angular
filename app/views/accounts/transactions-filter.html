@@ -3,6 +3,7 @@
         <form class="js-transactionsFilterForm">
             <div class="filter-field account">
                 <label for="filter-accountId">Account</label>
+                <!-- TODO: impliment select2 here -->
                 <select
                     ng-model="filters.accountChoice"
                     ng-options="account.name for account in brokerageAccounts"

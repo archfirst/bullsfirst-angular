@@ -21,60 +21,21 @@
  * Solh Zendeh
  */
 angular.module('bullsfirst')
-    .controller('TransactionsCtrl', function ($scope, TransactionsSvc, $location, $modal) {
+    .controller('TransactionsCtrl', function ($scope, TransactionsSvc) {
         'use strict';
-
-        $scope.$location = $location;
-
-        $scope.tabs = [
-            {
-                label: 'ACCOUNTS',
-                path: 'accounts'
-            },
-            {
-                label: 'POSITIONS',
-                path: 'positions'
-            },
-            {
-                label: 'ORDERS',
-                path: 'orders'
-            },
-            {
-                label: 'TRANSACTION HISTORY',
-                path: 'transactions'
-            }
-        ];
-
-        $scope.selectTab = function (tab) {
-            $scope.selectedTab = tab;
-        };
-
-        $scope.openModal = function () {
-            $modal.open({
-                templateUrl: 'views/accounts/trade-form.html',
-                backdrop: false,
-                scope: $scope
-            });
-        };
-
-        $scope.signOut = function () {
-            delete $scope.loggedInUser;
-        };
-
-        // feels like everything above here should be in the "parent" controller... or something.
 
         // EVENT HANDLERS
         $scope.$on('FilterCtrl:resetFilters', function() {
             $scope.resetFilters();
         });
         $scope.$on('FilterCtrl:applyFilters', function(event) {
-            var fromDate = event.targetScope.filters.fromDate;
-            var toDate = event.targetScope.filters.toDate;
-            var accountChoice = event.targetScope.filters.accountChoice;
+            var fromDate        = event.targetScope.filters.fromDate;
+            var toDate          = event.targetScope.filters.toDate;
+            var accountChoice   = event.targetScope.filters.accountChoice;
 
             var filters = {
-                fromDate: fromDate.getFullYear() +'-'+ (fromDate.getMonth()+1) +'-'+ fromDate.getDate(),
-                toDate: toDate.getFullYear() +'-'+ (toDate.getMonth()+1) +'-'+ toDate.getDate()
+                fromDate:   fromDate.getFullYear() +'-'+ (fromDate.getMonth()+1) +'-'+ fromDate.getDate(),
+                toDate:     toDate.getFullYear() +'-'+ (toDate.getMonth()+1) +'-'+ toDate.getDate()
             };
 
             if (accountChoice) {
@@ -92,7 +53,6 @@ angular.module('bullsfirst')
             $scope.transactions = TransactionsSvc.query(filters);
         };
 
-        // THE REST
-        $scope.selectedTab = $scope.tabs[3];
+        // INIT
         $scope.resetFilters();
     });
