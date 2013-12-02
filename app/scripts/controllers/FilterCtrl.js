@@ -30,17 +30,17 @@ angular.module('bullsfirst')
             accountChoice: '',
             fromDate: new Date(),
             toDate: new Date()
-        }
+        };
 
         $scope.resetFilters = function() {
             $scope.filters = {
                 accountChoice: '',
                 fromDate: new Date(),
                 toDate: new Date()
-            }
+            };
             $scope.$emit('FilterCtrl:resetFilters');
-        }
+        };
         $scope.applyFilters = function() {
             $scope.$emit('FilterCtrl:applyFilters');
-        }
+        };
     });

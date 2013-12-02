@@ -64,17 +64,21 @@ angular.module('bullsfirst')
         // feels like everything above here should be in the "parent" controller... or something.
 
         // EVENT HANDLERS
-        $scope.$on('FilterCtrl:resetFilters', function(event, data) {
+        $scope.$on('FilterCtrl:resetFilters', function() {
             $scope.resetFilters();
         });
-        $scope.$on('FilterCtrl:applyFilters', function(event, data) {
+        $scope.$on('FilterCtrl:applyFilters', function(event) {
+            var fromDate = event.targetScope.filters.fromDate;
+            var toDate = event.targetScope.filters.toDate;
+            var accountChoice = event.targetScope.filters.accountChoice;
+
             var filters = {
-                fromDate: event.targetScope.filters.fromDate.getFullYear() +'-'+ (event.targetScope.filters.fromDate.getMonth()+1) +'-'+ event.targetScope.filters.fromDate.getDate(),
-                toDate: event.targetScope.filters.toDate.getFullYear() +'-'+ (event.targetScope.filters.toDate.getMonth()+1) +'-'+ event.targetScope.filters.toDate.getDate()
+                fromDate: fromDate.getFullYear() +'-'+ (fromDate.getMonth()+1) +'-'+ fromDate.getDate(),
+                toDate: toDate.getFullYear() +'-'+ (toDate.getMonth()+1) +'-'+ toDate.getDate()
             };
 
-            if (event.targetScope.filters.accountChoice) {
-                filters.accountId = event.targetScope.filters.accountChoice.id;
+            if (accountChoice) {
+                filters.accountId = accountChoice.id;
             }
 
             $scope.applyFilters(filters);
