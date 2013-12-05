@@ -44,7 +44,7 @@ describe('Controller: TransactionsCtrl', function () {
     describe('Controller: TransactionsCtrl #resetFilters', function () {
         it("should empty transactions array when triggered", function() {
             scope.transactions = ['test'];
-            scope.$broadcast('FilterCtrl:resetFilters');
+            scope.$broadcast('TransactionsFilterCtrl:resetFilters');
             expect(scope.transactions).toEqual([]);
         });
     });
@@ -57,7 +57,7 @@ describe('Controller: TransactionsCtrl', function () {
                 toDate: new Date()
             };
             spyOn(scope, "applyFilters");
-            scope.$broadcast('FilterCtrl:applyFilters');
+            scope.$broadcast('TransactionsFilterCtrl:applyFilters');
             expect(scope.applyFilters).toHaveBeenCalledWith({
                 fromDate: scope.filters.fromDate.getFullYear() +'-'+ (scope.filters.fromDate.getMonth()+1) +'-'+ scope.filters.fromDate.getDate(),
                 toDate: scope.filters.toDate.getFullYear() +'-'+ (scope.filters.toDate.getMonth()+1) +'-'+ scope.filters.toDate.getDate()
