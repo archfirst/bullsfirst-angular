@@ -1,23 +1,21 @@
-<div class="transactions-filter filter-wrapper clearfix" ng-controller="FilterCtrl">
+<div class="transactions-filter filter-wrapper clearfix" ng-controller="TransactionsFilterCtrl">
     <div class="filter-form">
         <form class="js-transactionsFilterForm">
             <div class="filter-field account">
                 <label for="filter-accountId">Account</label>
                 <!-- TODO: impliment select2 here -->
-                <select
-                    ng-model="filters.accountChoice"
-                    ng-options="account.name for account in brokerageAccounts"
-                    ng-change="accountSelect()">
+                <select ui-select2="filters.select2Options" ng-model="filters.accountChoice" style="width:100%">
                     <option value="">All Accounts</option>
+                    <option ng-repeat="account in brokerageAccounts" value="{{account.id}}">{{account.name}}</option>
                 </select>
             </div>
             <div class="filter-field">
                 <label for="filter-fromDate">From</label>
-                <input class="datepicker" datepicker-popup="yyyy-MM-dd" show-weeks="false" ng-model="filters.fromDate" name="fromDate" type="text">
+                <input class="datepicker" datepicker-popup="yyyy-MM-dd" max="filters.maxDate" show-weeks="false" ng-model="filters.fromDate" name="fromDate" type="text">
             </div> 
             <div class="filter-field">
                 <label for="filter-toDate">To</label>
-                <input class="datepicker" datepicker-popup="yyyy-MM-dd" show-weeks="false" ng-model="filters.toDate" name="toDate" type="text">
+                <input class="datepicker" datepicker-popup="yyyy-MM-dd" max="filters.maxDate" min="filters.fromDate" show-weeks="false" ng-model="filters.toDate" name="toDate" type="text">
             </div>
         </form>
     </div>

@@ -25,10 +25,10 @@ angular.module('bullsfirst')
         'use strict';
 
         // EVENT HANDLERS
-        $scope.$on('FilterCtrl:resetFilters', function() {
+        $scope.$on('TransactionsFilterCtrl:resetFilters', function() {
             $scope.resetFilters();
         });
-        $scope.$on('FilterCtrl:applyFilters', function(event) {
+        $scope.$on('TransactionsFilterCtrl:applyFilters', function(event) {
             var fromDate        = event.targetScope.filters.fromDate;
             var toDate          = event.targetScope.filters.toDate;
             var accountChoice   = event.targetScope.filters.accountChoice;
@@ -39,7 +39,7 @@ angular.module('bullsfirst')
             };
 
             if (accountChoice) {
-                filters.accountId = accountChoice.id;
+                filters.accountId = accountChoice;
             }
 
             $scope.applyFilters(filters);

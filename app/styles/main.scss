@@ -23,7 +23,10 @@
 /*------------------------------------------------------------------------------
  * includes
  *--------------------------------------------------------------------------- */
+@import "bootstrap-custom";
 @import "transactions-tab";
+@import "../bower_components/select2/select2.css";
+@import "../bower_components/select2/select2-bootstrap.css";
 
 /* -----------------------------------------------------------------------------
  * aller
