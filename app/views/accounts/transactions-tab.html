@@ -34,8 +34,8 @@
                     <th class="amount">AMOUNT</th>
                 </tr>
             </thead>
-            <tbody ng-repeat="transaction in transactions | orderBy:['accountName', 'creationTime']">
-                <tr>
+            <tbody>
+                <tr ng-repeat="transaction in transactions | orderBy:['accountName', 'creationTime']">
                     <td class="creation-date">{{transaction.creationTime | date:'yyyy-MM-dd hh:mm:ss a'}}</td>
                     <td class="account">{{transaction.accountName}}</td>
                     <td class="type">{{transaction.type}}</td>
