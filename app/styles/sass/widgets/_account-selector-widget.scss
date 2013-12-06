@@ -7,14 +7,15 @@
     color: $white;
     width: 280px;
     padding-left: 7px;
-}
 
-.account-selector selected {
-    text-decoration: italics;
-}
+    .selected {
+        text-decoration: italics;
+    }
 
-.account-selector option {
-    padding-left: 10px;
-    background-color: $selector-fancy-color;
-    color: $white;
+    option {
+        padding-left: 10px;
+        background-color: $selector-fancy-color;
+        color: $white;
+    }
+
 }

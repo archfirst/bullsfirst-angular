@@ -93,22 +93,6 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* ==========================================================================
    Helper classes
    ========================================================================== */
@@ -221,7 +205,7 @@ textarea {
 }
 
 @media only screen and (-webkit-min-device-pixel-ratio: 1.5),
-       only screen and (min-resolution: 144dpi) {
+only screen and (min-resolution: 144dpi) {
     /* Style adjustments for high resolution devices */
 }
 
@@ -234,7 +218,7 @@ textarea {
     * {
         background: transparent !important;
         color: #000 !important; /* Black prints faster: h5bp.com/s */
-        box-shadow:none !important;
+        box-shadow: none !important;
         text-shadow: none !important;
     }
 

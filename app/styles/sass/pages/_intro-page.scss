@@ -6,7 +6,6 @@
     position: relative;
     margin: 10px 10px 0 10px;
 
-
     header {
         left: 76px;
         position: absolute;
@@ -33,11 +32,11 @@
     }
 
     /* Override selection color for gold background */
-    ::-moz-selection  {
+    ::-moz-selection {
         background: $text-selection-alternate-color;
     }
 
-    ::selection  {
+    ::selection {
         background: $text-selection-alternate-color;
     }
 

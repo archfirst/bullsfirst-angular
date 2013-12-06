@@ -37,9 +37,9 @@
 }
 
 /* Narrow grid */
-$grid-narrow-row-width-px:    300px;
+$grid-narrow-row-width-px: 300px;
 $grid-narrow-gutter-width-px: 10px;
-$grid-narrow-gutter-width:    $grid-narrow-gutter-width-px/$grid-narrow-row-width-px;
+$grid-narrow-gutter-width: $grid-narrow-gutter-width-px/$grid-narrow-row-width-px;
 
 .grid-narrow {
 
@@ -61,9 +61,9 @@ $grid-narrow-gutter-width:    $grid-narrow-gutter-width-px/$grid-narrow-row-widt
 }
 
 /* Wide grid */
-$grid-wide-row-width-px:    940px;
+$grid-wide-row-width-px: 940px;
 $grid-wide-gutter-width-px: 20px;
-$grid-wide-gutter-width:    $grid-wide-gutter-width-px/$grid-wide-row-width-px;
+$grid-wide-gutter-width: $grid-wide-gutter-width-px/$grid-wide-row-width-px;
 
 .grid-wide {
 

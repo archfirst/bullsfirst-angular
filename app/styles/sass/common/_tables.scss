@@ -1,32 +1,36 @@
 /* -----------------------------------------------------------------------------
  * tables
  * -------------------------------------------------------------------------- */
-.bf-table th, .bf-table td {
-    padding: 0;
-}
 
-.bf-table thead th {
-    background-color: $table-header-background-color;
-    color: $table-header-text-color;
-    font: bold normal 11px/22px Aller;
-    height: 22px;
-    text-transform: uppercase;
-}
+.bf-table {
+    th, td {
+        padding: 0;
+    }
 
-.bf-table tbody td,
-.bf-table tbody td a {
-    font: normal normal 12px/25px Aller;
-    height: 25px;
-}
+    thead th {
+        background-color: $table-header-background-color;
+        color: $table-header-text-color;
+        font: bold normal 11px/22px Aller;
+        height: 22px;
+        text-transform: uppercase;
+    }
 
-.bf-table tbody td {
-    border-bottom: 1px solid $table-row-separator-color;
-}
+    tbody td, tbody td a {
+        font: normal normal 12px/25px Aller;
+        height: 25px;
+    }
 
-.bf-table .negative {
-    color: $button-large-color;
-}
+    tbody {
+        td {
+            border-bottom: 1px solid $table-row-separator-color;
+        }
 
-.bf-table tbody tr.selected {
-    background-color: $table-row-selected-color;
+        tr.selected {
+            background-color: $table-row-selected-color;
+        }
+    }
+
+    .negative {
+        color: $button-large-color;
+    }
 }

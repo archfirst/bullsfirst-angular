@@ -4,7 +4,6 @@
 /*Images folder path*/
 $baseImagePath: '../images/';
 
-
 /* apply a natural box layout model to all elements */
 * {
     @include box-sizing(border-box);
@@ -15,13 +14,13 @@ $baseImagePath: '../images/';
  * -------------------------------------------------------------------------- */
 .treeTable tr.collapsed td a.expander {
     background-image: url(images/ui-icons_666666_256x240.png);
-    background-position:-30px -20px;
+    background-position: -30px -20px;
     border-bottom: 0;
 }
 
 .treeTable tr.expanded td a.expander {
     background-image: url(images/ui-icons_666666_256x240.png);
-    background-position:-60px -20px;
+    background-position: -60px -20px;
     border-bottom: 0;
 }
 
@@ -125,16 +124,14 @@ footer {
     padding: 7px 0 0 60px;
     width: 960px;
     margin: auto;
+
+    a {
+        font: italic 10px Aller;
+    }
 }
-
-footer a {
-    font: italic 10px Aller;
-}
-
-
 
 .capitalize {
-  text-transform: capitalize;
+    text-transform: capitalize;
 }
 
 .btn-primary.active,
@@ -143,5 +140,5 @@ footer a {
 .btn-success.active,
 .btn-info.active,
 .btn-inverse.active {
-  color: rgba(255, 255, 255, 0.75);
+    color: rgba(255, 255, 255, 0.75);
 }
