@@ -1,0 +1,31 @@
+/* -----------------------------------------------------------------------------
+ * positions-tab
+ * -------------------------------------------------------------------------- */
+.positions-tab .account-selector {
+    left: 60px;
+    position: absolute;
+    top: 21px;
+}
+
+.positions-tab h1 {
+    font: normal normal 18px/18px Aller;
+    left: 60px;
+    position: absolute;
+    top: 56px;
+}
+
+.positions-tab .selected-account-name {
+    font-weight: bold;
+}
+
+.positions-tab .button-bar {
+    left: 776px;
+    position: absolute;
+    top: 46px;
+}
+
+.positions-tab .position-table {
+    margin: 83px auto;
+    table-layout: fixed;    
+    width: 820px;
+}
