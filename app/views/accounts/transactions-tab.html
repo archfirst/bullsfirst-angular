@@ -19,9 +19,10 @@
 *
 * @authors
 * Vikas Goyal
+* Solh Zendeh
 *-->
 <section class="transactions-tab tab clearfix" ng-controller="TransactionsCtrl">
-    <div class="transactions" ng-include="'views/accounts/transactions-filter.html'"></div>
+    <div bf-transactions-filter></div>
     <div>
         <!-- I would make this table its own view if there were any interactions -->
         <table class="transactions-table bf-table zebra">
@@ -34,17 +35,7 @@
                     <th class="amount">AMOUNT</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr ng-repeat="transaction in transactions | orderBy:['accountName', 'creationTime']">
-                    <td class="creation-date">{{transaction.creationTime | date:'yyyy-MM-dd hh:mm:ss a'}}</td>
-                    <td class="account">{{transaction.accountName}}</td>
-                    <td class="type">{{transaction.type}}</td>
-                    <td class="description">{{transaction.description}}</td>
-                    <!-- this had slightly different styling in the backbone version,
-                         but this is what's being used in the positions tab... -->
-                    <td class="amount">{{transaction.amount.amount | currency}}</td>
-                </tr>
-            </tbody>
+            <tbody bf-transactions-list></tbody>
         </table>
     </div>
 </section>

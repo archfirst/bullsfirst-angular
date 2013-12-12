@@ -1057,48 +1057,53 @@ input[type="submit"].btn.btn-mini {
 }
 
 /* line 1, ../../app/styles/_transactions-tab.scss */
+.account div.select2-container {
+  width: 100%;
+}
+
+/* line 5, ../../app/styles/_transactions-tab.scss */
 .transactions-table {
   margin: 0 40px 28px 80px;
   width: 820px;
 }
-/* line 5, ../../app/styles/_transactions-tab.scss */
+/* line 9, ../../app/styles/_transactions-tab.scss */
 .transactions-table .center {
   text-align: center;
 }
-/* line 9, ../../app/styles/_transactions-tab.scss */
+/* line 13, ../../app/styles/_transactions-tab.scss */
 .transactions-table .number {
   text-align: right;
 }
-/* line 13, ../../app/styles/_transactions-tab.scss */
+/* line 17, ../../app/styles/_transactions-tab.scss */
 .transactions-table .creation-date {
   width: 185px;
 }
-/* line 17, ../../app/styles/_transactions-tab.scss */
+/* line 21, ../../app/styles/_transactions-tab.scss */
 .transactions-table .account {
   width: 135px;
   text-align: left;
 }
-/* line 22, ../../app/styles/_transactions-tab.scss */
+/* line 26, ../../app/styles/_transactions-tab.scss */
 .transactions-table .type {
   width: 80px;
 }
-/* line 26, ../../app/styles/_transactions-tab.scss */
+/* line 30, ../../app/styles/_transactions-tab.scss */
 .transactions-table .description {
   width: 305px;
   text-align: left;
 }
-/* line 31, ../../app/styles/_transactions-tab.scss */
+/* line 35, ../../app/styles/_transactions-tab.scss */
 .transactions-table .amount {
   width: 95px;
   padding-right: 20px;
   text-align: right;
 }
-/* line 37, ../../app/styles/_transactions-tab.scss */
+/* line 41, ../../app/styles/_transactions-tab.scss */
 .transactions-table tr td:last-child {
   padding-right: 20px;
 }
 
-/* line 42, ../../app/styles/_transactions-tab.scss */
+/* line 46, ../../app/styles/_transactions-tab.scss */
 .transactions-table:after {
   content: "";
   width: 820px;
@@ -1110,7 +1115,7 @@ input[type="submit"].btn.btn-mini {
   left: 80px;
 }
 
-/* line 54, ../../app/styles/_transactions-tab.scss */
+/* line 58, ../../app/styles/_transactions-tab.scss */
 .transactions-tab h1 {
   font: normal normal 18px/18px Aller;
   left: 60px;
@@ -1118,27 +1123,27 @@ input[type="submit"].btn.btn-mini {
   position: relative;
   top: 30px;
 }
-/* line 62, ../../app/styles/_transactions-tab.scss */
+/* line 66, ../../app/styles/_transactions-tab.scss */
 .transactions-tab .button-bar {
   height: 25px;
   width: 645px;
   margin-top: 10px;
   margin-bottom: 10px;
 }
-/* line 68, ../../app/styles/_transactions-tab.scss */
+/* line 72, ../../app/styles/_transactions-tab.scss */
 .transactions-tab .button-bar a.button {
   display: block;
   float: right;
 }
 
-/* line 75, ../../app/styles/_transactions-tab.scss */
+/* line 79, ../../app/styles/_transactions-tab.scss */
 .transactions-table-clipped-wrapper {
   float: left;
   overflow: hidden;
   width: 640px;
 }
 
-/* line 81, ../../app/styles/_transactions-tab.scss */
+/* line 85, ../../app/styles/_transactions-tab.scss */
 .transactions-table-unclipped-wrapper {
   float: left;
   margin: 56px 0 0 30px;

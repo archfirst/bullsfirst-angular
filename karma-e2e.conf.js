@@ -45,6 +45,7 @@ module.exports = function (config) {
         proxies: {
             // NOTE I'm not sure if there's another way to do this. I couldn't figure one out...
             '/': 'http://bullsfirst/app/',
+            '/app/views/directives/': 'http://bullsfirst/app/views/directives/',
             '/bfoms-javaee/rest/': 'http://archfirst.org/bfoms-javaee/rest/',
             '/bfexch-javaee/rest/': 'http://archfirst.org/bfexch-javaee/rest/'
         },
