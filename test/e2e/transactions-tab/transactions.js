@@ -9,7 +9,6 @@ describe('Login', function () {
 
     it('should allow user to pick start and end date, refine by account, and reset', function () {
         // enter start and end dates
-        pause();
         input('filters.fromDate').enter('2013-05-01');
         input('filters.toDate').enter('2013-10-01');
         element('a.js-apply-filters-button').click();
