@@ -1,0 +1,291 @@
+/* -----------------------------------------------------------------------------
+ * modals
+ * -------------------------------------------------------------------------- */
+.modal-wrapper {
+  font: 12px/25px Aller;
+  width: 291px;
+  position: absolute;
+  z-index: 499;
+  right: 210px;
+  top: 30px;
+}
+
+.modal-wrapper.right {
+  right: 0px;
+}
+
+.modal-wrapper.left {
+  left: 0px;
+}
+
+.modal-wrapper.center {
+  right: 0;
+}
+
+.modal-wrapper.summary-modal {
+  background: #f89f1b;
+  border: 10px solid #333333;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding;
+  background-clip: padding-box;
+}
+
+.modal-wrapper.summary-modal header {
+  background: #f89f1b;
+  color: black;
+}
+
+.modal-wrapper.summary-modal th {
+  text-align: left;
+  padding-left: 16px;
+}
+
+.modal-wrapper.summary-modal table {
+  width: 99%;
+}
+
+.modal-wrapper.summary-modal tr:nth-child(odd) {
+  background: #e08f18;
+}
+
+.modal-wrapper.summary-modal .cost-summary {
+  background: #f9ad3d !important;
+}
+
+.modal-wrapper.summary-modal .cost-summary:first-child {
+  margin-top: 20px;
+}
+
+.modal-wrapper.summary-modal .cost-total {
+  background: #e19c37 !important;
+}
+
+.modal-wrapper header {
+  height: auto;
+  margin: 10px 10px 30px;
+}
+
+.modal-wrapper section {
+  margin: 0 9px 0 10px;
+}
+
+.modal-close {
+  width: 17px;
+  height: 17px;
+  background: url("../images/modal-close.png");
+  position: absolute;
+  display: inline;
+  top: 10px;
+  right: 9px;
+}
+
+.modal-field {
+  position: relative;
+  display: inline;
+  float: left;
+  width: 130px;
+  margin-bottom: 10px;
+}
+
+.modal-field.full {
+  width: 100%;
+  clear: left;
+}
+
+.modal-field.full input[type="text"] {
+  width: 100%;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  height: 28px;
+}
+
+.modal-field.full .sbOptions {
+  width: 99%;
+}
+
+.modal-field.left {
+  clear: left;
+}
+
+.modal-field.right {
+  margin-left: 11px;
+}
+
+.modal-field.right label {
+  width: 57px;
+}
+
+.modal-field.trade-costs p {
+  width: auto;
+  height: 20px;
+  overflow: hidden;
+  text-align: right;
+  font-size: 12px;
+  line-height: 14px;
+}
+
+.modal-field a {
+  font-size: 12px;
+}
+
+.modal-field a.button.center {
+  margin: 10px auto;
+  position: relative;
+}
+
+.modal-field a.button.center span {
+  padding: 0;
+}
+
+.modal-field a.button.medium i {
+  font-size: 18px;
+  line-height: 5px;
+}
+
+.modal-field a.button.medium span {
+  display: inline;
+}
+
+.modal-field a.button.medium .text {
+  font-size: 12px;
+  line-height: 0;
+}
+
+.modal-field a.button .preview-icon i {
+  font-size: 22px;
+  position: absolute;
+  top: -2px;
+  left: 2px;
+  color: #f04100;
+}
+
+.modal-field a.button .preview-icon i.icon-star-empty {
+  top: -6px;
+  left: 3px;
+}
+
+.modal-field a.button .text {
+  line-height: 110px;
+}
+
+.modal-field a.modal-radio {
+  position: relative;
+  display: inline;
+  float: left;
+  width: 65px;
+  height: 50px;
+  background: #f04100;
+  text-align: center;
+  line-height: 50px;
+}
+
+.modal-field a.modal-radio:hover {
+  background: #f36733;
+}
+
+.modal-field a.modal-radio.selected {
+  background: #f47513;
+  border: 2px solid white;
+  width: 61px;
+  height: 46px;
+}
+
+.modal-field input[type="text"],
+.modal-field input[type="password"] {
+  padding-left: 7px;
+  width: 117px;
+}
+
+.modal-field input[type="radio"],
+.modal-field input[type="checkbox"] {
+  display: none;
+}
+
+.modal-field label {
+  padding: 0 7px;
+}
+
+.modal-field.lastTradePrice p:first-child {
+  margin-top: 24px;
+}
+
+.modal-field.lastTradePrice p {
+  margin-top: 0;
+  line-height: 14px;
+}
+
+.modal-field p {
+  color: white;
+}
+
+.modal-field .modal-checkbox {
+  position: relative;
+  display: inline;
+  float: left;
+  width: 20px;
+  height: 25px;
+  padding: 0 0 0 3px;
+  line-height: 26px;
+  font-size: 17px;
+  color: white;
+  background: #f47513;
+}
+
+.modal-field .modal-checkbox.empty::before {
+  content: '';
+}
+
+.modal-field .preview-icon {
+  font-size: 40px;
+  position: absolute;
+  top: 20px;
+  left: 43px;
+}
+
+.modal-field .sbSelector {
+  padding-left: 7px;
+}
+
+.modal-field .sbOptions {
+  width: 97%;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  opacity: 0;
+  width: 100%;
+  background: #3F3F3F;
+  z-index: 489;
+  display: none;
+}
+
+.modal-overlay.show {
+  opacity: 0.75;
+}
+
+.modal-overlay.stacked {
+  z-index: 499;
+}
+
+.inline {
+  position: relative;
+  display: inline;
+  float: left;
+}
+
+.form-modal {
+  background: #3F3F3F;
+  border: 10px solid rgba(255, 255, 255, 0.3);
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding;
+  background-clip: padding-box;
+}
+
+.form-modal header {
+  background: #3F3F3F;
+  color: white;
+}

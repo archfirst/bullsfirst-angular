@@ -1,0 +1,30 @@
+/* -----------------------------------------------------------------------------
+ * login-widget
+ * -------------------------------------------------------------------------- */
+.login-section {
+  float: left;
+  margin: 181px 0 0 78px;
+  position: relative;
+}
+
+.login-section h1 {
+  font: 18px Aller;
+  margin: 0 0 8px 15px;
+}
+
+.login-form {
+  background-color: #404040;
+  height: 247px;
+  padding: 35px 15px 0 15px;
+  width: 270px;
+}
+
+.login-button {
+  margin: 26px auto 0 auto;
+}
+
+.test-login-button {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
