@@ -1,0 +1,69 @@
+/* -----------------------------------------------------------------------------
+ * Primary Styles
+ * -------------------------------------------------------------------------- */
+p {
+  margin: 6px 0 0 0;
+}
+
+h1 {
+  font: normal normal 24px Aller;
+}
+
+h2 {
+  font: normal normal 16px Aller;
+}
+
+select {
+  height: 25px;
+  margin-bottom: 10px;
+  width: 100%;
+  padding-left: 7px;
+}
+
+option {
+  padding-left: 12px;
+}
+
+a {
+  font-size: 14px;
+}
+
+a:link, a:visited, a:hover, a:active {
+  text-decoration: none;
+}
+
+/* unvisited and visited link */
+a:link, a:visited {
+  color: #f04100;
+}
+
+/* mouse over link */
+a:hover {
+  color: #f36733;
+}
+
+/* selected link */
+a:active {
+  color: #9e2b00;
+}
+
+/* override normalize.css setting of thin dotted to improve look */
+a:focus {
+  outline: 0;
+}
+
+/* -----------------------------------------------------------------------------
+ * General Purpose Classes
+ * -------------------------------------------------------------------------- */
+.nodisplay {
+  display: none;
+}
+
+/* -----------------------------------------------------------------------------
+ * Main Container
+ * -------------------------------------------------------------------------- */
+#container {
+  background-color: #333333;
+  margin: auto;
+  width: 960px;
+}

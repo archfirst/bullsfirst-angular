@@ -144,27 +144,67 @@ module.exports = function (grunt) {
                 ]
             }
         },
+        // ### compass
+        // grunt-contrib-compass npm task
         compass: {
-            options: {
-                sassDir: '<%= yeoman.app %>/styles',
-                cssDir: '.tmp/styles',
-                generatedImagesDir: '.tmp/images/generated',
-                imagesDir: '<%= yeoman.app %>/images',
-                javascriptsDir: '<%= yeoman.app %>/scripts',
-                fontsDir: '<%= yeoman.app %>/font',
-                importPath: '<%= yeoman.app %>/bower_components',
-                httpImagesPath: '/images',
-                httpGeneratedImagesPath: '/images/generated',
-                httpFontsPath: '/font',
-                relativeAssets: false
-            },
-            dist: {},
-            server: {
+            dev: {
                 options: {
-                    debugInfo: true
+                    sassDir: '<%= yeoman.app %>/styles',
+                    cssDir: '<%= yeoman.app %>/styles',
+                    generatedImagesDir: '.tmp/images/generated',
+                    imagesDir: '<%= yeoman.app %>/images',
+                    javascriptsDir: '<%= yeoman.app %>/scripts',
+                    fontsDir: '<%= yeoman.app %>/font',
+                    importPath: '<%= yeoman.app %>/bower_components',
+                    httpImagesPath: '/images',
+                    httpGeneratedImagesPath: '/images/generated',
+                    httpFontsPath: '/font',
+                    relativeAssets: false,
+                    noLineComments: false,
+                    environment: 'development',
+                    debugInfo: false
+                }
+            },
+            dist: {
+                options: {
+                    sassDir: '<%= yeoman.dist %>/styles',
+                    cssDir: '<%= yeoman.dist %>/styles',
+                    generatedImagesDir: '.tmp/images/generated',
+                    imagesDir: '<%= yeoman.app %>/images',
+                    javascriptsDir: '<%= yeoman.app %>/scripts',
+                    fontsDir: '<%= yeoman.app %>/font',
+                    importPath: '<%= yeoman.app %>/bower_components',
+                    httpImagesPath: '/images',
+                    httpGeneratedImagesPath: '/images/generated',
+                    httpFontsPath: '/font',
+                    relativeAssets: false,
+                    noLineComments: true,
+                    environment: 'production',
+                    debugInfo: false
                 }
             }
         },
+        // compass: {
+        //     options: {
+        //         sassDir: '<%= yeoman.app %>/styles',
+        //         cssDir: '.tmp/styles',
+        //         generatedImagesDir: '.tmp/images/generated',
+        //         imagesDir: '<%= yeoman.app %>/images',
+        //         javascriptsDir: '<%= yeoman.app %>/scripts',
+        //         fontsDir: '<%= yeoman.app %>/font',
+        //         importPath: '<%= yeoman.app %>/bower_components',
+        //         httpImagesPath: '/images',
+        //         httpGeneratedImagesPath: '/images/generated',
+        //         httpFontsPath: '/font',
+        //         relativeAssets: false
+        //     },
+        //     dist: {},
+        //     server: {
+        //         options: {
+        //             debugInfo: true
+        //         }
+        //     }
+        // },
         // not used since Uglify task does concat,
         // but still available if needed
         /*concat: {
@@ -342,6 +382,9 @@ module.exports = function (grunt) {
             }
         }
     });
+
+// Load plugins
+// grunt.loadNpmTasks('grunt-contrib-compass');
 
     grunt.registerTask('server', function (target) {
         if (target === 'dist') {

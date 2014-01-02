@@ -1,0 +1,32 @@
+/* -----------------------------------------------------------------------------
+ * tables
+ * -------------------------------------------------------------------------- */
+.bf-table th, .bf-table td {
+  padding: 0;
+}
+
+.bf-table thead th {
+  background-color: #8c8c8c;
+  color: #f8e5c9;
+  font: bold normal 11px/22px Aller;
+  height: 22px;
+  text-transform: uppercase;
+}
+
+.bf-table tbody td,
+.bf-table tbody td a {
+  font: normal normal 12px/25px Aller;
+  height: 25px;
+}
+
+.bf-table tbody td {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.bf-table .negative {
+  color: #f04100;
+}
+
+.bf-table tbody tr.selected {
+  background-color: #d8d8d8;
+}

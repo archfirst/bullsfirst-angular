@@ -1,0 +1,115 @@
+/* -----------------------------------------------------------------------------
+ * buttons
+ * -------------------------------------------------------------------------- */
+a.button {
+  color: white;
+  display: block;
+  text-decoration: none;
+  -webkit-transition: background-color 0.3s;
+  -moz-transition: background-color 0.3s;
+  -o-transition: background-color 0.3s;
+  -ms-transition: background-color 0.3s;
+  transition: background-color 0.3s;
+}
+
+a.button span {
+  display: block;
+}
+
+a.button.person-icon span {
+  background: url(../images/person-icon.png) no-repeat;
+}
+
+a.button.refresh-icon span {
+  background: url(../images/refresh-icon.png) no-repeat;
+}
+
+a.button.trade-icon span {
+  background: url(../images/trade-icon.png) no-repeat;
+}
+
+a.button.transfer-icon span {
+  background: url(../images/transfer-icon.png) no-repeat;
+}
+
+/* -----------------------------------------------------------------------------
+ * button.small
+ * -------------------------------------------------------------------------- */
+a.button.small {
+  background-color: #f04100;
+  font-size: 12px;
+  height: 25px;
+  line-height: 25px;
+  text-align: center;
+  width: 90px;
+}
+
+a.button.small:hover {
+  background-color: #f36733;
+}
+
+a.button.small:active {
+  background-color: #7b2a0c;
+}
+
+/* -----------------------------------------------------------------------------
+ * button.medium
+ * -------------------------------------------------------------------------- */
+a.button.medium {
+  background-color: #f47513;
+  font-size: 11px;
+  height: 25px;
+  line-height: 25px;
+  text-align: center;
+  width: 105px;
+}
+
+a.button.medium:hover {
+  background-color: #f36733;
+}
+
+a.button.medium:active {
+  background-color: #7b2a0c;
+}
+
+/* -----------------------------------------------------------------------------
+ * button.large
+ * -------------------------------------------------------------------------- */
+a.button.large {
+  background-color: #f04100;
+  height: 75px;
+  width: 110px;
+}
+
+a.button.large:hover {
+  background-color: #f36733;
+}
+
+a.button.large:active {
+  background-color: #7b2a0c;
+}
+
+a.button.large span {
+  background-position: center 13px;
+  padding-top: 43px;
+  text-align: center;
+}
+
+/* -----------------------------------------------------------------------------
+ * button-bar
+ * -------------------------------------------------------------------------- */
+.button-bar a.button {
+  float: left;
+}
+
+.button-bar a.button.small {
+  margin-right: 10px;
+}
+
+.button-bar a.button.medium {
+  margin-right: 10px;
+}
+
+.button-bar a.button.large {
+  margin-right: 20px;
+}

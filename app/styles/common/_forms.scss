@@ -1,0 +1,19 @@
+/* -----------------------------------------------------------------------------
+ * Form Styles
+ * -------------------------------------------------------------------------- */
+label {
+  background-color: #666666;
+  color: #f8e5c9;
+  display: block;
+  font: 11px/25px Aller;
+  height: 25px;
+  padding-left: 9px;
+  width: 71px;
+}
+
+input[type="text"], input[type="password"] {
+  height: 21px;
+  margin-bottom: 10px;
+  width: 100%;
+  padding-left: 7px;
+}
