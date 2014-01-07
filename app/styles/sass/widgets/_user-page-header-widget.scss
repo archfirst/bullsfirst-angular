@@ -1,0 +1,111 @@
+/* -----------------------------------------------------------------------------
+ * user-page-header-widget
+ * -------------------------------------------------------------------------- */
+.user-page-header {
+    background-color: $brand-color;
+    height: 110px;
+    margin: 10px 10px 0 10px;
+    position: relative;
+
+    h1 {
+        background-image: url(#{$baseImagePath}logo-small.png);
+        height: 75px;
+        left: 60px;
+        margin: 0;
+        position: absolute;
+        top: 18px;
+        width: 160px;
+    }
+
+    // Logo
+    .logo-small {
+        background-image: url(#{$baseImagePath}logo-small.png);
+        height: 75px;
+        left: 60px;
+        position: absolute;
+        top: 18px;
+        width: 160px;
+    }
+
+    // Button Bar
+    .button-bar {
+        left: 640px;
+        position: absolute;
+        top: 32px;
+    }
+
+    // User Info
+    .user-info {
+        float: right;
+        line-height: 11px;
+        margin: 10px 11px 0 0;
+
+        span {
+            font-size: 12px;
+            font-style: italic;
+            margin-right: 2px;
+        }
+
+        img {
+            position: relative;
+            top: -1px;
+        }
+
+        a {
+            font-size: 12px;
+        }
+    }
+
+    .tabbar {
+        min-height: 600px;
+        height: 31px;
+        background-color: #f89f1b
+    }
+}
+
+/* -----------------------------------------------------------------------------
+ * Tab Bar
+ * Reference: http://stackoverflow.com/questions/2295311/css-list-item-width-height-does-not-work
+ * -------------------------------------------------------------------------- */
+.tabbar {
+    height: 31px;
+    background-color: #f89f1b;
+    margin: 0px 10px;
+
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+
+        li {
+            display: inline;
+            float: left;
+
+            a {
+                background-color: #f8791b;
+                color: white;
+                display: block;
+                height: 25px;
+                line-height: 25px;
+                margin: 5px 2px 0 0;
+                min-width: 103px;
+                padding: 1px 10px 0 10px;
+                text-align: center;
+
+                &:hover {
+                    background-color: $button-hover-color;
+                }
+            }
+
+            a.selected {
+                background-color: white;
+                color: black;
+                margin-top: 0;
+                padding-top: 5px;
+                height: 31px;
+                margin-left: 80px;
+            }
+
+        }
+    }
+}

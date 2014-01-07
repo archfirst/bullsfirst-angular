@@ -1,0 +1,50 @@
+/* -----------------------------------------------------------------------------
+ * position-table-widget
+ * -------------------------------------------------------------------------- */
+.position-table {
+    .symbol {
+        padding-left: 20px;
+        text-align: left;
+        width: 90px;
+    }
+
+    .quantity {
+        text-align: right;
+        width: 60px;
+    }
+
+    .last-trade {
+        text-align: right;
+        width: 80px;
+    }
+
+    .market-value {
+        text-align: right;
+        width: 100px;
+    }
+
+    .price-paid {
+        text-align: right;
+        width: 80px;
+    }
+
+    .total-cost {
+        text-align: right;
+        width: 100px;
+    }
+
+    .gain {
+        text-align: right;
+        width: 100px;
+    }
+
+    .gain-percent {
+        text-align: right;
+        width: 80px;
+    }
+
+    .actions {
+        text-align: center;
+        width: 90px;
+    }
+}
