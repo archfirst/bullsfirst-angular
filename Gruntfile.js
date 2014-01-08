@@ -145,25 +145,61 @@ module.exports = function (grunt) {
             }
         },
         compass: {
-            options: {
-                sassDir: '<%= yeoman.app %>/styles/sass',
-                cssDir: '.tmp/styles',
-                generatedImagesDir: '.tmp/images/generated',
-                imagesDir: '<%= yeoman.app %>/images',
-                javascriptsDir: '<%= yeoman.app %>/scripts',
-                fontsDir: '<%= yeoman.app %>/font',
-                importPath: '<%= yeoman.app %>/bower_components',
-                httpImagesPath: '/images',
-                httpGeneratedImagesPath: '/images/generated',
-                httpFontsPath: '/font',
-                relativeAssets: false
-            },
-            dist: {},
-            server: {
+            dev: {
                 options: {
-                    debugInfo: true
+                    sassDir: '<%= yeoman.app %>/styles/sass',
+                    cssDir: '<%= yeoman.app %>/styles',
+                    generatedImagesDir: '.tmp/images/generated',
+                    imagesDir: '<%= yeoman.app %>/images',
+                    javascriptsDir: '<%= yeoman.app %>/scripts',
+                    fontsDir: '<%= yeoman.app %>/font',
+                    importPath: '<%= yeoman.app %>/bower_components',
+                    httpImagesPath: '/images',
+                    httpGeneratedImagesPath: '/images/generated',
+                    httpFontsPath: '/font',
+                    relativeAssets: false,
+                    noLineComments: false,
+                    environment: 'development',
+                    debugInfo: false
+                }
+            },
+            dist: {
+                options: {
+                    sassDir: '<%= yeoman.dist %>/styles/sass',
+                    cssDir: '<%= yeoman.dist %>/styles',
+                    generatedImagesDir: '.tmp/images/generated',
+                    imagesDir: '<%= yeoman.app %>/images',
+                    javascriptsDir: '<%= yeoman.app %>/scripts',
+                    fontsDir: '<%= yeoman.app %>/font',
+                    importPath: '<%= yeoman.app %>/bower_components',
+                    httpImagesPath: '/images',
+                    httpGeneratedImagesPath: '/images/generated',
+                    httpFontsPath: '/font',
+                    relativeAssets: false,
+                    noLineComments: true,
+                    environment: 'production',
+                    debugInfo: false
                 }
             }
+            // options: {
+            //     sassDir: '<%= yeoman.app %>/styles/sass',
+            //     cssDir: '.tmp/styles',
+            //     generatedImagesDir: '.tmp/images/generated',
+            //     imagesDir: '<%= yeoman.app %>/images',
+            //     javascriptsDir: '<%= yeoman.app %>/scripts',
+            //     fontsDir: '<%= yeoman.app %>/font',
+            //     importPath: '<%= yeoman.app %>/bower_components',
+            //     httpImagesPath: '/images',
+            //     httpGeneratedImagesPath: '/images/generated',
+            //     httpFontsPath: '/font',
+            //     relativeAssets: false
+            // },
+            // dist: {},
+            // server: {
+            //     options: {
+            //         debugInfo: true
+            //     }
+            // }
         },
         // not used since Uglify task does concat,
         // but still available if needed

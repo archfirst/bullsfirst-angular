@@ -24,7 +24,7 @@
 'use strict';
 
 angular.module('bullsfirst')
-    .directive('highcharts', function () {
+    .directive('highcharts', function (utilities) {
 
         return {
             restrict: 'E',
@@ -33,12 +33,43 @@ angular.module('bullsfirst')
                 data: '=',
                 width: '@',
                 height: '@',
-                title: '@',
-                subtitle: '@',
+                name: '=',
+                subtitle: '=',
                 setHoveredAccount: '&',
-                unSetHoveredAccount: '&'
+                unSetHoveredAccount: '&',
+                highlighted: '='
             },
             link: function (scope, $$element) {
+                var animateSlice = function(p, outwards) {
+                    
+                    if (outwards) {
+                        p.graphic.animate(p.slicedTranslation);
+                    } else {
+                        p.graphic.animate({
+                            translateX: 0,
+                            translateY: 0
+                        });
+                    }
+                };
+
+                var selectRow = function(el) {
+                    el.className += ' selected';
+                };
+
+                var deselectRow = function(el) {
+                    el = utilities.clearClass(el, 'selected');
+                };
+
+                var clearSelectedRow = function(selector) {
+                    var rows = document.querySelectorAll(selector),
+                        i,
+                        len = rows.length;
+
+                    for (i=0; i<len; i++) {
+                        rows[i] = utilities.clearClass(rows[i], 'selected');
+                    }
+                };
+
                 scope.$watch('data', function () {
                     $$element.highcharts({
                         chart: {
@@ -62,7 +93,7 @@ angular.module('bullsfirst')
                             { radialGradient: {cx: 0, cy: 0, r: 1, gradientUnits: 'objectBoundingBox'}, stops: [[0, '#adbdc0'], [1, '#446a73']] }
                         ],
                         title: {
-                            text: scope.title,
+                            text: scope.name,
                             align: 'left',
                             style: {
                                 font: '14px Aller',
@@ -115,13 +146,74 @@ angular.module('bullsfirst')
                         },
                         series: [{
                             type: scope.type,
-                            name: 'All Accounts',
-                            data: scope.data
+                            name: scope.name,
+                            data: scope.data,
+                            point: {
+                                events: {
+                                    mouseOver: function(e) {
+                                        var row = document.getElementById(e.currentTarget.id);
+
+                                        selectRow(row);
+                                        animateSlice(this, true);
+                                    },
+                                    mouseOut: function(e) {
+                                        var row = document.getElementById(e.currentTarget.id);
+
+                                        deselectRow(row);
+                                        animateSlice(this, false);
+                                    },
+                                    click: function(e) {
+                                        var slice = e.currentTarget;
+
+                                        if (slice.series.name === 'All Accounts') {
+                                            scope.chartTitle = slice.name;
+                                            utilities.triggerClick( document.getElementById(slice.id) );
+                                            clearSelectedRow('tr.account-row.selected');
+                                        } else {
+                                            scope.chartTitle = 'All Accounts';
+                                            utilities.triggerClick( document.getElementById('viewAccounts') );
+                                            clearSelectedRow('tr.account-row.selected');
+                                        }
+
+                                    }
+                                }
+                            }
                         }]
                     });
                 });
 
+    
 
+                /*scope.$watch('highlighted', function() {
+                    // Access chart reference
+                    var chart = Highcharts.charts ? Highcharts.charts[Highcharts.charts.length-1] : false,
+                        i,
+                        len = chart ? chart.series[0].data.length : 0,
+                        selected;
+console.log('highlighted ', scope.highlighted);
+console.log(Highcharts.charts);
+                    if (chart !== false && chart !== undefined) {
+                        if (scope.highlighted !== null) {
+console.log(scope.highlighted.id);
+
+                            // Get index of highlighted row
+                            for (i=0; i<len; i++) {
+console.log(chart.series[0].data[i].id);                             
+                                if (chart.series[0].data[i].id === scope.highlighted.id) {
+                                    selected = i;
+                                }
+                            }
+                      
+                            // Set state to hover
+                            animateSlice(chart.series[0].data[selected], true);
+                        } else {                  
+                            // Clear hover state
+                            for (i=0; i<len; i++) {
+                                animateSlice(chart.series[0].data[i], false);
+                            }
+                        }
+                    }
+                });*/
             }
         };
     });
