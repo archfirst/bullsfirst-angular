@@ -1,8 +1,11 @@
-@import "common/colors";
-
 /* -----------------------------------------------------------------------------
  * account-table-widget
  * -------------------------------------------------------------------------- */
+
+@mixin position-table-account-name() {
+    font-size: 14px;
+    font-weight: bold;
+}
 
 .account-table-transitioning-view {
     float: left;
@@ -175,8 +178,13 @@
                         background: $white;
                     }
 
+                    .market-value {
+                        @include position-table-account-name();
+                    }
+                    
                     .name {
                         padding-left: 10px;
+                        @include position-table-account-name();
                     }
 
                     .legend-cell {

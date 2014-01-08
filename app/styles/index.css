@@ -6373,7 +6373,7 @@ a.disabled {
 /* -----------------------------------------------------------------------------
  * account-table-widget
  * -------------------------------------------------------------------------- */
-/* line 7, sass/widgets/_account-table-widget.scss */
+/* line 10, sass/widgets/_account-table-widget.scss */
 .account-table-transitioning-view {
   float: left;
   position: relative;
@@ -6392,39 +6392,39 @@ a.disabled {
  * -----------------------------------
  * Total                           610
  * -------------------------------------------------------------------------- */
-/* line 25, sass/widgets/_account-table-widget.scss */
+/* line 28, sass/widgets/_account-table-widget.scss */
 .account-table {
   table-layout: fixed;
   width: 610px;
   margin-left: 25px;
 }
-/* line 30, sass/widgets/_account-table-widget.scss */
+/* line 33, sass/widgets/_account-table-widget.scss */
 .account-table .market-value {
   text-align: right;
   width: 140px;
 }
-/* line 35, sass/widgets/_account-table-widget.scss */
+/* line 38, sass/widgets/_account-table-widget.scss */
 .account-table .cash {
   text-align: right;
   width: 140px;
 }
-/* line 40, sass/widgets/_account-table-widget.scss */
+/* line 43, sass/widgets/_account-table-widget.scss */
 .account-table .symbol {
   text-align: left;
   width: 50px;
 }
-/* line 45, sass/widgets/_account-table-widget.scss */
+/* line 48, sass/widgets/_account-table-widget.scss */
 .account-table .percentage {
   text-align: right;
   width: 80px;
 }
-/* line 50, sass/widgets/_account-table-widget.scss */
+/* line 53, sass/widgets/_account-table-widget.scss */
 .account-table .legend-cell {
   padding-left: 20px;
   text-align: center;
   width: 60px;
 }
-/* line 56, sass/widgets/_account-table-widget.scss */
+/* line 59, sass/widgets/_account-table-widget.scss */
 .account-table .left-column {
   background: white;
   border: none;
@@ -6433,25 +6433,25 @@ a.disabled {
   text-align: center;
   width: 30px;
 }
-/* line 65, sass/widgets/_account-table-widget.scss */
+/* line 68, sass/widgets/_account-table-widget.scss */
 .account-table .right-column {
   background: none;
   border: none;
   width: 20px;
 }
-/* line 71, sass/widgets/_account-table-widget.scss */
+/* line 74, sass/widgets/_account-table-widget.scss */
 .account-table .name {
   padding-left: 20px;
   text-align: left;
   width: 180px;
 }
-/* line 77, sass/widgets/_account-table-widget.scss */
+/* line 80, sass/widgets/_account-table-widget.scss */
 .account-table .name .edit input {
   height: 17px;
   margin: 0;
   width: 140px;
 }
-/* line 83, sass/widgets/_account-table-widget.scss */
+/* line 86, sass/widgets/_account-table-widget.scss */
 .account-table .name .edit i {
   background: none;
   border: none;
@@ -6461,94 +6461,101 @@ a.disabled {
   vertical-align: bottom;
   width: 30px;
 }
-/* line 97, sass/widgets/_account-table-widget.scss */
+/* line 100, sass/widgets/_account-table-widget.scss */
 .account-table tbody tr {
   cursor: pointer;
   /* Last row - dark grey border bottom */
   /* Disable highlighting of left and right columns on selection */
 }
-/* line 99, sass/widgets/_account-table-widget.scss */
+/* line 102, sass/widgets/_account-table-widget.scss */
 .account-table tbody tr i.icon-edit {
   display: none;
 }
-/* line 104, sass/widgets/_account-table-widget.scss */
+/* line 107, sass/widgets/_account-table-widget.scss */
 .account-table tbody tr .hovered i.icon-edit {
   display: block;
 }
-/* line 107, sass/widgets/_account-table-widget.scss */
+/* line 110, sass/widgets/_account-table-widget.scss */
 .account-table tbody tr .hovered td {
   background-color: #d8d8d8;
 }
-/* line 109, sass/widgets/_account-table-widget.scss */
+/* line 112, sass/widgets/_account-table-widget.scss */
 .account-table tbody tr .hovered td.left-column {
   background-color: transparent;
 }
-/* line 117, sass/widgets/_account-table-widget.scss */
+/* line 120, sass/widgets/_account-table-widget.scss */
 .account-table tbody tr tr:last-child {
   /* Last row - no border bottom for left and right columns */
 }
-/* line 118, sass/widgets/_account-table-widget.scss */
+/* line 121, sass/widgets/_account-table-widget.scss */
 .account-table tbody tr tr:last-child td {
   border-bottom: 3px solid #8c8c8c;
 }
-/* line 122, sass/widgets/_account-table-widget.scss */
+/* line 125, sass/widgets/_account-table-widget.scss */
 .account-table tbody tr tr:last-child td.left-column, .account-table tbody tr tr:last-child td.right-column {
   border: none;
 }
-/* line 130, sass/widgets/_account-table-widget.scss */
+/* line 133, sass/widgets/_account-table-widget.scss */
 .account-table tbody tr tr.selected .left-column, .account-table tbody tr tr.selected .right-column {
   background-color: white;
 }
-/* line 136, sass/widgets/_account-table-widget.scss */
+/* line 139, sass/widgets/_account-table-widget.scss */
 .account-table tbody td.name {
   /* Enable viewing of name in view mode */
 }
-/* line 138, sass/widgets/_account-table-widget.scss */
+/* line 141, sass/widgets/_account-table-widget.scss */
 .account-table tbody td.name .view {
   display: block;
 }
-/* line 141, sass/widgets/_account-table-widget.scss */
+/* line 144, sass/widgets/_account-table-widget.scss */
 .account-table tbody td.name .edit {
   display: none;
 }
-/* line 145, sass/widgets/_account-table-widget.scss */
+/* line 148, sass/widgets/_account-table-widget.scss */
 .account-table tbody td.name.editing {
   /* Enable editing of name in edit mode */
 }
-/* line 147, sass/widgets/_account-table-widget.scss */
+/* line 150, sass/widgets/_account-table-widget.scss */
 .account-table tbody td.name.editing .view {
   display: none;
 }
-/* line 150, sass/widgets/_account-table-widget.scss */
+/* line 153, sass/widgets/_account-table-widget.scss */
 .account-table tbody td.name.editing .edit {
   display: block;
 }
-/* line 156, sass/widgets/_account-table-widget.scss */
+/* line 159, sass/widgets/_account-table-widget.scss */
 .account-table tfoot {
   /* Footer text is bold */
 }
-/* line 158, sass/widgets/_account-table-widget.scss */
+/* line 161, sass/widgets/_account-table-widget.scss */
 .account-table tfoot tr:last-child td {
   font: bold normal 12px/25px Aller;
 }
-/* line 166, sass/widgets/_account-table-widget.scss */
+/* line 169, sass/widgets/_account-table-widget.scss */
 .account-table.account-positions tbody tr .name {
   padding-left: 30px;
 }
-/* line 170, sass/widgets/_account-table-widget.scss */
+/* line 173, sass/widgets/_account-table-widget.scss */
 .account-table.account-positions tbody tr:first-child {
   background: #d8d8d8;
   font-weight: bold;
 }
-/* line 174, sass/widgets/_account-table-widget.scss */
+/* line 177, sass/widgets/_account-table-widget.scss */
 .account-table.account-positions tbody tr:first-child .left-column {
   background: white;
 }
-/* line 178, sass/widgets/_account-table-widget.scss */
+/* line 181, sass/widgets/_account-table-widget.scss */
+.account-table.account-positions tbody tr:first-child .market-value {
+  font-size: 14px;
+  font-weight: bold;
+}
+/* line 185, sass/widgets/_account-table-widget.scss */
 .account-table.account-positions tbody tr:first-child .name {
   padding-left: 10px;
+  font-size: 14px;
+  font-weight: bold;
 }
-/* line 183, sass/widgets/_account-table-widget.scss */
+/* line 191, sass/widgets/_account-table-widget.scss */
 .account-table.account-positions tbody tr:first-child .legend-cell:after {
   content: "";
   width: 20px;
@@ -6567,14 +6574,14 @@ a.disabled {
  * -----------------------------------
  * Total                           610
  * -------------------------------------------------------------------------- */
-/* line 208, sass/widgets/_account-table-widget.scss */
+/* line 216, sass/widgets/_account-table-widget.scss */
 .account-detail-table {
   margin-left: 30px;
   table-layout: fixed;
   width: 610px;
 }
 
-/* line 215, sass/widgets/_account-table-widget.scss */
+/* line 223, sass/widgets/_account-table-widget.scss */
 .accounts-tab h1 {
   font: normal normal 18px/18px Aller;
   left: 60px;
@@ -6582,14 +6589,14 @@ a.disabled {
   position: relative;
   top: 30px;
 }
-/* line 223, sass/widgets/_account-table-widget.scss */
+/* line 231, sass/widgets/_account-table-widget.scss */
 .accounts-tab .button-bar {
   height: 25px;
   width: 645px;
   margin-top: 10px;
   margin-bottom: 10px;
 }
-/* line 229, sass/widgets/_account-table-widget.scss */
+/* line 237, sass/widgets/_account-table-widget.scss */
 .accounts-tab .button-bar a.button {
   display: block;
   float: right;

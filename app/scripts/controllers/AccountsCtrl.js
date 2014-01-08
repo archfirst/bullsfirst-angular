@@ -164,10 +164,14 @@ angular.module('bullsfirst')
 
         $scope.setHoveredPosition = function (position) {
             $scope.hoveredPosition = position;
+            $scope.hoveredAccount = {
+                id: position.id
+            };
         };
 
         $scope.unSetHoveredPosition = function () {
             $scope.hoveredPosition = null;
+            $scope.hoveredAccount = null;
         };
         
         $scope.showPositions = function(account) {   

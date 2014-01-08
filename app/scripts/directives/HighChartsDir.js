@@ -40,24 +40,15 @@ angular.module('bullsfirst')
                 highlighted: '='
             },
             link: function (scope, $$element) {
-                var animateSlice = function(p, outwards) {
-                    
-                    if (outwards) {
-                        p.graphic.animate(p.slicedTranslation);
+                var animateSlice = function(slice, moveOut) {        
+                    if (moveOut) {
+                        slice.graphic.animate(slice.slicedTranslation);
                     } else {
-                        p.graphic.animate({
+                        slice.graphic.animate({
                             translateX: 0,
                             translateY: 0
                         });
                     }
-                };
-
-                var selectRow = function(el) {
-                    el.className += ' selected';
-                };
-
-                var deselectRow = function(el) {
-                    el = utilities.clearClass(el, 'selected');
                 };
 
                 var clearSelectedRow = function(selector) {
@@ -71,6 +62,9 @@ angular.module('bullsfirst')
                 };
 
                 scope.$watch('data', function () {
+                    // Wait until chart & data rendered before enabling hover
+                    var renderComplete = false;
+
                     $$element.highcharts({
                         chart: {
                             backgroundColor: '#D8D8D8',
@@ -96,8 +90,9 @@ angular.module('bullsfirst')
                             text: scope.name,
                             align: 'left',
                             style: {
-                                font: '14px Aller',
-                                color: '#000000'
+                                color: '#000000',
+                                font: '16px Aller',
+                                fontWeight: 'bold'
                             },
                             floating: true,
                             x: 0,
@@ -142,6 +137,14 @@ angular.module('bullsfirst')
                                         }
                                     }
                                 }
+                            },
+                            series: {
+                                animation: {
+                                    duration: 700,
+                                    complete: function(){
+                                        renderComplete = true;
+                                    }
+                                }
                             }
                         },
                         series: [{
@@ -153,14 +156,18 @@ angular.module('bullsfirst')
                                     mouseOver: function(e) {
                                         var row = document.getElementById(e.currentTarget.id);
 
-                                        selectRow(row);
-                                        animateSlice(this, true);
+                                        if (renderComplete) {
+                                            utilities.appendClass(row, 'selected');
+                                            animateSlice(this, true);
+                                        }
                                     },
                                     mouseOut: function(e) {
                                         var row = document.getElementById(e.currentTarget.id);
 
-                                        deselectRow(row);
-                                        animateSlice(this, false);
+                                        if (renderComplete) {
+                                            utilities.clearClass(row, 'selected');
+                                            animateSlice(this, false);
+                                        }
                                     },
                                     click: function(e) {
                                         var slice = e.currentTarget;
@@ -180,30 +187,32 @@ angular.module('bullsfirst')
                             }
                         }]
                     });
-                });
 
-    
+                });
 
                 /*scope.$watch('highlighted', function() {
                     // Access chart reference
                     var chart = Highcharts.charts ? Highcharts.charts[Highcharts.charts.length-1] : false,
                         i,
                         len = chart ? chart.series[0].data.length : 0,
-                        selected;
-console.log('highlighted ', scope.highlighted);
-console.log(Highcharts.charts);
+                        selected,
+                        currentId;
+
                     if (chart !== false && chart !== undefined) {
                         if (scope.highlighted !== null) {
-console.log(scope.highlighted.id);
-
+                            currentId = scope.highlighted.id;
+                            
                             // Get index of highlighted row
                             for (i=0; i<len; i++) {
-console.log(chart.series[0].data[i].id);                             
-                                if (chart.series[0].data[i].id === scope.highlighted.id) {
+                                if (chart.title.text !== 'All Accounts') {
+                                    currentId += '_' + i;
+                                }
+
+                                if (chart.series[0].data[i].id === currentId) {
                                     selected = i;
                                 }
                             }
-                      
+                  
                             // Set state to hover
                             animateSlice(chart.series[0].data[selected], true);
                         } else {                  
