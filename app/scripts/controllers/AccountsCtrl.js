@@ -158,6 +158,9 @@ angular.module('bullsfirst')
             delete $scope.loggedInUser;
         };
 
+        // Chart loading boolean
+        $scope.renderComplete = false;
+
         // Drill down to account details
         $scope.accountDetails = false;
         $scope.hoveredPosition = null;
@@ -165,7 +168,7 @@ angular.module('bullsfirst')
         $scope.setHoveredPosition = function (position) {
             $scope.hoveredPosition = position;
             $scope.hoveredAccount = {
-                id: position.id
+                id: position.id + '_' + position.index
             };
         };
 

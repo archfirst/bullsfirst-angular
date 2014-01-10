@@ -30,24 +30,28 @@ angular.module('bullsfirst')
             restrict: 'E',
             scope: {
                 type: '@',
-                data: '=',
                 width: '@',
                 height: '@',
+                data: '=',
                 name: '=',
                 subtitle: '=',
+                renderComplete: '=',
+                highlighted: '=',
                 setHoveredAccount: '&',
-                unSetHoveredAccount: '&',
-                highlighted: '='
+                unSetHoveredAccount: '&'
             },
             link: function (scope, $$element) {
+                
                 var animateSlice = function(slice, moveOut) {        
-                    if (moveOut) {
-                        slice.graphic.animate(slice.slicedTranslation);
-                    } else {
-                        slice.graphic.animate({
-                            translateX: 0,
-                            translateY: 0
-                        });
+                    if (slice.graphic !== null) {
+                        if (moveOut) {
+                            slice.graphic.animate(slice.slicedTranslation);
+                        } else {
+                            slice.graphic.animate({
+                                translateX: 0,
+                                translateY: 0
+                            });
+                        }
                     }
                 };
 
@@ -61,168 +65,193 @@ angular.module('bullsfirst')
                     }
                 };
 
-                scope.$watch('data', function () {
-                    // Wait until chart & data rendered before enabling hover
-                    var renderComplete = false;
+                var initHighlightWatch = function(chart) {
+                    var selectedSlice = null;
 
-                    $$element.highcharts({
-                        chart: {
-                            backgroundColor: '#D8D8D8',
-                            borderRadius: 0,
-                            plotBorderWidth: null,
-                            plotShadow: false,
-                            width: scope.width,
-                            height: scope.height
-                        },
-                        colors: [
-                            { radialGradient: {cx: 0, cy: 0, r: 1, gradientUnits: 'objectBoundingBox'}, stops: [[0, '#fde79c'], [1, '#f6bc0c']] },
-                            { radialGradient: {cx: 0, cy: 0, r: 1, gradientUnits: 'objectBoundingBox'}, stops: [[0, '#b9d6f7'], [1, '#284b70']] },
-                            { radialGradient: {cx: 0, cy: 0, r: 1, gradientUnits: 'objectBoundingBox'}, stops: [[0, '#fbb7b5'], [1, '#702828']] },
-                            { radialGradient: {cx: 0, cy: 0, r: 1, gradientUnits: 'objectBoundingBox'}, stops: [[0, '#b8c0ac'], [1, '#5f7143']] },
-                            { radialGradient: {cx: 0, cy: 0, r: 1, gradientUnits: 'objectBoundingBox'}, stops: [[0, '#a9a3bd'], [1, '#382c6c']] },
-                            { radialGradient: {cx: 0, cy: 0, r: 1, gradientUnits: 'objectBoundingBox'}, stops: [[0, '#98c1dc'], [1, '#0271ae']] },
-                            { radialGradient: {cx: 0, cy: 0, r: 1, gradientUnits: 'objectBoundingBox'}, stops: [[0, '#9dc2b3'], [1, '#1d7554']] },
-                            { radialGradient: {cx: 0, cy: 0, r: 1, gradientUnits: 'objectBoundingBox'}, stops: [[0, '#b1a1b1'], [1, '#50224f']] },
-                            { radialGradient: {cx: 0, cy: 0, r: 1, gradientUnits: 'objectBoundingBox'}, stops: [[0, '#c1c0ae'], [1, '#706e41']] },
-                            { radialGradient: {cx: 0, cy: 0, r: 1, gradientUnits: 'objectBoundingBox'}, stops: [[0, '#adbdc0'], [1, '#446a73']] }
-                        ],
-                        title: {
-                            text: scope.name,
-                            align: 'left',
-                            style: {
-                                color: '#000000',
-                                font: '16px Aller',
-                                fontWeight: 'bold'
-                            },
-                            floating: true,
-                            x: 0,
-                            y: 10
-                        },
-                        subtitle: {
-                            text: scope.subtitle,
-                            align: 'left',
-                            verticalAlign: 'bottom',
-                            style: {
-                                font: 'italic 11px Aller',
-                                color: '#3F3F3F'
-                            },
-                            floating: true,
-                            x: 0,
-                            y: 4
-                        },
-                        credits: {
-                            enabled: false
-                        },
-                        tooltip: {
-                            enabled: false
-                        },
-                        plotOptions: {
-                            pie: {
-                                cursor: 'pointer',
-                                dataLabels: {
-                                    enabled: false  // disable labels on each pie
-                                },
-                                shadow: false,
-                                borderColor: 'none',
-                                size: '95%',
-                                point: {
-                                    events: {
-                                        mouseOver: function() {
-                                            scope.setHoveredAccount(this);
-                                        },
-                                        mouseOut: function() {
-                                            scope.unSetHoveredAccount();
-                                        },
-                                        click: function() {
-                                        }
+                    return scope.$watch('highlighted', function() {
+                        var i,
+                            len = chart.series[0].data.length,
+                            currentId;
+
+                        if (scope.renderComplete) {
+                            if (scope.highlighted !== null) {
+
+                                currentId = scope.highlighted.id;
+                                
+                                // Get index of highlighted row
+                                for (i=0; i<len; i++) {
+                                    if (chart.series[0].data[i].id === currentId) {
+                                        selectedSlice = chart.series[0].data[i];
                                     }
                                 }
-                            },
-                            series: {
-                                animation: {
-                                    duration: 700,
-                                    complete: function(){
-                                        renderComplete = true;
-                                    }
-                                }
-                            }
-                        },
-                        series: [{
-                            type: scope.type,
-                            name: scope.name,
-                            data: scope.data,
-                            point: {
-                                events: {
-                                    mouseOver: function(e) {
-                                        var row = document.getElementById(e.currentTarget.id);
 
-                                        if (renderComplete) {
-                                            utilities.appendClass(row, 'selected');
-                                            animateSlice(this, true);
-                                        }
-                                    },
-                                    mouseOut: function(e) {
-                                        var row = document.getElementById(e.currentTarget.id);
+                                animateSlice(selectedSlice, true);
 
-                                        if (renderComplete) {
-                                            utilities.clearClass(row, 'selected');
-                                            animateSlice(this, false);
-                                        }
-                                    },
-                                    click: function(e) {
-                                        var slice = e.currentTarget;
-
-                                        if (slice.series.name === 'All Accounts') {
-                                            scope.chartTitle = slice.name;
-                                            utilities.triggerClick( document.getElementById(slice.id) );
-                                            clearSelectedRow('tr.account-row.selected');
-                                        } else {
-                                            scope.chartTitle = 'All Accounts';
-                                            utilities.triggerClick( document.getElementById('viewAccounts') );
-                                            clearSelectedRow('tr.account-row.selected');
-                                        }
-
-                                    }
-                                }
-                            }
-                        }]
-                    });
-
-                });
-
-                /*scope.$watch('highlighted', function() {
-                    // Access chart reference
-                    var chart = Highcharts.charts ? Highcharts.charts[Highcharts.charts.length-1] : false,
-                        i,
-                        len = chart ? chart.series[0].data.length : 0,
-                        selected,
-                        currentId;
-
-                    if (chart !== false && chart !== undefined) {
-                        if (scope.highlighted !== null) {
-                            currentId = scope.highlighted.id;
-                            
-                            // Get index of highlighted row
-                            for (i=0; i<len; i++) {
-                                if (chart.title.text !== 'All Accounts') {
-                                    currentId += '_' + i;
-                                }
-
-                                if (chart.series[0].data[i].id === currentId) {
-                                    selected = i;
-                                }
-                            }
-                  
-                            // Set state to hover
-                            animateSlice(chart.series[0].data[selected], true);
-                        } else {                  
-                            // Clear hover state
-                            for (i=0; i<len; i++) {
-                                animateSlice(chart.series[0].data[i], false);
+                            } else if (selectedSlice !== null) {
+                                // Clear hover state
+                                animateSlice(selectedSlice, false);
                             }
                         }
+                    });
+                };
+
+                scope.$watch('data', function () {
+                    // Set chart options
+                    var options = {
+                            custom: {
+                                seriesLoaded: 0
+                            },
+                            chart: {
+                                backgroundColor: '#D8D8D8',
+                                borderRadius: 0,
+                                plotBorderWidth: null,
+                                plotShadow: false,
+                                width: scope.width,
+                                height: scope.height,
+                                type: scope.type
+                            },
+                            colors: [
+                                { radialGradient: {cx: 0, cy: 0, r: 1, gradientUnits: 'objectBoundingBox'}, stops: [[0, '#fde79c'], [1, '#f6bc0c']] },
+                                { radialGradient: {cx: 0, cy: 0, r: 1, gradientUnits: 'objectBoundingBox'}, stops: [[0, '#b9d6f7'], [1, '#284b70']] },
+                                { radialGradient: {cx: 0, cy: 0, r: 1, gradientUnits: 'objectBoundingBox'}, stops: [[0, '#fbb7b5'], [1, '#702828']] },
+                                { radialGradient: {cx: 0, cy: 0, r: 1, gradientUnits: 'objectBoundingBox'}, stops: [[0, '#b8c0ac'], [1, '#5f7143']] },
+                                { radialGradient: {cx: 0, cy: 0, r: 1, gradientUnits: 'objectBoundingBox'}, stops: [[0, '#a9a3bd'], [1, '#382c6c']] },
+                                { radialGradient: {cx: 0, cy: 0, r: 1, gradientUnits: 'objectBoundingBox'}, stops: [[0, '#98c1dc'], [1, '#0271ae']] },
+                                { radialGradient: {cx: 0, cy: 0, r: 1, gradientUnits: 'objectBoundingBox'}, stops: [[0, '#9dc2b3'], [1, '#1d7554']] },
+                                { radialGradient: {cx: 0, cy: 0, r: 1, gradientUnits: 'objectBoundingBox'}, stops: [[0, '#b1a1b1'], [1, '#50224f']] },
+                                { radialGradient: {cx: 0, cy: 0, r: 1, gradientUnits: 'objectBoundingBox'}, stops: [[0, '#c1c0ae'], [1, '#706e41']] },
+                                { radialGradient: {cx: 0, cy: 0, r: 1, gradientUnits: 'objectBoundingBox'}, stops: [[0, '#adbdc0'], [1, '#446a73']] }
+                            ],
+                            title: {
+                                text: scope.name,
+                                align: 'left',
+                                style: {
+                                    color: '#000000',
+                                    font: '16px Aller',
+                                    fontWeight: 'bold'
+                                },
+                                floating: true,
+                                x: 0,
+                                y: 10
+                            },
+                            subtitle: {
+                                text: scope.subtitle,
+                                align: 'left',
+                                verticalAlign: 'bottom',
+                                style: {
+                                    font: 'italic 11px Aller',
+                                    color: '#3F3F3F'
+                                },
+                                floating: true,
+                                x: 0,
+                                y: 4
+                            },
+                            credits: {
+                                enabled: false
+                            },
+                            tooltip: {
+                                enabled: false
+                            },
+                            plotOptions: {
+                                pie: {
+                                    cursor: 'pointer',
+                                    dataLabels: {
+                                        enabled: false  // disable labels on each pie
+                                    },
+                                    shadow: false,
+                                    borderColor: 'none',
+                                    size: '95%',
+                                    point: {
+                                        events: {
+                                            mouseOver: function(e) {
+                                                var row = document.getElementById(e.currentTarget.id);
+
+                                                if (scope.renderComplete) {
+                                                    utilities.appendClass(row, 'selected');
+                                                    animateSlice(this, true);
+                                                }
+                                                scope.setHoveredAccount(this);
+                                            },
+                                            mouseOut: function(e) {
+                                                var row = document.getElementById(e.currentTarget.id);
+
+                                                if (scope.renderComplete) {
+                                                    utilities.clearClass(row, 'selected');
+                                                    animateSlice(this, false);
+                                                }
+                                                scope.unSetHoveredAccount();
+                                            },
+                                            click: function(e) {
+                                                var slice = e.currentTarget;
+
+                                                if (slice.series.name === 'All Accounts') {
+                                                    scope.chartTitle = slice.name;
+                                                    utilities.triggerClick( document.getElementById(slice.id) );
+                                                    clearSelectedRow('tr.account-row.selected');
+                                                } else {
+                                                    scope.chartTitle = 'All Accounts';
+                                                    utilities.triggerClick( document.getElementById('viewAccounts') );
+                                                    clearSelectedRow('tr.account-row.selected');
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                series: {
+                                    animation: {
+                                        duration: 700,
+                                        complete: function(){
+                                            options.custom.seriesLoaded++;
+
+                                            if (options.custom.seriesLoaded === scope.data.length) {
+                                                scope.renderComplete = true;
+                                                options.custom.seriesLoaded = 0;
+                                            }
+
+                                        }
+                                    }
+                                }
+                            },
+                            series: [{
+                                type: scope.type,
+                                name: scope.name,
+                                data: scope.data
+                            }]
+                        },
+                        pieChart = $$element.highcharts() || null,
+                        noData = scope.data === undefined ? true : false,
+                        unbindWatcher = null;
+                    
+                    // If no data don't draw a blank chart
+                    if (noData) {
+                        return;
                     }
-                });*/
+
+                    if (pieChart !== null) {
+                        // Reset loading boolean
+                        scope.renderComplete = false;
+                        
+                        // Update data
+                        pieChart.series[0].remove(false);   
+                        pieChart.addSeries(options.series[0]);
+
+                        // Set title and subtitle
+                        pieChart.setTitle({
+                                // title
+                                text: scope.name
+                            }, {
+                                // subtitle
+                                text: scope.subtitle
+                            });
+
+                    } else {
+                        // Create chart
+                        $$element.highcharts(options);
+
+                        // Bind watcher
+                        unbindWatcher = initHighlightWatch($$element.highcharts());
+                    }
+                });
             }
         };
     });

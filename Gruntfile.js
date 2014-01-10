@@ -181,25 +181,6 @@ module.exports = function (grunt) {
                     debugInfo: false
                 }
             }
-            // options: {
-            //     sassDir: '<%= yeoman.app %>/styles/sass',
-            //     cssDir: '.tmp/styles',
-            //     generatedImagesDir: '.tmp/images/generated',
-            //     imagesDir: '<%= yeoman.app %>/images',
-            //     javascriptsDir: '<%= yeoman.app %>/scripts',
-            //     fontsDir: '<%= yeoman.app %>/font',
-            //     importPath: '<%= yeoman.app %>/bower_components',
-            //     httpImagesPath: '/images',
-            //     httpGeneratedImagesPath: '/images/generated',
-            //     httpFontsPath: '/font',
-            //     relativeAssets: false
-            // },
-            // dist: {},
-            // server: {
-            //     options: {
-            //         debugInfo: true
-            //     }
-            // }
         },
         // not used since Uglify task does concat,
         // but still available if needed

@@ -181,7 +181,7 @@
                     .market-value {
                         @include position-table-account-name();
                     }
-                    
+
                     .name {
                         padding-left: 10px;
                         @include position-table-account-name();
