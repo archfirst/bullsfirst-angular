@@ -1,0 +1,38 @@
+<table  class="account-table bf-table account-positions">
+    <thead>
+        <tr>
+            <th class="left-column"></th>
+            <th class="name">NAME</th>
+            <th class="symbol">SYMBOL</th>
+            <th class="market-value">MARKET VALUE</th>
+            <th class="percentage">%</th>
+            <th class="legend-cell">LEGEND</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="left-column">
+                <i id="viewAccounts" class="icon-circle-arrow-left" ng-click="hidePositions()"></i>
+            </td>
+            <td class="name">{{selectedAccount.name}}</td>
+            <td class="symbol"></td>
+            <td class="market-value">{{selectedAccount.marketValue.amount | currency}}</td>
+            <td class="percentage"></td>
+            <td class="legend-cell"></td>
+        </tr>
+        <tr ng-repeat="position in selectedAccount.positions"
+            ng-class="{selected : hoveredPosition.index === $index }"
+            ng-mouseover="setHoveredPosition({index: $index, id: selectedAccount.id})"
+            ng-mouseout="unSetHoveredPosition()"
+            ng-click="hidePositions()"
+            class="account-row {{selectedAccount.id}}_{{$index}}"
+            id="{{selectedAccount.id}}_{{$index}}">
+            <td class="left-column"></td>
+            <td class="name">{{position.instrumentName}}</td>
+            <td class="symbol">{{position.instrumentSymbol}}</td>
+            <td class="market-value">{{position.marketValue.amount | currency}}</td>
+            <td class="percentage">{{position.marketValue.amount | positionPercentage: selectedAccount.marketValue.amount}}</td>
+            <td class="legend-cell"><div class="legend legend-{{ $index | legendIndex }}-gradient"></div></td>
+        </tr>
+    </tbody>
+</table>

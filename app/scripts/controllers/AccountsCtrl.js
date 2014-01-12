@@ -112,6 +112,11 @@ angular.module('bullsfirst')
                 cashValue: totalCashValue
             };
 
+            // Init chart titles
+            $scope.chartTitle = 'All Accounts';
+            $scope.chartSubtitle = 'Click on an account to view positions';
+
+            $scope.allAccountData = data;
             $scope.chartData = data;
 
         });
@@ -151,6 +156,62 @@ angular.module('bullsfirst')
 
         $scope.signOut = function () {
             delete $scope.loggedInUser;
+        };
+
+        // Chart loading boolean
+        $scope.renderComplete = false;
+
+        // Drill down to account details
+        $scope.accountDetails = false;
+        $scope.hoveredPosition = null;
+
+        $scope.setHoveredPosition = function (position) {
+            $scope.hoveredPosition = position;
+            $scope.hoveredAccount = {
+                id: position.id + '_' + position.index
+            };
+        };
+
+        $scope.unSetHoveredPosition = function () {
+            $scope.hoveredPosition = null;
+            $scope.hoveredAccount = null;
+        };
+        
+        $scope.showPositions = function(account) {   
+            $scope.selectedAccount = account;
+            $scope.accountDetails = true;
+            $scope.unSetHoveredAccount();
+
+            $scope.chartData = $scope.setChartData(account);
+            $scope.chartTitle = account.name;
+            $scope.chartSubtitle = 'Click on a position to view accounts';
+        };
+
+        $scope.hidePositions = function() {       
+            $scope.selectedAccount = {};
+            $scope.accountDetails = false;
+            $scope.unSetHoveredAccount();
+
+            $scope.chartData = $scope.allAccountData;
+            $scope.chartTitle = 'All Accounts';
+            $scope.chartSubtitle = 'Click on an account to view positions';
+        };
+
+        $scope.setChartData = function(account) {
+            var data = account.positions,
+                chartData = [],
+                i,
+                len = data.length;
+
+            for (i=0; i<len; i++) {
+                chartData.push({
+                    name: data[i].instrumentName,
+                    y: data[i].marketValue.amount,
+                    id: account.id + '_' + i
+                });
+            }
+
+            return chartData;           
         };
 
     });
