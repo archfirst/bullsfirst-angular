@@ -177,7 +177,7 @@ angular.module('bullsfirst')
             $scope.hoveredAccount = null;
         };
         
-        $scope.showPositions = function(account) {   
+        $scope.showPositions = function(account) {
             $scope.selectedAccount = account;
             $scope.accountDetails = true;
             $scope.unSetHoveredAccount();
