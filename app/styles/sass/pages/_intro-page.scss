@@ -1,0 +1,72 @@
+/* -----------------------------------------------------------------------------
+ * intro-page (includes home-page and open-account-page)
+ * -------------------------------------------------------------------------- */
+.intro-page {
+    background: $brand-color url(#{$baseImagePath}horns.png) no-repeat right bottom;
+    position: relative;
+    margin: 10px 10px 0 10px;
+
+    header {
+        left: 76px;
+        position: absolute;
+        top: 15px;
+
+        .logo {
+            background-image: url(#{$baseImagePath}logo.png);
+            height: 93px;
+            width: 194px;
+        }
+
+        h2 {
+            font-style: italic;
+            margin: 8px 5px 0 0;
+            text-align: right;
+        }
+        h1 {
+            background-image: url(#{$baseImagePath}logo.png);
+            height: 93px;
+            margin: 0;
+            width: 194px;
+        }
+
+    }
+
+    /* Override selection color for gold background */
+    ::-moz-selection {
+        background: $text-selection-alternate-color;
+    }
+
+    ::selection {
+        background: $text-selection-alternate-color;
+    }
+
+}
+
+/* Place various sections on the pages */
+#home-page {
+    .login-section {
+        float: left;
+        margin: 181px 0 0 78px;
+    }
+
+    .intro-section {
+        float: right;
+        /* bottom margin adjusted to set page height to 600px */
+        margin: 111px 83px 41px 0;
+        width: 380px;
+    }
+}
+
+#open-account-page {
+    .intro-section {
+        float: left;
+        /* bottom margin adjusted to set page height to 600px */
+        margin: 180px 0 116px 78px;
+        width: 380px;
+    }
+
+    .open-account-section {
+        float: right;
+        margin: 10px 120px 0 0;
+    }
+}

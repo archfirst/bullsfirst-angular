@@ -23,29 +23,40 @@
 <section class="open-account-section">
     <h1>Open an Account</h1>
 
-    <form id="open-account-form" name="openAccountForm" class="js-openaccount-form openaccount-form" novalidate>
+    <form id="open-account-form" name="openAccountForm" class="js-openaccount-form open-account-form" novalidate>
         <p class="mandatory-text">All the field below are required.</p>
 
-        <label for="firstName">First Name</label>
-        <input type="text" id="firstName" name="firstName" class="js-firstName"
-               ng-model="newUser.firstName" required error-bubble/>
+        <div class="field">
+            <label for="firstName">First Name</label>
+            <input type="text" id="firstName" name="firstName" class="js-firstName"
+                   ng-model="newUser.firstName" required error-bubble/>
+        </div>
 
-        <label for="lastName">Last Name</label>
-        <input type="text" id="lastName" name="lastName" class="js-lastName"
-               ng-model="newUser.lastName" required error-bubble/>
+        <div class="field">
+            <label for="lastName">Last Name</label>
+            <input type="text" id="lastName" name="lastName" class="js-lastName"
+                   ng-model="newUser.lastName" required error-bubble/>
+        </div>
 
-        <label for="username">Username</label>
-        <input type="text" id="username" name="username" class="js-username"
-               ng-model="newUser.username" required error-bubble>
+        <div class="field">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" class="js-username"
+                   ng-model="newUser.username" required error-bubble>
+        </div>
 
-        <label for="password">Password</label>
-        <input type="password" id="password" name="password" class="js-password"
-               ng-model="newUser.password" required error-bubble>
+        <div class="field">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" class="js-password"
+                   ng-model="newUser.password" required error-bubble>
+        </div>
 
-        <label for="confirm-password">Confirm</label>
-        <input type="password" id="confirm-password" name="confirm-password" class="js-confirm-password"
-               ng-model="confirmPassword" ng-keydown="processKeyPressAction($event, 'openaccount')"
-               match-with="password" required error-bubble>
+        <div class="field">
+            <label for="confirm-password">Confirm</label>
+            <input type="password" id="confirm-password" name="confirm-password" class="js-confirm-password"
+                   ng-model="confirmPassword" ng-keydown="processKeyPressAction($event, 'openaccount')"
+                   match-with="password" required error-bubble>
+        </div>
+
 
         <a id="open-account-button" class="button large open-account popsicle-icon" href=""
            ng-click="openAccountForm.$valid && openAccount()">

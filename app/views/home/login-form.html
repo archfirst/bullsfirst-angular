@@ -25,14 +25,19 @@
     <h1>Log In</h1>
 
     <form name="loginForm" class="js-loginForm login-form" novalidate>
-        <label for="username">Username</label>
-        <input type="text" id="username" name="username" class="js-username"
-               ng-model="user.username" required error-bubble>
 
-        <label for="password">Password</label>
-        <input type="password" id="password" name="password" class="js-password"
-               ng-model="user.password" ng-keydown="loginForm.$valid && processKeyPressAction($event, 'login')"
-               required error-bubble>
+        <div class="field">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" class="js-username"
+                   ng-model="user.username" required error-bubble>
+        </div>
+
+        <div class="field">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" class="js-password"
+                   ng-model="user.password" ng-keydown="loginForm.$valid && processKeyPressAction($event, 'login')"
+                   required error-bubble>
+        </div>
 
         <a class="login-button button large person-icon" href=""
            ng-click="loginForm.$valid && login()">

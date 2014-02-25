@@ -1,0 +1,36 @@
+/* -----------------------------------------------------------------------------
+ * tables
+ * -------------------------------------------------------------------------- */
+
+.bf-table {
+    th, td {
+        padding: 0;
+    }
+
+    thead th {
+        background-color: $table-header-background-color;
+        color: $table-header-text-color;
+        font: bold normal 11px/22px Aller;
+        height: 22px;
+        text-transform: uppercase;
+    }
+
+    tbody td, tbody td a {
+        font: normal normal 12px/25px Aller;
+        height: 25px;
+    }
+
+    tbody {
+        td {
+            border-bottom: 1px solid $table-row-separator-color;
+        }
+
+        tr.selected {
+            background-color: $table-row-selected-color;
+        }
+    }
+
+    .negative {
+        color: $button-large-color;
+    }
+}

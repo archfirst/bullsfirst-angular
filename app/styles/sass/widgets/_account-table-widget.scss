@@ -1,0 +1,243 @@
+/* -----------------------------------------------------------------------------
+ * account-table-widget
+ * -------------------------------------------------------------------------- */
+
+@mixin position-table-account-name() {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.account-table-transitioning-view {
+    float: left;
+    position: relative;
+}
+
+/* -----------------------------------------------------------------------------
+ * Account Table
+ *
+ * Column       Padding + Width = Total
+ * left-column     0    +   30  =   30
+ * name           20    +  180  =  200
+ * market-value    0    +  140  =  140
+ * cash            0    +  140  =  140
+ * legend-cell    20    +   60  =   80
+ * right-column    0    +   20  =   20
+ * -----------------------------------
+ * Total                           610
+ * -------------------------------------------------------------------------- */
+.account-table {
+    table-layout: fixed;
+    width: 610px;
+    margin-left: 25px;
+
+    .market-value {
+        text-align: right;
+        width: 140px;
+    }
+
+    .cash {
+        text-align: right;
+        width: 140px;
+    }
+
+    .symbol {
+        text-align: left;
+        width: 50px;
+    }
+
+    .percentage {
+        text-align: right;
+        width: 80px;
+    }
+
+    .legend-cell {
+        padding-left: 20px;
+        text-align: center;
+        width: 60px;
+    }
+
+    .left-column {
+        background: $white;
+        border: none;
+        color: $icon-color;
+        font-size: 19px;
+        text-align: center;
+        width: 30px;
+    }
+
+    .right-column {
+        background: none;
+        border: none;
+        width: 20px;
+    }
+
+    .name {
+        padding-left: 20px;
+        text-align: left;
+        width: 180px;
+
+        .edit {
+            input {
+                height: 17px;
+                margin: 0;
+                width: 140px;
+            }
+
+            i {
+                background: none;
+                border: none;
+                color: $icon-color;
+                font-size: 19px;
+                text-align: center;
+                vertical-align: bottom;
+                width: 30px;
+            }
+        }
+
+    }
+
+    tbody {
+        tr {
+            cursor: pointer;
+            i.icon-edit {
+                display: none;
+            }
+
+            .hovered {
+                i.icon-edit {
+                    display: block;
+                }
+                td {
+                    background-color: #d8d8d8;
+                    &.left-column {
+                        background-color: transparent;
+
+                    }
+                }
+            }
+
+            /* Last row - dark grey border bottom */
+            tr:last-child {
+                td {
+                    border-bottom: 3px solid $table-totals-separator-color;
+                }
+                /* Last row - no border bottom for left and right columns */
+                td.left-column, td.right-column {
+                    border: none;
+                }
+
+            }
+
+            /* Disable highlighting of left and right columns on selection */
+            tr.selected {
+                .left-column, .right-column {
+                    background-color: $white;
+                }
+            }
+
+        }
+        td.name {
+            /* Enable viewing of name in view mode */
+            .view {
+                display: block;
+            }
+            .edit {
+                display: none;
+            }
+        }
+        td.name.editing {
+            /* Enable editing of name in edit mode */
+            .view {
+                display: none;
+            }
+            .edit {
+                display: block;
+            }
+        }
+    }
+
+    tfoot {
+        /* Footer text is bold */
+        tr:last-child td {
+            font: bold normal 12px/25px Aller;
+        }
+    }
+
+    &.account-positions {
+        tbody {
+            tr {
+                .name {
+                    padding-left: 30px;
+                }
+
+                &:first-child {
+                    background: $table-row-selected-color;
+                    font-weight: bold;
+
+                    .left-column {
+                        background: $white;
+                    }
+
+                    .market-value {
+                        @include position-table-account-name();
+                    }
+
+                    .name {
+                        padding-left: 10px;
+                        @include position-table-account-name();
+                    }
+
+                    .legend-cell {
+                        &:after {
+                            content: "";
+                            width: 20px;
+                            height: 27px;
+                            left: 652px;
+                            top: 85px;
+                            position: absolute;
+                            background: $table-row-selected-color;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+/* -----------------------------------------------------------------------------
+ * Account Detail Table
+ *
+ * Column       Padding + Width = Total
+ * ????           ??    +   ??  =   ??
+ * -----------------------------------
+ * Total                           610
+ * -------------------------------------------------------------------------- */
+.account-detail-table {
+    margin-left: 30px;
+    table-layout: fixed;
+    width: 610px;
+}
+
+.accounts-tab {
+    h1 {
+        font: normal normal 18px/18px Aller;
+        left: 60px;
+        margin: 0px;
+        position: relative;
+        top: 30px;
+    }
+
+    .button-bar {
+        height: 25px;
+        width: 645px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+
+        a.button {
+            display: block;
+            float: right;
+        }
+    }
+
+}

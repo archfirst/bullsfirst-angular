@@ -22,7 +22,7 @@
 *-->
 <section class="accounts-tab tab clearfix">
     <div class="accounts-left-section accounts-subsection">
-        <h1>Accounts</h1>
+        <h1>Accounts <span ng-show="accountDetails == true"> > {{selectedAccount.name}}<span></h1>
         <div class="button-bar">
             <a class="js-addAccountButton button medium" href="#">
                 <img src="images/plus-icon.png" alt="Add Account">
@@ -33,54 +33,22 @@
                 Refresh
             </a>
         </div>
-        <table class="account-table bf-table">
-            <thead>
-                <tr>
-                    <th class="left-column"></th>
-                    <th class="name">NAME</th>
-                    <th class="market-value">MARKET VALUE</th>
-                    <th class="cash">CASH</th>
-                    <th class="legend-cell">LEGEND</th>
-                </tr>
-            </thead>
 
-            <tbody>
-                <tr ng-repeat="account in brokerageAccounts"
-                    ng-class="{hovered : hoveredAccount.id === account.id}"
-                    ng-mouseover="setHoveredAccount(account)"
-                    ng-mouseout="unSetHoveredAccount()">
-                    <td class="left-column">
-                        <i class="icon-edit" ng-click="showEditor = true"></i>
-                    </td>
-                    <td class="name">
-                        <div ng-hide="showEditor">{{account.name}}</div>
-                        <div ng-show="showEditor">
-                            <input class="nameField" type="text" ng-model="account.name">
-                            <i class="icon-save" ng-click="changeAccountName(account.id, account.name); showEditor=false;"></i>
-                        </div>
-                    </td>
-                    <td class="market-value">{{account.marketValue.amount | currency}}</td>
-                    <td class="cash">{{account.cashPosition.amount | currency}}</td>
-                    <td class="legend-cell"></td>
-                </tr>
-            </tbody>
-            <tfoot>
-                <tr>
-                    <td class="left-column"></td>
-                    <td class="name"></td>
-                    <td class="market-value">{{totals.marketValue | currency}}</td>
-                    <td class="cash">{{totals.cashValue | currency}}</td>
-                    <td class="legend-cell"></td>
-                </tr>
-            </tfoot>
-        </table>
+        <div ng-include="'views/accounts/accounts-table-all.html'" ng-show="accountDetails == false"></div>
+
+        <div ng-include="'views/accounts/accounts-table-detail.html'" ng-show="accountDetails == true"></div>
+
+        
     </div>
     <div class="accounts-right-section accounts-subsection">
         <div class="accounts-chart">
-            <highcharts title="All Accounts" type="pie" data="chartData" width="240" height="300"
-                    subtitle="Click on an account to view positions"
-                    setHoveredAccount="setHoveredAccount"
-                    unSetHoveredAccount="unSetHoveredAccount">
+            <highcharts type="pie" data="chartData" width="240" height="300"
+                name="chartTitle"
+                subtitle="chartSubtitle"
+                highlighted="hoveredAccount"
+                render-complete="renderComplete"
+                setHoveredAccount="setHoveredAccount"
+                unSetHoveredAccount="unSetHoveredAccount">
             </highcharts>
         </div>
     </div>

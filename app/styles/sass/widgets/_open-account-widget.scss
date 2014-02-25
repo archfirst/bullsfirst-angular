@@ -1,0 +1,34 @@
+/* -----------------------------------------------------------------------------
+ * open-account-widget
+ * -------------------------------------------------------------------------- */
+.open-account-section h1 {
+    font: 18px Aller;
+    margin-bottom: 8px;
+}
+
+.open-account-form {
+    background-color: $form-background-color;
+    height: 440px;
+    padding: 10px 15px 0 15px;
+    width: 300px;
+
+    .mandatory-text {
+        margin:0 0 10px 0;
+        color: $label-text-color;
+    }
+}
+
+#open-account-button {
+  float: left;
+  margin: 10px 0 0 0;
+}
+
+#oa-cancel-button {
+    float: left;
+    margin: 60px 0 0 20px;
+    background-color: #c03b00;
+}
+
+#oa-cancel-button:hover {
+    background-color: $button-hover-color;
+}

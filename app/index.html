@@ -43,7 +43,7 @@
     <!--<link rel="stylesheet" href="bower_components/ui-bootstrap/bootstrap.css">-->
 
     <!-- build:css(.tmp) styles/main.css -->
-    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/index.css">
     <!-- endbuild -->
 </head>
 <body ng-app="bullsfirst">
@@ -58,11 +58,11 @@
 <![endif]-->
 
 <!-- Add your site or application content here -->
-<div class="container" ng-view>
+<div class="container clearfix" id="container" ng-view>
 
 </div>
 <footer>This is a demo application. All data displayed is fictitious.
-    Copyright © 2010-2013 <a href="http://archfirst.org">Archfirst.</a>
+    Copyright © 2010-2014 <a href="http://archfirst.org">Archfirst.</a>
 </footer>
 
 <script src="bower_components/jquery/jquery.min.js"></script>
@@ -100,6 +100,8 @@
 <script src="scripts/utilities/utilities.js"></script>
 <script src="scripts/utilities/HttpInterceptor.js"></script>
 <script src="scripts/constants/constants.js"></script>
+<script src="scripts/filters/legendIndex.js"></script>
+<script src="scripts/filters/positionPercentage.js"></script>
 <script src="scripts/directives/LowercaseModelDir.js"></script>
 <script src="scripts/services/UsersSvc.js"></script>
 <script src="scripts/services/BrokerageAccountsSvc.js"></script>

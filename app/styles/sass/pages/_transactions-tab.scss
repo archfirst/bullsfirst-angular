@@ -1,0 +1,50 @@
+/* -----------------------------------------------------------------------------
+ * transactions-tab
+ * -------------------------------------------------------------------------- */
+.transaction-filter {
+    background: $filter-background;
+    margin: 21px auto 12px auto;
+    padding: 0 20px;
+    width: 820px;
+}
+
+.transactions-table {
+    margin: auto;
+    width: 820px;
+
+    .center {
+        text-align: center;
+    }
+
+    .number {
+        text-align: right;
+    }
+
+    .creation-date-head {
+        width: 185px;
+    }
+
+    .account-head {
+        width: 135px;
+        text-align: left;
+    }
+
+    .type-head {
+        width: 80px;
+    }
+
+    .description-head {
+        width: 305px;
+        text-align: left;
+    }
+
+    .amount-head {
+        width: 95px;
+        padding-right: 20px;
+        text-align: right;
+    }
+
+    tr td:last-child {
+        padding-right: 20px;
+    }
+}
