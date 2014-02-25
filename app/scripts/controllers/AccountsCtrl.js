@@ -62,6 +62,7 @@ angular.module('bullsfirst')
             $scope.hoveredAccount = null;
         };
 
+
         //TODO: Do this in positions controller
         $scope.brokerageAccounts = BrokerageAccountsSvc.query(function (data) {
             var totalMarketValue = 0,

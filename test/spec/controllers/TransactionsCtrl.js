@@ -20,56 +20,50 @@
  * @authors
  * Solh Zendeh
  */
-
-
-describe('Controller: TransactionsCtrl', function () {
+describe('Controller: TransactionsCtrl', function() {
     'use strict';
 
     var scope,
         TransactionsCtrl,
+        BrokerageAccountsSvc,
         TransactionsSvc;
 
     beforeEach(module('bullsfirst'));
 
-    beforeEach(inject(function ($controller, $rootScope, _TransactionsSvc_) {
+    beforeEach(inject(function($controller, $rootScope, _BrokerageAccountsSvc_, _TransactionsSvc_) {
         scope = $rootScope.$new();
+        BrokerageAccountsSvc = _BrokerageAccountsSvc_;
         TransactionsSvc = _TransactionsSvc_;
 
         TransactionsCtrl = $controller('TransactionsCtrl', {
             $scope: scope,
+            BrokerageAccountsSvc: BrokerageAccountsSvc,
             TransactionsSvc: TransactionsSvc
         });
     }));
 
-    describe('Controller: TransactionsCtrl #resetFilters', function () {
+    describe('Controller: TransactionsCtrl #resetFilters', function() {
         it("should empty transactions array when triggered", function() {
             scope.transactions = ['test'];
-            scope.$broadcast('FilterCtrl:resetFilters');
+            scope.resetFilters();
             expect(scope.transactions).toEqual([]);
         });
     });
 
-    describe('Controller: TransactionsCtrl #applyFilters', function () {
-        it("should call applyFilters function with filters object when triggered", function() {
-            scope.filters = {
-                accountChoice: '',
-                fromDate: new Date(),
-                toDate: new Date()
-            };
-            spyOn(scope, "applyFilters");
-            scope.$broadcast('FilterCtrl:applyFilters');
-            expect(scope.applyFilters).toHaveBeenCalledWith({
-                fromDate: scope.filters.fromDate.getFullYear() +'-'+ (scope.filters.fromDate.getMonth()+1) +'-'+ scope.filters.fromDate.getDate(),
-                toDate: scope.filters.toDate.getFullYear() +'-'+ (scope.filters.toDate.getMonth()+1) +'-'+ scope.filters.toDate.getDate()
-            });
-        });
+    describe('Controller: TransactionsCtrl #applyFilters', function() {
         it("should fill transactions array with data when triggered", function() {
+            var fromDate = new Date();
+            var toDate = new Date();
+
             scope.transactions = [];
             scope.filters = {
                 accountChoice: '',
-                fromDate: '2013-12-01',
-                toDate: '2013-12-01'
+                fromDate: fromDate,
+                toDate: toDate
             };
+
+            var testFromDate    = fromDate.getFullYear() +'-'+ (fromDate.getMonth()+1) +'-'+ fromDate.getDate();
+            var testToDate      = toDate.getFullYear() +'-'+ (toDate.getMonth()+1) +'-'+ toDate.getDate();
 
             var httpBackend, authorizationHeader, $rootScope;
 
@@ -84,11 +78,17 @@ describe('Controller: TransactionsCtrl', function () {
                 };
                 httpBackend = $httpBackend;
             })
-            httpBackend.expectGET("/bfoms-javaee/rest/secure/transactions?accountChoice=&fromDate=2013-12-01&toDate=2013-12-01").respond([{test:'testing'}]);
-            scope.applyFilters(scope.filters);
-            //httpBackend.expectGET(".*/transactions.*");
+            
+            // controller automatically gets brokerage accounts, so have to flush those first...
+            httpBackend.expectGET("/bfoms-javaee/rest/secure/brokerage_accounts").respond([{test:'testing'}]);
             httpBackend.flush();
-            //expect(scope.transactions).toEqual([]);
+
+            // now we can test what gets sent...
+            scope.applyFilters();
+            
+            httpBackend.expectGET("/bfoms-javaee/rest/secure/transactions?fromDate="+ testFromDate +"&toDate="+ testToDate).respond([{test:'testing'}]);
+            httpBackend.flush();
+
             httpBackend.verifyNoOutstandingExpectation();
             httpBackend.verifyNoOutstandingRequest();
         });

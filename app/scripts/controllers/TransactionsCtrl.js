@@ -18,41 +18,53 @@
  * Transactions controller
  *
  * @authors
+ * Vikas Goyal
  * Solh Zendeh
  */
 angular.module('bullsfirst')
-    .controller('TransactionsCtrl', function ($scope, TransactionsSvc) {
+    .controller('TransactionsCtrl', function ($scope, BrokerageAccountsSvc, TransactionsSvc) {
         'use strict';
 
-        // EVENT HANDLERS
-        $scope.$on('FilterCtrl:resetFilters', function() {
-            $scope.resetFilters();
-        });
-        $scope.$on('FilterCtrl:applyFilters', function(event) {
-            var fromDate        = event.targetScope.filters.fromDate;
-            var toDate          = event.targetScope.filters.toDate;
-            var accountChoice   = event.targetScope.filters.accountChoice;
+        // HANDLER FUNCTIONS
+        $scope.resetFilters = function() {
+            $scope.filters.accountChoice    = '';
+            $scope.filters.fromDate         = new Date();
+            $scope.filters.toDate           = new Date();
 
-            var filters = {
+            $scope.transactions             = [];
+        };
+        $scope.applyFilters = function() {
+            if (! $scope.filters.fromDate) {
+                $scope.filters.fromDate = new Date();
+            }
+            if (! $scope.filters.toDate) {
+                $scope.filters.toDate = new Date();
+            }
+
+            var fromDate        = $scope.filters.fromDate;
+            var toDate          = $scope.filters.toDate;
+            var accountChoice   = $scope.filters.accountChoice;
+
+            var queryFilters = {
                 fromDate:   fromDate.getFullYear() +'-'+ (fromDate.getMonth()+1) +'-'+ fromDate.getDate(),
                 toDate:     toDate.getFullYear() +'-'+ (toDate.getMonth()+1) +'-'+ toDate.getDate()
             };
 
             if (accountChoice) {
-                filters.accountId = accountChoice.id;
+                queryFilters.accountId = accountChoice;
             }
 
-            $scope.applyFilters(filters);
-        });
-
-        // HANDLER FUNCTIONS
-        $scope.resetFilters = function() {
-            $scope.transactions = [];
-        };
-        $scope.applyFilters = function(filters) {
-            $scope.transactions = TransactionsSvc.query(filters);
+            $scope.transactions = TransactionsSvc.query(queryFilters);
         };
 
         // INIT
-        $scope.resetFilters();
+        $scope.filters = {
+            accountChoice:  '',
+            fromDate:       new Date(),
+            toDate:         new Date(),
+            maxDate:        new Date(),
+            select2Options: {minimumResultsForSearch:-1}
+        };
+        $scope.brokerageAccounts = BrokerageAccountsSvc.query();
+        $scope.transactions = [];
     });
