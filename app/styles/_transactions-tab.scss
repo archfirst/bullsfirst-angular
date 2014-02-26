@@ -1,0 +1,90 @@
+.account div.select2-container {
+  width: 100%;
+}
+
+.transactions-table {
+  margin: 0 40px 28px 80px;
+  width: 820px; 
+
+  .center {
+    text-align: center;
+  }
+
+  .number {
+    text-align: right;
+  }
+
+  .creation-date {
+    width: 185px;
+  }
+
+  .account {
+    width: 135px;
+    text-align: left;
+  }
+
+  .type {
+    width: 80px;
+  }
+
+  .description {
+    width: 305px;
+    text-align: left;
+  }
+
+  .amount {
+    width: 95px;
+    padding-right: 20px;
+    text-align: right;
+  }
+
+  tr td:last-child {
+    padding-right: 20px;
+  }
+}
+
+.transactions-table:after {
+  content: "";
+  width: 820px;
+  height: 1px;
+  background: #f89f1b;
+  display: block;
+  position: absolute;
+  bottom: 14px;
+  left: 80px;
+}
+
+.transactions-tab {
+   h1 {
+    font: normal normal 18px/18px Aller;
+    left: 60px;
+    margin: 0px;
+    position: relative;
+    top: 30px;
+  }
+
+  .button-bar {
+    height: 25px;
+    width: 645px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    
+    a.button {
+      display: block;
+      float: right;
+    }
+  }
+}
+
+.transactions-table-clipped-wrapper {
+  float: left;
+  overflow: hidden;
+  width: 640px;
+}
+
+.transactions-table-unclipped-wrapper {
+  float: left;
+  margin: 56px 0 0 30px;
+  position: relative;
+  width: 1250px;
+}

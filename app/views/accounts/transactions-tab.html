@@ -19,7 +19,23 @@
 *
 * @authors
 * Vikas Goyal
+* Solh Zendeh
 *-->
-<section class="transactions-tab tab clearfix">
-
+<section class="transactions-tab tab clearfix" ng-controller="TransactionsCtrl">
+    <div bf-transactions-filter></div>
+    <div>
+        <!-- I would make this table its own view if there were any interactions -->
+        <table class="transactions-table bf-table zebra">
+            <thead>
+                <tr>
+                    <th class="creation-date">CREATION DATE &amp; TIME</th>
+                    <th class="account">ACCOUNT</th>
+                    <th class="type">TYPE</th>
+                    <th class="description">DESCRIPTION</th>
+                    <th class="amount">AMOUNT</th>
+                </tr>
+            </thead>
+            <tbody bf-transactions-list></tbody>
+        </table>
+    </div>
 </section>
