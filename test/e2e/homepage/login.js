@@ -3,15 +3,20 @@
  */
 
 describe('Login', function () {
+    var ptor;
 
     beforeEach(function () {
-        browser().navigateTo('/bullsfirst-angular/app/index.html#/');
+        ptor = protractor.getInstance();
+        ptor.get('http://localhost:63342/bullsfirst-angular/app/index.html')
+
     });
 
     it('should request', function () {
-        input('user.username').enter('vg1');
-        input('user.password').enter('vg1');
-        element('a.login-button').click();
-        expect(1).toEqual(1);
+        ptor = protractor.getInstance();
+        ptor.findElements(protractor.By.input('user.username')).sendKeys('vg1');
+        ptor.findElements(protractor.By.input('user.password')).sendKeys('vg1');
+        ptor.findElements(protractor.By.css('a.login-button')).click();
+
+        expect(ptor.getCurrentUrl()).toContain('accounts');
     });
 });
