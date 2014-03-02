@@ -38,7 +38,7 @@
 <nav class="tabbar">
     <ul>
         <li ng-repeat="tab in tabs">
-            <a ng-click="selectTab(tab)" ng-class="{'selected': tab.path === $parent.selectedTab.path}" href="#/{{tab.path}}">{{tab.label}}</a>
+            <a ng-click="selectTab(tab)" ng-class="{'selected': tab.path === $location.path()}" href="#{{tab.path}}">{{tab.label}}</a>
         </li>
     </ul>
 </nav>

@@ -63,7 +63,7 @@ module.exports = function (grunt) {
             options: {
                 port: 9000,
                 // Change this to '0.0.0.0' to access the server from outside.
-                hostname: 'localhost',
+                hostname: '0.0.0.0',
                 livereload: 35729
             },
             livereload: {
@@ -145,23 +145,40 @@ module.exports = function (grunt) {
             }
         },
         compass: {
-            options: {
-                sassDir: '<%= yeoman.app %>/styles/sass',
-                cssDir: '.tmp/styles',
-                generatedImagesDir: '.tmp/images/generated',
-                imagesDir: '<%= yeoman.app %>/images',
-                javascriptsDir: '<%= yeoman.app %>/scripts',
-                fontsDir: '<%= yeoman.app %>/font',
-                importPath: '<%= yeoman.app %>/bower_components',
-                httpImagesPath: '/images',
-                httpGeneratedImagesPath: '/images/generated',
-                httpFontsPath: '/font',
-                relativeAssets: false
-            },
-            dist: {},
-            server: {
+            dev: {
                 options: {
-                    debugInfo: true
+                    sassDir: '<%= yeoman.app %>/styles/sass',
+                    cssDir: '<%= yeoman.app %>/styles',
+                    generatedImagesDir: '.tmp/images/generated',
+                    imagesDir: '<%= yeoman.app %>/images',
+                    javascriptsDir: '<%= yeoman.app %>/scripts',
+                    fontsDir: '<%= yeoman.app %>/font',
+                    importPath: '<%= yeoman.app %>/bower_components',
+                    httpImagesPath: '/images',
+                    httpGeneratedImagesPath: '/images/generated',
+                    httpFontsPath: '/font',
+                    relativeAssets: false,
+                    noLineComments: false,
+                    environment: 'development',
+                    debugInfo: false
+                }
+            },
+            dist: {
+                options: {
+                    sassDir: '<%= yeoman.dist %>/styles/sass',
+                    cssDir: '<%= yeoman.dist %>/styles',
+                    generatedImagesDir: '.tmp/images/generated',
+                    imagesDir: '<%= yeoman.app %>/images',
+                    javascriptsDir: '<%= yeoman.app %>/scripts',
+                    fontsDir: '<%= yeoman.app %>/font',
+                    importPath: '<%= yeoman.app %>/bower_components',
+                    httpImagesPath: '/images',
+                    httpGeneratedImagesPath: '/images/generated',
+                    httpFontsPath: '/font',
+                    relativeAssets: false,
+                    noLineComments: true,
+                    environment: 'production',
+                    debugInfo: false
                 }
             }
         },
@@ -193,18 +210,6 @@ module.exports = function (grunt) {
             css: ['<%= yeoman.dist %>/styles/{,*/}*.css'],
             options: {
                 assetsDirs: ['<%= yeoman.dist %>']
-            }
-        },
-        imagemin: {
-            dist: {
-                files: [
-                    {
-                        expand: true,
-                        cwd: '<%= yeoman.app %>/images',
-                        src: '{,*/}*.{png,jpg,jpeg}',
-                        dest: '<%= yeoman.dist %>/images'
-                    }
-                ]
             }
         },
         svgmin: {
@@ -304,7 +309,6 @@ module.exports = function (grunt) {
                 'coffee',
                 'compass:dist',
                 'copy:styles',
-                'imagemin',
                 'svgmin',
                 'htmlmin'
             ]

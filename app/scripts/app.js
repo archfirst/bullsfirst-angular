@@ -24,7 +24,7 @@
 
 'use strict';
 
-angular.module('bullsfirst', ['ngRoute', 'ngResource', 'ui.bootstrap', 'ngSanitize'])
+angular.module('bullsfirst', ['ngRoute', 'ngResource', 'ui.bootstrap', 'ngSanitize', 'ui.select2'])
     .config(function ($routeProvider) {
         $routeProvider
             .when('/', {templateUrl: 'views/home/login.html', controller: 'HomeCtrl'})
@@ -32,7 +32,7 @@ angular.module('bullsfirst', ['ngRoute', 'ngResource', 'ui.bootstrap', 'ngSaniti
             .when('/accounts', {templateUrl: 'views/accounts/accounts.html', controller: 'AccountsCtrl'})
             .when('/positions', {templateUrl: 'views/accounts/accounts.html', controller: 'AccountsCtrl'})
             .when('/orders', {templateUrl: 'views/accounts/accounts.html', controller: 'HomeCtrl'})
-            .when('/transations', {templateUrl: 'views/accounts/accounts.html', controller: 'HomeCtrl'})
+            .when('/transactions', {templateUrl: 'views/accounts/accounts.html', controller: 'AccountsCtrl'})
             .otherwise({redirectTo: '/'});
     })
     .config(function ($httpProvider) {

@@ -2,6 +2,11 @@
  * account-table-widget
  * -------------------------------------------------------------------------- */
 
+@mixin position-table-account-name() {
+    font-size: 14px;
+    font-weight: bold;
+}
+
 .account-table-transitioning-view {
     float: left;
     position: relative;
@@ -35,6 +40,16 @@
         width: 140px;
     }
 
+    .symbol {
+        text-align: left;
+        width: 50px;
+    }
+
+    .percentage {
+        text-align: right;
+        width: 80px;
+    }
+
     .legend-cell {
         padding-left: 20px;
         text-align: center;
@@ -42,7 +57,7 @@
     }
 
     .left-column {
-        background: none;
+        background: $white;
         border: none;
         color: $icon-color;
         font-size: 19px;
@@ -145,6 +160,46 @@
         /* Footer text is bold */
         tr:last-child td {
             font: bold normal 12px/25px Aller;
+        }
+    }
+
+    &.account-positions {
+        tbody {
+            tr {
+                .name {
+                    padding-left: 30px;
+                }
+
+                &:first-child {
+                    background: $table-row-selected-color;
+                    font-weight: bold;
+
+                    .left-column {
+                        background: $white;
+                    }
+
+                    .market-value {
+                        @include position-table-account-name();
+                    }
+
+                    .name {
+                        padding-left: 10px;
+                        @include position-table-account-name();
+                    }
+
+                    .legend-cell {
+                        &:after {
+                            content: "";
+                            width: 20px;
+                            height: 27px;
+                            left: 652px;
+                            top: 85px;
+                            position: absolute;
+                            background: $table-row-selected-color;
+                        }
+                    }
+                }
+            }
         }
     }
 

@@ -188,6 +188,38 @@ angular.module('bullsfirst')
                     width: myWidth,
                     height: myHeight
                 };
+            },
+
+            // Native JavaScript version of jQuery's .addClass()
+            appendClass: function(element, className) {
+                element.className += ' ' + className;
+            },
+
+            // Native JavaScript version of jQuery's .removeClass()
+            clearClass: function(element, className) {            
+                var classes = element.className,
+                    arr = classes.slice(' '),
+                    i,
+                    len = arr.length,
+                    cleanArr = [];
+
+                for (i=0; i<len; i++) {
+                    if (arr[i] !== className) {
+                        cleanArr.push(arr[i]);
+                    }
+                }
+
+                element.className = cleanArr.join(' ');
+
+                return element;
+            },
+
+            // Native JavaScript version of jQuery's .click()
+            triggerClick: function(element) {
+                var event = document.createEvent('MouseEvents');
+
+                event.initMouseEvent('click', true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+                element.dispatchEvent(event);
             }
         };
 

@@ -39,9 +39,6 @@
     <link rel="shortcut icon" href="images/favicon.gif">
     <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 
-
-    <!--<link rel="stylesheet" href="bower_components/ui-bootstrap/bootstrap.css">-->
-
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/index.css">
     <!-- endbuild -->
@@ -62,11 +59,13 @@
 
 </div>
 <footer>This is a demo application. All data displayed is fictitious.
-    Copyright © 2010-2013 <a href="http://archfirst.org">Archfirst.</a>
+    Copyright © 2010-2014 <a href="http://archfirst.org">Archfirst.</a>
 </footer>
 
 <script src="bower_components/jquery/jquery.min.js"></script>
+<script src="bower_components/select2/select2.js"></script>
 <script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-ui-select2/src/select2.js"></script>
 <script src="bower_components/highcharts/highcharts.js"></script>
 
 <!-- build:js scripts/plugins.js -->
@@ -98,17 +97,23 @@
 <script src="scripts/utilities/utilities.js"></script>
 <script src="scripts/utilities/HttpInterceptor.js"></script>
 <script src="scripts/constants/constants.js"></script>
+<script src="scripts/filters/legendIndex.js"></script>
+<script src="scripts/filters/positionPercentage.js"></script>
 <script src="scripts/directives/LowercaseModelDir.js"></script>
 <script src="scripts/services/UsersSvc.js"></script>
 <script src="scripts/services/BrokerageAccountsSvc.js"></script>
 <script src="scripts/services/AccountsSvc.js"></script>
 <script src="scripts/services/InstrumentsSvc.js"></script>
+<script src="scripts/services/TransactionsSvc.js"></script>
 <script src="scripts/directives/MatchWithDir.js"></script>
 <script src="scripts/directives/HighChartsDir.js"></script>
 <script src="scripts/directives/ErrorBubbleDir.js"></script>
+<script src="scripts/directives/TransactionsFilterDir.js"></script>
+<script src="scripts/directives/TransactionsListDir.js"></script>
 <script src="scripts/controllers/HomeCtrl.js"></script>
 <script src="scripts/controllers/AccountsCtrl.js"></script>
 <script src="scripts/controllers/TradeCtrl.js"></script>
+<script src="scripts/controllers/TransactionsCtrl.js"></script>
 <!-- endbuild -->
 </body>
 </html>
