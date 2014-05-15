@@ -22,14 +22,14 @@ module.exports = function (config) {
             'app/bower_components/angular-ui-select2/src/select2.js',
             'app/scripts/*.js',
             'app/scripts/**/*.js',
-            'test/spec/**/*.js'
+            'test//unit/specs/**/*.js'
         ],
 
         // list of files / patterns to exclude
         exclude: [],
 
         // web server port
-        port: 8080,
+        port: 9000,
 
         // level of logging
         // possible values: LOG_DISABLE || LOG_ERROR || LOG_WARN || LOG_INFO || LOG_DEBUG

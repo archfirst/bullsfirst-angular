@@ -22,8 +22,16 @@
  */
 
 angular.module('bullsfirst')
-    .factory('BrokerageAccountsSvc', function ($resource, OMSUrl) {
+    .factory('BrokerageAccountsSvc', function ($resource, OMSUrl, $rootScope) {
         'use strict';
 
-        return $resource(OMSUrl + '/secure/brokerage_accounts');
+        return $resource(OMSUrl + '/secure/brokerage_accounts', {}, {
+            query: {
+                method:'GET',
+                isArray:true,
+                headers: {
+                    Authorization: 'Basic ' + $rootScope.loggedInUser.AuthorizationHeader
+                }
+            }
+        });
     });
