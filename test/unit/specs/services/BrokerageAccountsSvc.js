@@ -32,7 +32,7 @@ describe('Services: BrokerageAccountsService', function () {
 
     beforeEach(module('bullsfirst'));
 
-    beforeEach(inject(function (_$httpBackend_, _BrokerageAccountsSvc_, BASE64, OMSUrl, _$rootScope_) {
+    beforeEach(inject(function (_$httpBackend_, $injector, BASE64, OMSUrl, _$rootScope_) {
         authorizationHeader = BASE64.encode('wflintstone:cool');
         $rootScope = _$rootScope_;
 
@@ -42,8 +42,10 @@ describe('Services: BrokerageAccountsService', function () {
             AuthorizationHeader: authorizationHeader
         };
 
+        $rootScope.loggedInUser = $rootScope.user;
+
         url = OMSUrl + '/secure/brokerage_accounts';
-        BrokerageAccountsSvc = _BrokerageAccountsSvc_;
+        BrokerageAccountsSvc = $injector.get('BrokerageAccountsSvc');
         $httpBackend = _$httpBackend_;
         $httpBackend.whenGET(/brokerage_accounts$/).respond(200);
         $httpBackend.whenPOST(/brokerage_accounts$/).respond(200);

@@ -34,15 +34,22 @@ describe('Controller: AccountsController', function () {
 
     beforeEach(module('bullsfirst'));
 
-    beforeEach(inject(function ($controller, $rootScope, BrokerageAccountsSvc, AccountsSvc, InstrumentsSvc) {
+    beforeEach(inject(function ($controller, $injector, $rootScope, AccountsSvc, InstrumentsSvc, BASE64) {
         scope = $rootScope.$new();
-        brokerageAccountService = BrokerageAccountsSvc;
+
+        $rootScope.loggedInUser = {
+            firstName: 'wflintstone',
+            lastName: 'cool',
+            AuthorizationHeader: BASE64.encode('wflintstone:cool')
+        };
+
+        brokerageAccountService = $injector.get('BrokerageAccountsSvc');
         accountsService = AccountsSvc;
         instrumentsSvc = InstrumentsSvc;
 
         AccountsCtrl = $controller('AccountsCtrl', {
             $scope: scope,
-            brokerageAccountService: BrokerageAccountsSvc
+            brokerageAccountService: brokerageAccountService
         });
     }));
 

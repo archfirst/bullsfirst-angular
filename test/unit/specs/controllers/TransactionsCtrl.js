@@ -30,9 +30,14 @@ describe('Controller: TransactionsCtrl', function() {
 
     beforeEach(module('bullsfirst'));
 
-    beforeEach(inject(function($controller, $rootScope, _BrokerageAccountsSvc_, _TransactionsSvc_) {
+    beforeEach(inject(function($controller, $rootScope, $injector, _TransactionsSvc_, BASE64) {
         scope = $rootScope.$new();
-        BrokerageAccountsSvc = _BrokerageAccountsSvc_;
+        $rootScope.loggedInUser = {
+            firstName: 'wflintstone',
+            lastName: 'cool',
+            AuthorizationHeader: BASE64.encode('wflintstone:cool')
+        };
+        BrokerageAccountsSvc = $injector.get('BrokerageAccountsSvc');
         TransactionsSvc = _TransactionsSvc_;
 
         TransactionsCtrl = $controller('TransactionsCtrl', {
