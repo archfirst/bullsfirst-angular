@@ -32,6 +32,6 @@ Start the proxy-server by running `npm start`. Now start Bullsfirst by pointing 
 
 ## Task Listing
 
-- `grunt watch`
+- `grunt server`
 
     Keeps Grunt running and watches for file changes. As soon as a file is changed, Grunt rebuilds the project - ready for you to test!
