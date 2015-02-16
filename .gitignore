@@ -4,4 +4,6 @@ dist
 .idea
 .tmp
 .sass-cache
+npm-debug.log
 app/bower_components
+app/styles/index.css
