@@ -28,7 +28,7 @@ module.exports = function (grunt) {
             },
             compass: {
                 files: ['<%= yeoman.app %>/styles/{,*/}*.{scss,sass}'],
-                tasks: ['compass:server', 'autoprefixer']
+                tasks: ['compass:dev', 'autoprefixer']
             },
             styles: {
                 files: ['<%= yeoman.app %>/styles/{,*/}*.css'],
@@ -297,7 +297,7 @@ module.exports = function (grunt) {
         concurrent: {
             server: [
                 'coffee:dist',
-                'compass:server',
+                'compass:dev',
                 'copy:styles'
             ],
             test: [
