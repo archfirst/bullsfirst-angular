@@ -36,7 +36,7 @@ module.exports = function (grunt) {
             },
             livereload: {
                 options: {
-                    livereload: '<%= connect.options.livereload %>'
+                    livereload: 35729
                 },
                 files: [
                     '<%= yeoman.app %>/{,*/}*.html',
@@ -371,7 +371,6 @@ module.exports = function (grunt) {
             'clean:server',
             'concurrent:server',
             'autoprefixer',
-            'connect:livereload',
             'watch'
         ]);
     });
